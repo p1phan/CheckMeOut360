@@ -1,0 +1,2 @@
+$('#flash').empty();
+$('#flash').html('<%= strip_new_line(render("shared/flash.html.erb", :flash => flash)).html_safe %>');

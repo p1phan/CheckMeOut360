@@ -1,0 +1,7 @@
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= image_tag post.user.profile.try(:profile_picture), :size => "45x40" %></td>
+    <td><%= post.message %></td>
+    <td><%= link_to (image_tag "x_image.png"), post, :class => "posts_delete_button", confirm: 'Are you sure?', method: :delete  if post.user_id == current_user.try(:id) %></td>
+  </tr>
+<% end %>

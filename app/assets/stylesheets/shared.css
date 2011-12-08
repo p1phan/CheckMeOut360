@@ -1,0 +1,26 @@
+#user_listing {
+  list-style: none;
+}
+
+.bottom_space {
+  margin-bottom: 10px;
+}
+
+#message_text_box {
+  height: 50px;
+}
+
+#posts_close_button {
+  cursor: pointer;
+}
+
+#user_table tr td {
+    border-style: none;
+}
+
+#user_table {
+  #right_of_profile_pic {
+    vertical-align: text-bottom;
+    position: relative;
+  }
+}

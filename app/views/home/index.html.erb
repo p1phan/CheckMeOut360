@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="content">
+    <div class="page-header">
+      <div id="flash">
+        <%= render "shared/flash", :flash => flash %>
+      </div>
+      <h1 id="main_page_header">CheckMeOut-360  <small>by Quy Phan</small></h1>
+      
+      <div id="registration_form" style="display:none;">
+        <h2>Register</h2><%= render :partial => "devise/registrations/new", :locals => { :resource => User.new, :resource_name => "user" }%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span10">
+        <% if current_user %>
+          <%= render :partial => 'shared/user_profile'%>
+        <% end %>
+        <button id='new_post_button' class='btn success bottom_space'>Write</button>
+        <div id='new_post_form' style='display:none;'>
+          <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
+        </div>
+        <table id="posts_list">
+          <%= render :partial => "posts/post_list" %>
+        </table>
+      </div>
+      <div class="span4">
+        <h3>Users</h3>
+        <%= render :partial => "shared/user_list" %>
+      </div>
+    </div>
+  </div>
+</div> <!-- /container -->

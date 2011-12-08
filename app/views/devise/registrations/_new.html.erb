@@ -1,0 +1,8 @@
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :email, :autofocus => true, :label => false, :input_html => {:class => "input-medium", :autocomplete =>"off"}, :placeholder => "Email" %>
+  <%= f.input :password, :label => false, :input_html => {:class => "input-medium"}, :placeholder => "Password" %>
+  <%= f.input :password_confirmation, :label => false, :input_html => {:class => "input-medium"}, :placeholder => "Password Confirmation" %>
+  <%= f.button :submit, "Sign up", :class => "btn success" %>
+  <button id="registration_cancel_button" class="btn danger">Cancel</button>
+<% end %>

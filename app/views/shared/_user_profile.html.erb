@@ -1,0 +1,36 @@
+<div id="user_profile">
+  <table id="user_table">
+    <tbody>
+        <tr>
+          <td class="span6"><%= image_tag @profile.profile_picture, :size => "180x185" %></td>
+          <td id="right_of_profile_pic">
+            <h2><%= @profile.first_name%> <%= @profile.last_name %></h2>
+            <br/>
+            <h3><%= @user.email %></h3>
+            <br/>
+            <h3><%= link_to "Facebook Page", @profile.facebook_site if @profile.facebook_site %></h3>
+          </td>
+        </tr>
+      <tr>
+        <td>Location</td>
+        <td><%= @profile.location %></td>
+      </tr>
+      <tr>
+        <td>Education</td>
+        <td>
+          <%= @profile.school %>
+          <br/>
+          <%= @profile.major %>
+        </td>
+      </tr>
+      <tr>
+        <td>Work</td>
+        <td>
+          <%= @profile.employer %>
+          <br/>
+          <%= @profile.position %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

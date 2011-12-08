@@ -1,0 +1,5 @@
+$('#user_table').empty();
+$('#user_table').html('<%= strip_new_line(render("shared/user_profile")).html_safe %>');
+$('#post_user_id').attr("value", "<%=@user_wall_id%>"); // Replaces the hidden value in the form to the new user's ID
+$('#posts_list').empty();
+$('#posts_list').html('<%= strip_new_line(render("posts/post_list")).html_safe %>');

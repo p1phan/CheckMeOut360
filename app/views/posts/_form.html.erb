@@ -1,0 +1,9 @@
+<%= simple_form_for(post, :remote => true) do |f| %>
+  <%= f.error_notification %>
+  <div class="inputs">
+    <%= f.input :message, :as => :text, :label => false, :input_html => {:id => "message_text_box", :class => "bottom_space span9"} %>
+    <img id="posts_close_button" src="<%=asset_path 'x_image.png' %>" />
+    <%= f.hidden_field :wall_id, :value => @user.try(:wall).try(:id) %>
+  </div>
+  <%= f.button :submit, :id => 'new_post_submit', :class => "btn success"%>
+<% end %>

@@ -1,0 +1,15 @@
+<%flash.each do |key, message|
+  if key == :notice 
+    html_key = 'success' 
+  elsif message == I18n.t("devise.failure.invalid")
+    html_key = 'error'
+  else
+    html_key = key
+  end
+%>
+<div class="alert-message <%=html_key%>" data-alert="alert">
+  <a class="close" href="#">×</a>
+  <p><%=message%></p>
+</div>
+<% end %>
+

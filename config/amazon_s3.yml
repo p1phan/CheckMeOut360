@@ -1,0 +1,9 @@
+development:
+  access_key_id: AKIAIIWTGMXJMOFYQ75A
+  secret_access_key: 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
+  bucket: checkmeoutdev
+
+production:
+  access_key_id: AKIAIIWTGMXJMOFYQ75A
+  secret_access_key: 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
+  bucket: checkmeout

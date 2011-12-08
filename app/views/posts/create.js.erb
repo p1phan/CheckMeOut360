@@ -1,0 +1,4 @@
+$("#new_post_form").hide();
+$("#new_post_button").show();
+$('#posts_list').empty();
+$('#posts_list').html('<%= strip_new_line(render("posts/post_list")).html_safe %>');
