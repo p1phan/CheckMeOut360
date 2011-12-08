@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log("LOADINg JS!!!");
   $('#register_button').click(function(obj){
     $('#main_page_header').hide();
     $('#registration_form').show();
