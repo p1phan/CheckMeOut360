@@ -16,6 +16,11 @@ gem 'therubyracer-heroku'
 gem 'oa-core'
 gem "friendly_id", "~> 4.0.0.beta14"
 gem 'fog'
+gem 'unicorn'
+
+group :devleopment do
+  gem 'foreman'
+end
 
 # This is outside the test because we need it to run factory girl in the seeds.rb
 
