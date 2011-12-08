@@ -1,40 +1,26 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
-
 # Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
+# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+gem 'rails', '3.1.1'
 gem 'pg'
-
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
-end
-
+gem 'simple_form'
+gem 'carrierwave'
+gem 'devise', '1.4.9'
 gem 'jquery-rails'
+gem 'omniauth'
+gem "omniauth-facebook"
+gem 'heroku'
+gem 'execjs'
+gem 'therubyracer-heroku'
+gem 'oa-core'
+gem "friendly_id", "~> 4.0.0.beta14"
+gem 'fog'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# This is outside the test because we need it to run factory girl in the seeds.rb
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
-group :production do
-  gem 'therubyracer-heroku'
-end
-
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
+group :assets do
+  gem 'sass-rails', "~> 3.1"
+  gem 'coffee-rails', "~> 3.1"
+  gem 'uglifier'
 end

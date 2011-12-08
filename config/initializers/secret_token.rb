@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Quyphan::Application.config.secret_token = '1c0c12f186d560a9e243c8b2f6581d7c0c6565ed26c56d7d59639777f8ec7f91f25ee85731fb37a8dcc7615d5421d8549b6a3234951d228d31763d2f73468c1d'
+CheckMeOut360::Application.config.secret_token = '3a81a50df4deeea1e07c77a68ff56f174f71a24dc943c7cd2602f059e482b9157a152caa266a3e466278432b7fae4b4d0ba9fdab7ceb5f44216cf4585dba5260'

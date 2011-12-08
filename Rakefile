@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Quyphan::Application.load_tasks
+CheckMeOut360::Application.load_tasks

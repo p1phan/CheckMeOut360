@@ -1,4 +1,4 @@
-Quyphan::Application.configure do
+CheckMeOut360::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -27,4 +27,7 @@ Quyphan::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  FACEBOOK_APP_ID = '274227725962297'
+  FACEBOOK_APP_SECRET = 'bdc335dde5ff487dd3b30ed582d21016'
 end

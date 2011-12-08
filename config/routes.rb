@@ -1,4 +1,17 @@
-Quyphan::Application.routes.draw do
+CheckMeOut360::Application.routes.draw do
+  resources :posts
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "my_devise/registrations", :sessions => "my_devise/sessions" } do
+    get "users/sign_in" => 'walls#index'
+    get "users/sign_up" => 'walls#index'
+  end
+
+  resources :home
+  resources :walls
+  
+  match 'account' => 'account#edit'
+  match 'users' => 'walls#index'
+  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +61,7 @@ Quyphan::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'walls#index'
 
   # See how all your routes lay out with "rake routes"
 

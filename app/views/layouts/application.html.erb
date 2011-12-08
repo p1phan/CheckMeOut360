@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quyphan</title>
+  <title>CheckMeOut360</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+        <ul><%= link_to (image_tag "globe.png", :size => "70x40"), root_path, :id => "globe_icon_href" %></ul>
+        <ul class="nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <% if current_user %>
+            <li id="logout"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><a href="#" id="register_button">Register</a></li>
+          <% end%>
 
+        </ul>
+        <ul class="nav">
+          <% if current_user %>
+            <li><%= image_tag current_user.profile.profile_picture, :id => "facebook_pic", :size => "30x30" %></li>
+          <% else %>
+            <li><%= link_to (image_tag "facebook_32.png", :id => "facebook_icon"), user_omniauth_authorize_path(:facebook) %></li>
+          <% end %>
+          
+        </ul>
+        <div class="pull-right">
+          <% if current_user %>
+            <div class="login-group"><%= button_to current_user.email, account_path, :id => "current_user_account_button", :class => "btn success" %></div>
+          <% else %>
+            <div id="login_group">
+              <%= render :partial => "devise/sessions/form", :locals => {:resource => User.new, :resource_name => "user"} %>
+            </div>
+          <% end%>
+        </div>
+      </div>
+    </div>
+  </div>
 <%= yield %>
 
 </body>
+
+<footer id="main_footer">
+  <p>&copy; Quy Phan</p>
+</footer>
 </html>

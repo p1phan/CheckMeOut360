@@ -1,4 +1,4 @@
-Quyphan::Application.configure do
+CheckMeOut360::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -15,7 +15,7 @@ Quyphan::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -57,4 +57,7 @@ Quyphan::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  FACEBOOK_APP_ID = '244261292303188'
+  FACEBOOK_APP_SECRET = 'f5566253849a3ca829aa9756379745d0'
 end
