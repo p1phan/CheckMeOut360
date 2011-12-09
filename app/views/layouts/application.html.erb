@@ -13,8 +13,8 @@
         <ul><%= link_to (image_tag "globe.png", :size => "70x40"), root_path, :id => "globe_icon_href" %></ul>
         <ul class="nav">
           <li class="active"><a href="/">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" style="cursor:pointer;" id="about_page">About</a></li>
+          <li><a href="#contact" id="contact_page">Contact</a></li>
           <% if current_user %>
             <li id="logout"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           <% else %>
@@ -42,8 +42,7 @@
       </div>
     </div>
   </div>
-<%= yield %>
-
+  <%= yield %>
 </body>
 
 <footer id="main_footer">

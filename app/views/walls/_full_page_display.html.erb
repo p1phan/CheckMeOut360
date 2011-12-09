@@ -12,16 +12,24 @@
     </div>
     <div class="row">
       <div class="span10">
-        <% if @profile %>
-          <%= render :partial => 'shared/user_profile'%>
-        <% end %>
-        <button id='new_post_button' class='btn success bottom_space'>Write</button>
-        <div id='new_post_form' style='display:none;'>
-          <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
+        <div id="static_about_page" style="display:none;">
+          <%= render :partial => "shared/about" %>
         </div>
-        <table id="posts_list">
-          <%= render :partial => "posts/post_list" %>
-        </table>
+        <div id="static_contact_page" style="display:none;">
+          <%= render :partial => "shared/contact" %>
+        </div>
+        <div id="main_content">
+          <% if @profile %>
+            <%= render :partial => 'shared/user_profile'%>
+          <% end %>
+          <button id='new_post_button' class='btn success bottom_space'>Write</button>
+          <div id='new_post_form' style='display:none;'>
+            <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
+          </div>
+          <table id="posts_list">
+            <%= render :partial => "posts/post_list" %>
+          </table>
+        </div>
       </div>
       <div class="span4">
         <h3>Users</h3>
