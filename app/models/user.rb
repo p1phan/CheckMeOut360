@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
   def create_wall_and_profile
     unless self.wall
       wall = self.build_wall 
-      wall.wall_name = email.split("@").first
-      wall.slug = wall.wall_name
+      wall.slug = wall.set_next_available_wall_name(email.split("@").first)
     end
     self.build_profile unless self.profile
   end
