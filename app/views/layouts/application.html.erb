@@ -10,7 +10,7 @@
   <div class="topbar">
     <div class="fill">
       <div class="container">
-        <ul><%= link_to (image_tag "globe.png", :size => "70x40"), root_path, :id => "globe_icon_href" %></ul>
+        <ul><%= link_to (image_tag "globe.png", :size => "70x40"), root_path, :id => "globe_icon_href", :locals => { :index => true } %></ul>
         <ul class="nav">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="#about" style="cursor:pointer;" id="about_page">About</a></li>
