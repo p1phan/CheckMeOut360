@@ -2,7 +2,7 @@
   <table id="user_table">
     <tbody>
         <tr>
-          <td class="span6"><%= (image_tag @profile.profile_picture, :size => "180x185") unless @profile.profile_picture.blank? %></td>
+          <td class="span6"><%= image_tag display_profile_picture(@profile.profile_picture), :size => "180x185" %></td>
           <td id="right_of_profile_pic">
             <h2><%= @profile.first_name%> <%= @profile.last_name %></h2>
             <br/>

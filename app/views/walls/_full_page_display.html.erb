@@ -19,16 +19,23 @@
           <%= render :partial => "shared/contact" %>
         </div>
         <div id="main_content">
-          <% if @profile %>
-            <%= render :partial => 'shared/user_profile'%>
+          <% if current_user %>
+            <% if @profile %>
+              <%= render :partial => 'shared/user_profile'%>
+            <% end %>
+            <button id='new_post_button' class='btn success bottom_space'>Write</button>
+            <div id='new_post_form' style='display:none;'>
+              <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
+            </div>
+            <table id="posts_list">
+              <%= render :partial => "posts/post_list" %>
+            </table>
+          <% else %>
+            <div id="static_getting_started_page">
+              <%= render :partial => "shared/getting_started" %>
+              <%= render :partial => "shared/about" %>
+            </div>
           <% end %>
-          <button id='new_post_button' class='btn success bottom_space'>Write</button>
-          <div id='new_post_form' style='display:none;'>
-            <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
-          </div>
-          <table id="posts_list">
-            <%= render :partial => "posts/post_list" %>
-          </table>
         </div>
       </div>
       <div class="span4">

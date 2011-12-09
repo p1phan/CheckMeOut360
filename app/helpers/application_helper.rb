@@ -4,11 +4,11 @@ module ApplicationHelper
     str.gsub("\n", "")
   end
   
-  def get_facebook_image_size(base_url, image_size)
-    if base_url
-      base_url.gsub("type=square", "type=#{image_size}")
+  def display_profile_picture(profile_picture)
+    if profile_picture.blank?
+      "empty_facebook_picture.jpg"
     else
-      return "empty_facebook_picture.jpg"
+      profile_picture
     end
   end
 
