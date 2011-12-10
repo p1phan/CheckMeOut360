@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :posts, inverse_of: :user, :dependent => :destroy
   has_one :wall, inverse_of: :user, :dependent => :destroy
   has_one :profile, inverse_of: :user, :dependent => :destroy
+  has_and_belongs_to_many :places
   
   accepts_nested_attributes_for :wall
   accepts_nested_attributes_for :profile

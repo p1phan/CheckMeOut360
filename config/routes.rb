@@ -1,10 +1,12 @@
 CheckMeOut360::Application.routes.draw do
-  resources :posts
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "my_devise/registrations", :sessions => "my_devise/sessions" } do
     get "users/sign_in" => 'walls#index'
     get "users/sign_up" => 'walls#index'
   end
-
+  
+  resources :posts
+  resources :places
   resources :home
   resources :walls
   

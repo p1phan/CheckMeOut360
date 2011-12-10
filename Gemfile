@@ -18,6 +18,7 @@ gem "friendly_id", "~> 4.0.0.beta14"
 gem 'fog'
 gem 'unicorn'
 gem 'koala'
+gem 'carmen'
 
 group :devleopment do
   gem 'foreman'

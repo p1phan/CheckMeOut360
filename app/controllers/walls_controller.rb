@@ -7,7 +7,6 @@ class WallsController < ApplicationController
       @user = current_user
       @profile = @user.profile
       @user_wall_id = current_user.id 
-      get_all_users_without_current_user
       @posts = Post.find_all_by_user_id(current_user.id)
     else
       @users = User.all
@@ -21,7 +20,6 @@ class WallsController < ApplicationController
     wall = Wall.find(params[:id])
     @user = wall.user
     @profile = @user.profile
-    get_all_users_without_current_user
     @posts = Post.find_all_by_wall_id(wall.id)
 
     respond_to do |format|
@@ -89,7 +87,6 @@ class WallsController < ApplicationController
       format.json { head :ok }
     end
   end
-  
   
   private
   

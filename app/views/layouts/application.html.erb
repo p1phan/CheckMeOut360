@@ -42,7 +42,33 @@
       </div>
     </div>
   </div>
-  <%= yield %>
+  <div class="container">
+    <div class="content">
+      <div class="page-header">
+        <div id="flash">
+          <%= render "shared/flash", :flash => flash %>
+        </div>
+        <h1 id="main_page_header">CheckMeOut-360  <small>by Quy Phan</small></h1>
+
+        <div id="registration_form" style="display:none;">
+          <h2>Register</h2><%= render :partial => "devise/registrations/new", :locals => { :resource => User.new, :resource_name => "user" }%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <ul class="tabs"> 
+            <li id="wall_tab" class="active"><%= link_to "Wall", root_path %></li>
+            <li id="place_tab"><%= link_to "Places", places_path %></li>
+          </ul>
+          <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
+        </div>
+        <div class="span4">
+          <h3>Users</h3>
+          <%= render :partial => "shared/user_list" %>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container -->
 </body>
 
 <footer id="main_footer">

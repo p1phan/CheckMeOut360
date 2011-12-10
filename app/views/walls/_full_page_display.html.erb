@@ -1,47 +1,25 @@
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <div id="flash">
-        <%= render "shared/flash", :flash => flash %>
-      </div>
-      <h1 id="main_page_header">CheckMeOut-360  <small>by Quy Phan</small></h1>
-      
-      <div id="registration_form" style="display:none;">
-        <h2>Register</h2><%= render :partial => "devise/registrations/new", :locals => { :resource => User.new, :resource_name => "user" }%>
-      </div>
+<div id="static_about_page" style="display:none;">
+  <%= render :partial => "shared/about" %>
+</div>
+<div id="static_contact_page" style="display:none;">
+  <%= render :partial => "shared/contact" %>
+</div>
+<div id="main_content">
+  <% if (!index && !current_user) || current_user %>
+    <% if @profile %>
+      <%= render :partial => 'shared/user_profile'%>
+    <% end %>
+    <button id='new_post_button' class='btn info bottom_space'>Write</button>
+    <div id='new_post_form' style='display:none;'>
+      <%= render :partial => "posts/form", :locals => { :post => Post.new, :place => Place.new }%>
     </div>
-    <div class="row">
-      <div class="span10">
-        <div id="static_about_page" style="display:none;">
-          <%= render :partial => "shared/about" %>
-        </div>
-        <div id="static_contact_page" style="display:none;">
-          <%= render :partial => "shared/contact" %>
-        </div>
-        <div id="main_content">
-          <% if (!index && !current_user) || current_user %>
-            <% if @profile %>
-              <%= render :partial => 'shared/user_profile'%>
-            <% end %>
-            <button id='new_post_button' class='btn info bottom_space'>Write</button>
-            <div id='new_post_form' style='display:none;'>
-              <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
-            </div>
-            <table id="posts_list">
-              <%= render :partial => "posts/post_list" %>
-            </table>
-          <% else %>
-            <div id="static_getting_started_page">
-              <%= render :partial => "shared/getting_started" %>
-              <%= render :partial => "shared/about" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="span4">
-        <h3>Users</h3>
-        <%= render :partial => "shared/user_list" %>
-      </div>
+    <table id="posts_list">
+      <%= render :partial => "posts/post_list" %>
+    </table>
+  <% else %>
+    <div id="static_getting_started_page">
+      <%= render :partial => "shared/getting_started" %>
+      <%= render :partial => "shared/about" %>
     </div>
-  </div>
-</div> <!-- /container -->
+  <% end %>
+</div>

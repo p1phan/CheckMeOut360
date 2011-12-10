@@ -1,0 +1,11 @@
+<%= simple_form_for(@place) do |f| %>
+<%= f.input :name %>
+<%= f.input :address%>
+<%= f.input :city %>
+<%= f.input :state, :collection => Carmen.states %>
+<%= f.input :zip %>
+<%= f.input :country, :priority => [ "US" ], :label => "Country" %>
+<%= f.hidden_field :lat, :value => @place.lat %>
+<%= f.hidden_field :long, :value => @place.long %>
+<%= f.button :submit, :id => 'new_post_submit', :class => "btn info"%>
+<% end %>
