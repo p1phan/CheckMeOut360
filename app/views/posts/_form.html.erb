@@ -5,5 +5,5 @@
     <img id="posts_close_button" src="<%=asset_path 'x_image.png' %>" />
     <%= f.hidden_field :wall_id, :value => @user.try(:wall).try(:id) %>
   </div>
-  <%= f.button :submit, :id => 'new_post_submit', :class => "btn success"%>
+  <%= f.button :submit, :id => 'new_post_submit', :class => "btn info"%>
 <% end %>

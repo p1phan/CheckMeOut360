@@ -3,5 +3,5 @@
 <% end %>
 <hr/>
 <% @users.each do |user| %>
-  <%= link_to user.email, wall_path(user.wall.wall_name), :class => "user_list btn success bottom_space", :id =>"user_listing" %>
+  <%= link_to user.email, wall_path(user.wall.wall_name), :class => "user_list btn info bottom_space", :id =>"user_listing" %>
 <% end %>

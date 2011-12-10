@@ -23,7 +23,7 @@
             <% if @profile %>
               <%= render :partial => 'shared/user_profile'%>
             <% end %>
-            <button id='new_post_button' class='btn success bottom_space'>Write</button>
+            <button id='new_post_button' class='btn info bottom_space'>Write</button>
             <div id='new_post_form' style='display:none;'>
               <%= render :partial => "posts/form", :locals => { :post => Post.new }%>
             </div>
