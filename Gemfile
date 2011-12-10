@@ -12,7 +12,7 @@ gem 'omniauth'
 gem "omniauth-facebook"
 gem 'heroku'
 gem 'execjs'
-gem 'therubyracer-heroku'
+# gem 'therubyracer-heroku'
 gem 'oa-core'
 gem "friendly_id", "~> 4.0.0.beta14"
 gem 'fog'
