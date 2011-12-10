@@ -82,6 +82,9 @@ GEM
       thor (~> 0.14)
     json (1.6.3)
     kgio (2.6.0)
+    koala (1.2.1)
+      faraday (~> 0.7.0)
+      multi_json (~> 1.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mail (2.3.0)
@@ -186,6 +189,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.0.beta14)
   heroku
   jquery-rails
+  koala
   oa-core
   omniauth
   omniauth-facebook

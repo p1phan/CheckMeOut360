@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
       user
     else
       user = User.new(:email => data.email)
+      user.uid = access_token['uid']
+      user.token = access_token['credentials']['token']
       @profile = user.build_profile
       update_facebook_profile(user, data, access_token)
       user.save!(:validate => false)
