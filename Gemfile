@@ -19,6 +19,7 @@ gem 'fog'
 gem 'unicorn'
 gem 'koala'
 gem 'carmen'
+gem 'geocoder'
 
 group :devleopment do
   gem 'foreman'

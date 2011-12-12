@@ -70,6 +70,7 @@ GEM
       thor (>= 0.13.6)
     formatador (0.2.1)
     friendly_id (4.0.0.beta14)
+    geocoder (1.0.5)
     hashie (1.2.0)
     heroku (2.16.1)
       launchy (>= 0.3.2)
@@ -191,6 +192,7 @@ DEPENDENCIES
   fog
   foreman
   friendly_id (~> 4.0.0.beta14)
+  geocoder
   heroku
   jquery-rails
   koala
