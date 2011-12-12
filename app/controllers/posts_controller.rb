@@ -21,7 +21,7 @@ class PostsController < ApplicationController
         end
       end
     else
-      flash[:error] = "You are not signed n!"
+      flash[:error] = "You are not signed in!"
       render :partial => 'shared/flash', :locals => {:flash => flash}
     end
   end

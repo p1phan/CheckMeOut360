@@ -1,0 +1,11 @@
+/* Insert a place on the map */
+var latlng = new google.maps.LatLng(<%= @place.lat %>,<%= @place.long%>);
+// Initializes the marker (new) when address and city is entered
+marker = new google.maps.Marker({
+  position: latlng,
+  map: map,
+  draggable:false
+});
+
+map.setCenter(latlng);
+map.setZoom(14);

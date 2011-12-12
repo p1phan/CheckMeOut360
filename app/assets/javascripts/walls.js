@@ -19,14 +19,18 @@ $(document).ready(function() {
     $("#new_post_form").hide();
     $("#new_post_button").show();
   })
-
   
-  // $(".user_list").click(function() {
-  //   $.ajax({
-  //     url: "/home/wall",
-  //     type: 'GET',
-  //     data: wall = {user_id: this.value }
-  //   });
-  // });
+  $('#places_link').click(function() {
+    $('#list_of_users').hide();
+    $('#list_of_places').show();
+    $('li#places_list').attr("class", "active");
+    $('li#users_list').removeClass("active");
+  });
   
+  $('#users_link').click(function() {
+    $('#list_of_places').hide();
+    $('#list_of_users').show();
+    $('li#users_list').attr("class", "active");
+    $('li#places_list').removeClass("active");
+  });
 });

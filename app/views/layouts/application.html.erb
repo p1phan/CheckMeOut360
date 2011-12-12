@@ -64,8 +64,16 @@
           <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
         </div>
         <div class="span4">
-          <h3>Users</h3>
-          <%= render :partial => "shared/user_list" %>
+          <ul class="tabs"> 
+            <li id="users_list" class="active"> <%= link_to "Users", "#", :id => "users_link" %> </li>
+            <li id="places_list"> <%= link_to "Places", "#", :id => "places_link" %> </li>
+          </ul>
+          <div id="list_of_users">
+            <%= render :partial => "shared/user_list" %>
+          </div>
+          <div id="list_of_places" style="display:none;">
+            <%= render :partial => "shared/places_list" %>
+          </div>
         </div>
       </div>
     </div>

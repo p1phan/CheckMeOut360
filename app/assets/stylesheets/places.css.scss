@@ -1,4 +1,13 @@
 #map_canvas {
   height: 375px !important;
-  width: 560px !important;
+}
+.place {
+  label {
+    text-align: left;
+    padding-bottom: 10px;
+    float: left;
+  }
+  #place_address {
+    width: 99%;
+  }
 }

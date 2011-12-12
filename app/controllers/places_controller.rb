@@ -39,16 +39,22 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-    @place = Place.new(params[:place])
-
-    respond_to do |format|
-      if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
-        format.json { render json: @place, status: :created, location: @place }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
+    if current_user
+      @place = Place.new(params[:place])
+      respond_to do |format|
+        if @place.save
+          current_user.places << @place
+          @places = current_user.places
+          format.html { redirect_to @place, notice: 'Place was successfully created.' }
+          format.js
+        else
+          format.html { render action: "new" }
+          format.js
+        end
       end
+    else
+      flash[:error] = "You are not signed in!"
+      render :partial => 'shared/flash', :locals => {:flash => flash}
     end
   end
 

@@ -87,10 +87,5 @@ class WallsController < ApplicationController
       format.json { head :ok }
     end
   end
-  
-  private
-  
-  def get_all_users_without_current_user
-    @users ||= User.all.select{ |user| user.id != current_user.try(:id) }
-  end
+
 end
