@@ -1,5 +1,5 @@
 <% if @place.errors.any? %>
-  $('#flash').html('<%= strip_new_line(render("shared/flash.html.erb", :flash => @place.errors, :flash_type => "error")).html_safe %>');
+  $('#flash').html('<%= strip_new_line(render("shared/flash.html.erb", :flash => {:error => @place.errors.full_messages.join(', ')})).html_safe %>');
   return false;
 <% end %>
 /* Insert a place on the map */
@@ -13,6 +13,15 @@ marker = new google.maps.Marker({
 });
 
 map.setCenter(latlng);
-map.setZoom(14);
+map.setZoom(12);
 
-google.maps.event.addListener(marker, 'click', toggleBounce);
+infowindow = new google.maps.InfoWindow({
+  content: "holding..."
+});
+
+google.maps.event.addListener(marker, 'click', function (a,b) {
+  stop_bounce();
+  toggle_bounce(marker);
+  infowindow.setContent("<h3><%= (@place.try(:name) || @place.address) %></h3>");
+  infowindow.open(map, this);
+});

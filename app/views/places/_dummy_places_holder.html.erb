@@ -1,6 +1,6 @@
 <div id="dummy_places_holder" style="display:none;">
   <% @places.each do |place| %>
-    <div class="place_holder" lat="<%= place.lat %>" long="<%= place.long %>">
+    <div class="place_holder" name ="<%= place.try(:name) %>" lat="<%= place.lat %>" long="<%= place.long %>">
       <%= place.address %>
     </div>  
   <% end %>

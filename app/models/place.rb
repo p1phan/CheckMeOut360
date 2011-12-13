@@ -3,7 +3,7 @@ class Place < ActiveRecord::Base
   
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
-  validates :address, :presence => :true, :length => {:minimum => 4, :message => "Name of Place is too short!"}, :uniqueness => {:message => "Place was already created!"}
+  validates :address, :presence => :true, :length => {:minimum => 4, :message => "is too short!"}, :uniqueness => {:message => "was already created!"}
   before_save :set_name_if_none_given
   
   def set_name_if_none_given

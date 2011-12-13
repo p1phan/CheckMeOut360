@@ -3,6 +3,8 @@ var places_holder;
 var marker = null;
 var iterator;
 var infowindow = null;
+var marker_array = [];
+var bouncing_marker = null;
 
 $(document).ready(function() {
   places_holder = $('#dummy_places_holder .place_holder');
@@ -48,11 +50,20 @@ function place_marker() {
   return marker;
 }
 
-function toggleBounce() {
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
+function toggle_bounce(marker) {
+  if (marker != undefined) {
+    if (marker.getAnimation() != null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+    bouncing_marker = marker
+  }
+}
+
+function stop_bounce() {
+  if (bouncing_marker != null) {
+    bouncing_marker.setAnimation(null);
   }
 }
 
@@ -61,8 +72,10 @@ function drop() {
   marker = null;
   for (var i = 0; i < places_holder.length; i++) {
     var marker = place_marker();
-    // console.log(marker);
+    marker_array[i] = marker;
     google.maps.event.addListener(marker, 'click', function (a,b) {
+      stop_bounce();
+      toggle_bounce(this);
       infowindow.setContent("<h3>" + this.title + "</h3>");
       infowindow.open(map, this);
     });

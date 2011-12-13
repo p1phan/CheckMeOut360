@@ -1,6 +1,6 @@
 <% flash.each do |key, message|
-
-  if message == I18n.t("devise.failure.invalid") || flash_type == "error"
+  puts key.inspect + message.inspect
+  if message == I18n.t("devise.failure.invalid")
     html_key = 'error'
   elsif key == :notice 
     html_key = 'success'
