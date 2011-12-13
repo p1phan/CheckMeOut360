@@ -1,7 +1,9 @@
-<%= simple_form_for( Place.new, :remote => true ) do |f| %>
-  <%= f.input :address, :label => false, :placeholder => "Enter address", :input_html => {:class => "bottom_space"} %>
-  <%= f.button :submit, :class => "btn info" %>
-<% end %>
+<div class="main_content">
+  <%= simple_form_for( Place.new, :remote => true ) do |f| %>
+    <%= f.input :address, :label => false, :placeholder => "Enter address", :input_html => {:class => "bottom_space"} %>
+    <%= f.button :submit, :class => "btn info" %>
+  <% end %>
 
-<%= render :partial => "google_map" %>
-<%= render :partial => "dummy_places_holder" %>
+  <%= render :partial => "google_map" %>
+  <%= render :partial => "dummy_places_holder" %>
+</div>

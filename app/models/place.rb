@@ -3,11 +3,6 @@ class Place < ActiveRecord::Base
   
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
-  # validate :address_should_be_valid
-  
-  def address_should_be_valid
-    unless lat && long
-      
-    end
-  end
+  validates :address, :presence => :true, :length => {:minimum => 4, :message => "Name of Place is too short!"}, :uniqueness => {:message => "Place was already created!"}
+
 end

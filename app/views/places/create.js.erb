@@ -1,3 +1,6 @@
+<% if @place.errors.any? %>
+  $('#flash').html('<%= strip_new_line(render("shared/flash.html.erb", :flash => @place.errors, :flash_type => "error")).html_safe %>');
+<% end %>
 /* Insert a place on the map */
 var latlng = new google.maps.LatLng(<%= @place.lat %>,<%= @place.long%>);
 // Initializes the marker (new) when address and city is entered

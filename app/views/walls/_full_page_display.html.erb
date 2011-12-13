@@ -4,7 +4,7 @@
 <div id="static_contact_page" style="display:none;">
   <%= render :partial => "shared/contact" %>
 </div>
-<div id="main_content">
+<div class="main_content">
   <% if (!index && !current_user) || current_user %>
     <% if @profile %>
       <%= render :partial => 'shared/user_profile'%>
