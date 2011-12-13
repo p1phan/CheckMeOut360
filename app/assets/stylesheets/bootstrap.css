@@ -610,10 +610,10 @@ textarea {
 }
 label {
   padding-top: 6px;
+  padding-right: 10px;
   font-size: 13px;
   line-height: 18px;
   float: left;
-  width: 130px;
   text-align: right;
   color: #404040;
 }

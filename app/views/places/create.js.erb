@@ -1,5 +1,6 @@
 <% if @place.errors.any? %>
   $('#flash').html('<%= strip_new_line(render("shared/flash.html.erb", :flash => @place.errors, :flash_type => "error")).html_safe %>');
+  return false;
 <% end %>
 /* Insert a place on the map */
 var latlng = new google.maps.LatLng(<%= @place.lat %>,<%= @place.long%>);
@@ -7,8 +8,11 @@ var latlng = new google.maps.LatLng(<%= @place.lat %>,<%= @place.long%>);
 marker = new google.maps.Marker({
   position: latlng,
   map: map,
+  animation: google.maps.Animation.DROP,
   draggable:false
 });
 
 map.setCenter(latlng);
 map.setZoom(14);
+
+google.maps.event.addListener(marker, 'click', toggleBounce);
