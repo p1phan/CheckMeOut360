@@ -58,10 +58,12 @@
       <div class="row">
         <div class="span10">
           <ul class="tabs"> 
-            <li id="wall_tab" class="active"><%= link_to "Wall", root_path %></li>
-            <li id="place_tab"><%= link_to "Places", places_path %></li>
+            <li id="li_for_wall" class="active"><%= link_to "Wall", root_path, :id => "wall_tab" %></li>
+            <li id="li_for_place"><%= link_to "Places", places_path, :id => "place_tab" %></li>
           </ul>
-          <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
+          <div id="yield_for_main_content">
+            <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
+          </div>
         </div>
         <div class="span4">
           <ul class="tabs"> 
