@@ -20,6 +20,7 @@ gem 'unicorn'
 gem 'koala'
 gem 'carmen'
 gem 'geocoder'
+gem 'hashie'
 
 group :devleopment do
   gem 'foreman'

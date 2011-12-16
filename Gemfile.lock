@@ -193,6 +193,7 @@ DEPENDENCIES
   foreman
   friendly_id (~> 4.0.0.beta14)
   geocoder
+  hashie
   heroku
   jquery-rails
   koala

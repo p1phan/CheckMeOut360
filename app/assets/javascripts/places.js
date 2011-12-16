@@ -42,7 +42,7 @@ function place_marker() {
   marker = new google.maps.Marker({
     position: new google.maps.LatLng($(places_holder[iterator]).attr("lat"), $(places_holder[iterator]).attr("long")),
     map: map,
-    title: $(places_holder[iterator]).text(),
+    title: $(places_holder[iterator]).attr("name"),
     animation: google.maps.Animation.DROP,
     draggable:false
   });
@@ -73,10 +73,10 @@ function drop() {
   for (var i = 0; i < places_holder.length; i++) {
     var marker = place_marker();
     marker_array[i] = marker;
-    google.maps.event.addListener(marker, 'click', function (a,b) {
+    google.maps.event.addListener(marker, 'click', function (a) {
       stop_bounce();
       toggle_bounce(this);
-      infowindow.setContent("<h3>" + this.title + "</h3>");
+      infowindow.setContent("<h3>" + this.title + "</h3><br/><h4></h4>");
       infowindow.open(map, this);
     });
   }
