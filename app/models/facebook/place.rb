@@ -12,4 +12,5 @@ class Facebook::Place < Hashie::Trash
       end
     end
   end
+
 end

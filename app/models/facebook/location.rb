@@ -12,4 +12,5 @@ class Facebook::Location < Hashie::Trash
       self[key.to_sym] = value
     end
   end
+
 end

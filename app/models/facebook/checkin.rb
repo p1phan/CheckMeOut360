@@ -18,4 +18,5 @@ class Facebook::Checkin < Hashie::Trash
       end
     end
   end
+
 end
