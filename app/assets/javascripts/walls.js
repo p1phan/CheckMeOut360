@@ -16,8 +16,7 @@ $(document).ready(function() {
   });
 
   $("#posts_close_button").click(function() {
-    $("#new_post_form").hide();
-    $("#new_post_button").show();
+    $('#new_post #message_text_box').val("")
   })
 
 });
