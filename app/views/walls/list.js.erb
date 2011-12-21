@@ -1,0 +1,2 @@
+$('#yield_for_main_content').empty();
+$('#yield_for_main_content').html('<%= strip_new_line(render("full_page_display", :index => false)).html_safe %>');

@@ -30,6 +30,14 @@ class PlacesController < ApplicationController
       format.json { render json: @place }
     end
   end
+  
+  def list
+    @wall = Wall.find(params[:id])
+    @places = User.find(@wall.user_id).places
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # GET /places/1/edit
   def edit

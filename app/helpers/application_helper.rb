@@ -1,7 +1,8 @@
 module ApplicationHelper
 
   def strip_new_line(str)
-    str.gsub("\n", "")
+    str = str.gsub("\n", "")
+    str = str.gsub("'", "&apos;")
   end
   
   def display_profile_picture(profile_picture)
@@ -13,7 +14,7 @@ module ApplicationHelper
   end
   
   def get_current_wall
-    @wall || current_user.try(:wall) || User.first.try(:wall)
+    @wall || current_user.try(:wall)
   end
 
 end

@@ -7,8 +7,18 @@ CheckMeOut360::Application.routes.draw do
   
   resources :posts
   resources :home
+  resources :places do
+    collection do
+      get 'list'
+    end
+  end
   resources :walls do
-    resources :places
+    collection do
+      get 'about'
+      get 'contact'
+      get 'help'
+      get 'list'
+    end
   end
   
   match 'account' => 'account#edit'

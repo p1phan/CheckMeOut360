@@ -1,0 +1,13 @@
+$('#yield_for_main_content').empty();
+<% if @wall %>
+  $('#yield_for_main_content').html('<%= strip_new_line(render("display_places")).html_safe %>');
+<% else %>
+  $('#yield_for_main_content').html('<%= strip_new_line(render("shared/about")).html_safe %>');
+<% end %>
+
+init_google_map();
+places_holder = $('#dummy_places_holder .place_holder');
+infowindow = new google.maps.InfoWindow({
+  content: "holding..."
+});
+drop();

@@ -13,6 +13,16 @@ class WallsController < ApplicationController
       @posts = []
     end
   end
+  
+  def list
+    @wall = Wall.find(params[:id])
+    @user = @wall.user
+    @profile = @user.profile
+    @posts = Post.find_all_by_wall_id(@wall.id)
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # GET /walls/1
   # GET /walls/1.json
@@ -85,6 +95,24 @@ class WallsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to walls_url }
       format.json { head :ok }
+    end
+  end
+  
+  def about
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def contact
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def help
+    respond_to do |format|
+      format.js
     end
   end
 

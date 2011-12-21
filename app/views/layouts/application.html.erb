@@ -12,10 +12,12 @@
     <div class="fill">
       <div class="container">
         <ul><%= link_to (image_tag "globe.png", :size => "70x40"), root_path, :id => "globe_icon_href", :locals => { :index => true } %></ul>
-        <ul class="nav">
+        <ul class="nav" id="top_main_global_bar">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="#about" style="cursor:pointer;" id="about_page">About</a></li>
           <li><a href="#contact" id="contact_page">Contact</a></li>
+          <li><a href="#help" style="cursor:pointer;" id="help_page">Help</a></li>
+          
           <% if current_user %>
             <li id="logout"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           <% else %>
@@ -57,16 +59,19 @@
       </div>      
       <div class="row">
         <div class="span10">
-          <ul class="tabs"> 
-            <li id="li_for_wall" class="active"><%= link_to "Wall", root_path, :id => "wall_tab" %></li>
-            <li id="li_for_place"><%= link_to "Places", wall_places_path(get_current_wall), :id => "place_tab" %></li>
-          </ul>
+          <% if get_current_wall.try(:id) %>
+            <ul id="main_nav_tab" class="tabs">
+              <li id="li_for_wall" class="active"><%= link_to "Wall", "#", :id => "wall_tab" %></li>
+              <li id="li_for_place"><%= link_to "Places", "#", :id => "place_tab" %></li>
+            </ul>
+          <% end %>
+          <div id="current_wall" style="display:none;"><%=get_current_wall.try(:id)%></div>
           <div id="yield_for_main_content">
             <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
           </div>
         </div>
         <div class="span4">
-          <ul class="tabs"> 
+          <ul class="tabs" id="right_side_tab"> 
             <li id="users_list" class="active"> <%= link_to "Users", "#", :id => "users_link" %> </li>
             <li id="places_list"> <%= link_to "Places", "#", :id => "places_link" %> </li>
           </ul>
