@@ -1,4 +1,3 @@
-$("#new_post_form").hide();
-$("#new_post_button").show();
+$('#new_post #message_text_box').val("")
 $('#posts_list').empty();
 $('#posts_list').html('<%= strip_new_line(render("posts/post_list")).html_safe %>');
