@@ -2,7 +2,8 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    wall = Wall.find_by_slug(params[:wall_id])
+    @places = User.find(wall.user_id).places
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,7 +30,6 @@ class PlacesController < ApplicationController
       format.json { render json: @place }
     end
   end
-  
 
   # GET /places/1/edit
   def edit

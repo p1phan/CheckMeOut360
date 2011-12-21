@@ -11,6 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if place.new_record?
         place.build_from_checkin(checkin)
         place.save
+        @user.places << place
       else
         place.update_attribute(:count, place.count+1)
       end

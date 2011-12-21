@@ -6,9 +6,10 @@ CheckMeOut360::Application.routes.draw do
   end
   
   resources :posts
-  resources :places
   resources :home
-  resources :walls
+  resources :walls do
+    resources :places
+  end
   
   match 'account' => 'account#edit'
   match 'users' => 'walls#index'

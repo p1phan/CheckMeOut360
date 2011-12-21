@@ -54,12 +54,12 @@
         <div id="registration_form" style="display:none;">
           <h2>Register</h2><%= render :partial => "devise/registrations/new", :locals => { :resource => User.new, :resource_name => "user" }%>
         </div>
-      </div>
+      </div>      
       <div class="row">
         <div class="span10">
           <ul class="tabs"> 
             <li id="li_for_wall" class="active"><%= link_to "Wall", root_path, :id => "wall_tab" %></li>
-            <li id="li_for_place"><%= link_to "Places", places_path, :id => "place_tab" %></li>
+            <li id="li_for_place"><%= link_to "Places", wall_places_path(get_current_wall), :id => "place_tab" %></li>
           </ul>
           <div id="yield_for_main_content">
             <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->

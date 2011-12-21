@@ -11,5 +11,9 @@ module ApplicationHelper
       profile_picture
     end
   end
+  
+  def get_current_wall
+    @wall || current_user.try(:wall) || User.first.try(:wall)
+  end
 
 end

@@ -15,26 +15,13 @@ $(document).ready(function() {
 
   // Main Nav-Tab Bar
   $('#wall_tab').click(function() {
-    $('#place_tab').hide();
-    $('#wall_tab').show();
     $('li#li_for_wall').attr("class", "active");
     $('li#li_for_place').removeClass("active");
   });
   
   $('#place_tab').click(function() {
-    $('#wall_tab').hide();
-    $('#place_tab').show();
     $('li#li_for_place').attr("class", "active");
     $('li#li_for_wall').removeClass("active");
-    
-    $.ajax({
-      url: '/asset_library/set_default/' + id,
-      type: 'post',
-      dataType: 'html',
-      success: function(data, textStatus, xhr) {
-        window.location.reload();
-      }
-    });
   });
 
   // Right Nav-Tab Bar

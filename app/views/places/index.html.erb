@@ -1,5 +1,5 @@
 <div class="main_content">
-  <%= simple_form_for( Place.new, :remote => true ) do |f| %>
+  <%= simple_form_for( Place.new, :remote => true, :url => wall_places_path ) do |f| %>
     <%= f.input :name, :label => false, :placeholder => "Enter Name", :input_html => {:class => "bottom_space"} %>
     <%= f.input :address, :label => false, :placeholder => "Enter address", :input_html => {:class => "bottom_space"} %>
     <%= f.button :submit, :class => "btn info" %>

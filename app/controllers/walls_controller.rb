@@ -17,10 +17,10 @@ class WallsController < ApplicationController
   # GET /walls/1
   # GET /walls/1.json
   def show
-    wall = Wall.find(params[:id])
-    @user = wall.user
+    @wall = Wall.find(params[:id])
+    @user = @wall.user
     @profile = @user.profile
-    @posts = Post.find_all_by_wall_id(wall.id)
+    @posts = Post.find_all_by_wall_id(@wall.id)
 
     respond_to do |format|
       format.html # show.html.erb
