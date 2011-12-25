@@ -9,7 +9,7 @@ var bouncing_marker = null;
 $(document).ready(function() {
   places_holder = $('#dummy_places_holder .place_holder');
   google.maps.event.addDomListener(window, 'load',  function() {
-    init_google_map();
+    // init_google_map();
     /* now inside your initialise function */
     infowindow = new google.maps.InfoWindow({
     content: "holding..."
