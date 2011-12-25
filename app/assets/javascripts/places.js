@@ -6,18 +6,15 @@ var infowindow = null;
 var marker_array = [];
 var bouncing_marker = null;
 var result;
+var x;
 
 $(document).ready(function() {
-  if ($('#places_start_controller') != undefined) {
-    get_places_from_controller();
-    google.maps.event.addDomListener(window, 'load',  function() {
-      /* now inside your initialise function */
-      infowindow = new google.maps.InfoWindow({
-      content: "holding..."
-      });
-      drop();
+  google.maps.event.addDomListener(window, 'load',  function() {
+    /* now inside your initialise function */
+    infowindow = new google.maps.InfoWindow({
+    content: "holding..."
     });
-  }
+  });
 });
 
 function init_google_map() {
@@ -57,7 +54,7 @@ function place_marker() {
   marker = new google.maps.Marker({
     position: new google.maps.LatLng($(places_holder[iterator]).attr("lat"), $(places_holder[iterator]).attr("long")),
     map: map,
-    title: $(places_holder[iterator]).attr("name"),
+    title:  ("<h3>" + $(places_holder[iterator]).attr("name") + "</h3><h4>Been here " + $(places_holder[iterator]).attr("count") + " times.</h4>"),
     animation: google.maps.Animation.DROP,
     draggable:false
   });
@@ -91,7 +88,7 @@ function drop() {
     google.maps.event.addListener(marker, 'click', function (a) {
       stop_bounce();
       toggle_bounce(this);
-      infowindow.setContent("<h3>" + this.title + "</h3><br/><h4></h4>");
+      infowindow.setContent(this.title);
       infowindow.open(map, this);
     });
   }

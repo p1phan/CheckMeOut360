@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if ($('#walls_start_controller') != undefined) {
+  if ($('#walls_start_controller').length > 0) {
     $('#register_button').click(function(obj){
       $('#main_page_header').hide();
       $('#registration_form').show();

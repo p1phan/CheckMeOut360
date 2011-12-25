@@ -27,7 +27,7 @@ class Place < ActiveRecord::Base
     facebook_checkins_for_user = graph.get_connections("me", "checkins")
     facebook_checkins_for_user.each do |facebook_checkin|
       checkin = Facebook::Checkin.new(facebook_checkin)
-      @checkins << checkin unless Place.exists?(:facebook_id => checkin.id)
+      @checkins << checkin
     end
     return @checkins
   end
