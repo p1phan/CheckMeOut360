@@ -4,10 +4,7 @@ class WallsController < ApplicationController
 
   def index
     if current_user
-      @user = current_user
-      @profile = @user.profile
-      @user_wall_id = current_user.id 
-      @posts = Post.where(:user_id => current_user.id).order("created_at desc")
+      get_user_info
     else
       @users = User.all
       @posts = []
@@ -15,10 +12,7 @@ class WallsController < ApplicationController
   end
   
   def list
-    @wall = Wall.find(params[:id])
-    @user = @wall.user
-    @profile = @user.profile
-    @posts = Post.find_all_by_wall_id(@wall.id)
+    get_wall_info
     respond_to do |format|
       format.js
     end
@@ -27,11 +21,7 @@ class WallsController < ApplicationController
   # GET /walls/1
   # GET /walls/1.json
   def show
-    @wall = Wall.find(params[:id])
-    @user = @wall.user
-    @profile = @user.profile
-    @posts = Post.find_all_by_wall_id(@wall.id)
-
+    get_wall_info
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @wall }
@@ -114,6 +104,22 @@ class WallsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+  
+  private
+  
+  def get_user_info
+    @user = current_user
+    @profile = @user.profile
+    @user_wall_id = current_user.id 
+    @posts = Post.where(:user_id => current_user.id).order("created_at desc")
+  end
+  
+  def get_wall_info
+    @wall = Wall.find(params[:id])
+    @user = @wall.user
+    @profile = @user.profile
+    @posts = Post.where(:wall_id => @wall.id).order("created_at desc")
   end
 
 end
