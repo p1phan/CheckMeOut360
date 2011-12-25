@@ -9,10 +9,5 @@ class ApplicationController < ActionController::Base
 
   def get_all_places
     @places = Place.all
-    if current_user
-      @places_for_user = current_user.places
-    else
-      @places_for_user = []
-    end
   end
 end

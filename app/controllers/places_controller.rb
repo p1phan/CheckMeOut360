@@ -48,10 +48,17 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     if current_user
-      @place = Place.new(params[:place])
+      place = Place.new(params[:place])
+      place.geocode
+      @place = Place.find_or_initialize_by_lat_and_long(place.lat, place.long)
       respond_to do |format|
-        if @place.save
+        if @place.new_record?
+          result = @place.update_attributes(params[:place])
           current_user.places << @place
+        else
+          result = @place.update_attribute(:count, @place.count + 1)
+        end
+        if result
           @places = current_user.places
           format.html { redirect_to @place, notice: 'Place was successfully created.' }
           format.js

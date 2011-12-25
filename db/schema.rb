@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216011948) do
+ActiveRecord::Schema.define(:version => 20111225073433) do
 
   create_table "places", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(:version => 20111216011948) do
     t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "count",      :default => 0
+    t.integer  "count",             :default => 0
+    t.string   "facebook_place_id"
+    t.string   "facebook_id"
   end
 
   create_table "places_users", :id => false, :force => true do |t|

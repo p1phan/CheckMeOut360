@@ -1,9 +1,3 @@
-<% if current_user %>
-  <% @places_for_user.each do |place| %>
-    <button class="btn info bottom_space"><%= place.address %></button>
-  <% end %>
-<% else %>
-  <% @places.each do |place| %>
-    <button class="btn info bottom_space"><%= place.address %></button>
-  <% end %>
+<% @places.each do |place| %>
+  <button class="btn info bottom_space"><%= place.try(:name) %></button>
 <% end %>

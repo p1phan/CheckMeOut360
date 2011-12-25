@@ -7,14 +7,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
     @checkins = Place.get_checkins(@user.token)
     @checkins.each do |checkin|
-      place = Place.find_or_initialize_by_name(checkin.place.name)
+      place = Place.find_or_initialize_by_facebook_place_id(checkin.place.id)
       if place.new_record?
         place.build_from_checkin(checkin)
         place.save
-        @user.places << place
       else
         place.update_attribute(:count, place.count+1)
       end
+      @user.places << place
     end
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
