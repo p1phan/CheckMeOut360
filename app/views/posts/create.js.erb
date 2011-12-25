@@ -1,3 +1,7 @@
 $('#new_post #message_text_box').val("")
-$('#posts_list').empty();
-$('#posts_list').html('<%= strip_new_line(render("posts/post_list")).html_safe %>');
+var tableRowDom = $('<tr></tr>');
+var tableCol1 = $('<td><%=image_tag @post.user.profile.try(:profile_picture), :size => "45x40"%></td>');
+var tableCol2 = $('<td><%=@post.message%></td>');
+var tableCol3 = $('<td><%= link_to (image_tag "x_image.png"), @post, :class => "posts_delete_button", confirm: "Are you sure?", method: :delete  if @post.user_id == current_user.try(:id) %></td>');
+
+$('#posts_list').prepend(tableRowDom.append(tableCol1).append(tableCol2).append(tableCol3));

@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('#main_nav_tab').hide();
     $.ajax({
       url: '/walls/about',
-      type: 'get',
+      type: 'get'
     });
   });
   
@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#main_nav_tab').hide();
     $.ajax({
       url: '/walls/contact',
-      type: 'get',
+      type: 'get'
     });
   });
   
@@ -21,7 +21,7 @@ $(document).ready(function() {
     $('#main_nav_tab').hide();
     $.ajax({
       url: '/walls/help',
-      type: 'get',
+      type: 'get'
     });
   });
 
@@ -31,7 +31,7 @@ $(document).ready(function() {
     $.ajax({
       url: '/walls/list',
       type: 'get',
-      data: {id: wall_id},
+      data: {id: wall_id}
     });
     
     $('li#li_for_wall').attr("class", "active");
@@ -44,6 +44,9 @@ $(document).ready(function() {
       url: '/places/list',
       type: 'get',
       data: {id: wall_id},
+      beforeSend: function() {
+        $("#map_canvas").html('<%= image_tag "ajax-loader.gif" %>');
+      }
     });
     
     $('li#li_for_place').attr("class", "active");

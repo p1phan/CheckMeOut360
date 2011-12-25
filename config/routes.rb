@@ -10,6 +10,7 @@ CheckMeOut360::Application.routes.draw do
   resources :places do
     collection do
       get 'list'
+      get 'all_places'
     end
   end
   resources :walls do

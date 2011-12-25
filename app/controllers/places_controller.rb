@@ -38,6 +38,14 @@ class PlacesController < ApplicationController
       format.js
     end
   end
+  
+  def all_places
+    wall = Wall.find(params[:id])
+    places = User.find(wall.user_id).places
+    respond_to do |format|
+      format.json { render :json => places }
+    end
+  end
 
   # GET /places/1/edit
   def edit

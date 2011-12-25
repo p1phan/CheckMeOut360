@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       @post.user_id = current_user.id
       respond_to do |format|
         if @post.save
-          @posts = Post.find_all_by_wall_id(@post.wall.id)|| []
+          @posts = []
           format.js
         else
           flash[:error] = "Problem creating post!"

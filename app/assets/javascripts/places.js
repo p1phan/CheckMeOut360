@@ -1,22 +1,23 @@
 var map;
-var places_holder;
+var places_holder = [];
 var marker = null;
 var iterator;
 var infowindow = null;
 var marker_array = [];
 var bouncing_marker = null;
+var result;
 
 $(document).ready(function() {
-  places_holder = $('#dummy_places_holder .place_holder');
-  google.maps.event.addDomListener(window, 'load',  function() {
-    // init_google_map();
-    /* now inside your initialise function */
-    infowindow = new google.maps.InfoWindow({
-    content: "holding..."
+  if ($('#places_start_controller') != undefined) {
+    get_places_from_controller();
+    google.maps.event.addDomListener(window, 'load',  function() {
+      /* now inside your initialise function */
+      infowindow = new google.maps.InfoWindow({
+      content: "holding..."
+      });
+      drop();
     });
-    drop();
-  });
-  
+  }
 });
 
 function init_google_map() {
@@ -27,6 +28,20 @@ function init_google_map() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+}
+
+function get_places_from_controller() {
+  var wall_id = $('#current_wall').text();
+  $.ajax({
+    dataType: 'json',
+    url: '/places/all_places',
+    type: 'get',
+    data: {id: wall_id},
+    async: false,
+    success: function(data,textStatus) {
+      places_holder = data;
+    }
+  });
 }
 
 function populate_lat_long(lat, lon) {

@@ -1,7 +1,0 @@
-<div id="dummy_places_holder" style="display:none;">
-  <% @places.each do |place| %>
-    <div class="place_holder" count="<%= place.try(:count) %>" name ="<%= place.try(:name) %>" lat="<%= place.lat %>" long="<%= place.long %>">
-      <%= place.address %>
-    </div>  
-  <% end %>
-</div>

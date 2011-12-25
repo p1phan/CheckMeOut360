@@ -7,7 +7,7 @@ class WallsController < ApplicationController
       @user = current_user
       @profile = @user.profile
       @user_wall_id = current_user.id 
-      @posts = Post.find_all_by_user_id(current_user.id)
+      @posts = Post.where(:user_id => current_user.id).order("created_at desc")
     else
       @users = User.all
       @posts = []
