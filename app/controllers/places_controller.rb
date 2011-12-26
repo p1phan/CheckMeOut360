@@ -17,8 +17,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @place }
+      format.js
     end
   end
 
@@ -47,11 +46,6 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/1/edit
-  def edit
-    @place = Place.find(params[:id])
-  end
-
   # POST /places
   # POST /places.json
   def create
@@ -78,22 +72,6 @@ class PlacesController < ApplicationController
     else
       flash[:error] = "You are not signed in!"
       render :partial => 'shared/flash', :locals => {:flash => flash}
-    end
-  end
-
-  # PUT /places/1
-  # PUT /places/1.json
-  def update
-    @place = Place.find(params[:id])
-
-    respond_to do |format|
-      if @place.update_attributes(params[:place])
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
     end
   end
 

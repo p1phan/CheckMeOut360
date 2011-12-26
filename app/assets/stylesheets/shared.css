@@ -18,6 +18,10 @@
     border-style: none;
 }
 
+.places_text_link {
+  color: white;
+}
+
 #user_table {
   #right_of_profile_pic {
     vertical-align: text-bottom;

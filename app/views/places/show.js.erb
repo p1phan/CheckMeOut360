@@ -1,0 +1,10 @@
+$('li#li_for_wall').removeClass("active");
+$('#yield_for_main_content').empty();
+$('#yield_for_main_content').html('<%= strip_new_line(render("display_single_place")).html_safe %>');
+
+init_google_map();
+marker = drop_single_marker("<%=@place.lat%>", "<%=@place.long%>", "<h3><%=@place.name%></h3><h4>Been here <%=@place.count%> times.</h4>");
+google.maps.event.addListener(marker, 'click', function (a) {
+  add_marker_window_listener(marker);
+});
+  
