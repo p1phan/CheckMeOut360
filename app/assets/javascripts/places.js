@@ -7,6 +7,8 @@ var marker_array = [];
 var bouncing_marker = null;
 var result;
 var x;
+var default_lat = 32.813933;
+var default_long = -117.1628362;
 
 $(document).ready(function() {
   google.maps.event.addDomListener(window, 'load',  function() {
@@ -17,8 +19,8 @@ $(document).ready(function() {
   });
 });
 
-function init_google_map() {
-  var latlng = new google.maps.LatLng(32.813933, -117.1628362);
+function init_google_map(lat,lon) {
+  var latlng = new google.maps.LatLng(lat, lon);
   var myOptions = {
     zoom: 11,
     center: latlng,

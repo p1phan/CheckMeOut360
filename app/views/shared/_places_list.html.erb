@@ -1,3 +1,3 @@
 <% @places.each do |place| %>
-  <button class="btn info bottom_space"><%= link_to place.try(:name), place_path(place), :remote => true, :class => "places_text_link" %></button>
+  <%= link_to place.try(:name), place_path(place), :class => "user_list btn info bottom_space", :remote => true %>
 <% end %>

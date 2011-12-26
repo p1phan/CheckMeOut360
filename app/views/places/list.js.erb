@@ -5,6 +5,6 @@ $('#yield_for_main_content').empty();
   $('#yield_for_main_content').html('<%= strip_new_line(render("shared/about")).html_safe %>');
 <% end %>
 
-init_google_map();
+init_google_map(default_lat, default_long);
 get_places_from_controller();
 drop();
