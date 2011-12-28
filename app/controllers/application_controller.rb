@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def get_all_places
-    @places = Place.all
+    @places = Place.order("created_at desc")
   end
   
   def get_all_checkins
-    @checkins = Checkin.all
+    @checkins = Checkin.order("created_at desc")
   end
 end
