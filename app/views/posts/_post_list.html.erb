@@ -1,7 +1,11 @@
-<% @posts.each do |post| %>
+<% @feeds.each do |feed| %>
   <tr>
-    <td><%= image_tag post.user.profile.try(:profile_picture), :size => "45x40" %></td>
-    <td><%= post.message %></td>
-    <td><%= link_to (image_tag "x_image.png"), post, :class => "posts_delete_button", confirm: 'Are you sure?', method: :delete  if post.user_id == current_user.try(:id) %></td>
+    <td><%= image_tag @profile.try(:profile_picture), :size => "45x40" %></td>
+    <% if feed.class == Post %>
+      <td><%= feed.message %></td>
+      <td><%= link_to (image_tag "x_image.png"), feed, :class => "feeds_delete_button", confirm: 'Are you sure?', method: :delete  if feed.user_id == current_user.try(:id) %></td>
+    <% else %>
+      <td><%= @profile.first_name %> been to <%= feed.name %> on <%= feed.created_at.strftime("on %A %B %d, %Y at %I:%M %p") %></td>
+    <% end %>
   </tr>
 <% end %>

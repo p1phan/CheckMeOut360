@@ -11,3 +11,17 @@ token = @oauth.get_access_token("AQBw0sRGFexib8itRKoQ9x_mFW_FTb5SOVVniAy1LqNYQBI
 
 - get checkins
 @graph.get_connections("me", "checkins")
+
+
+
+
+
+
+@graph = Koala::Facebook::API.new(User.first.token)
+x = @graph.get_connections("me", "checkins")
+c = Facebook::Checkin.new x.first
+fb = Checkin::build_checkins([c])
+
+User.destroy_all
+Place.destroy_all
+Checkin.destroy_all

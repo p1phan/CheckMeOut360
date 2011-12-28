@@ -1,3 +1,7 @@
+.tabs > li > a {
+  padding: 0 13px;
+}
+
 #user_listing {
   list-style: none;
 }

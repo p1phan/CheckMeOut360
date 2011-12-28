@@ -1,9 +1,8 @@
 class Place < ActiveRecord::Base
-  has_and_belongs_to_many :users
-  
+  has_many :checkins
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
-  validates :address, :presence => :true, :length => {:minimum => 3, :message => "is too short!"}
+  # validates :address, :presence => :true, :length => {:minimum => 3, :message => "is too short!"}
   before_save :set_name_if_none_given
   
   def build_from_checkin(checkin)
@@ -11,6 +10,7 @@ class Place < ActiveRecord::Base
     self.name = checkin.place.name
     self.facebook_place_id = checkin.place.id
     self.facebook_id = checkin.id
+    self.created_at = checkin.created_time
     self.count = count+1
   end
 
@@ -30,5 +30,11 @@ class Place < ActiveRecord::Base
       @checkins << checkin
     end
     return @checkins
+  end
+  
+  def self.places_for_users_checkin(user)
+    user.checkins.collect{|c| 
+      puts c.place.inspect
+    }
   end
 end

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :get_all_users_without_current_user, :get_all_places
+  before_filter :get_all_users_without_current_user, :get_all_places, :get_all_checkins
   
   def get_all_users_without_current_user
     @users ||= User.all.select{ |user| user.id != current_user.try(:id) }
@@ -9,5 +9,9 @@ class ApplicationController < ActionController::Base
 
   def get_all_places
     @places = Place.all
+  end
+  
+  def get_all_checkins
+    @checkins = Checkin.all
   end
 end

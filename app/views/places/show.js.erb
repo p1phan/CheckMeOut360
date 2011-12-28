@@ -1,4 +1,5 @@
 $('li#li_for_wall').removeClass("active");
+$('li#li_for_place').removeClass("active");
 $('#yield_for_main_content').empty();
 $('#yield_for_main_content').html('<%= strip_new_line(render("display_single_place")).html_safe %>');
 

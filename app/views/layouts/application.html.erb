@@ -73,10 +73,14 @@
         <div class="span4">
           <ul class="tabs" id="right_side_tab"> 
             <li id="users_list" class="active"> <%= link_to "Users", "#", :id => "users_link" %> </li>
+            <li id="checkins_list"> <%= link_to "Checkins", "#", :id => "checkins_link" %> </li>
             <li id="places_list"> <%= link_to "Places", "#", :id => "places_link" %> </li>
           </ul>
           <div id="list_of_users">
             <%= render :partial => "shared/user_list" %>
+          </div>
+          <div id="list_of_checkins" style="display:none;">
+            <%= render :partial => "shared/checkins_list" %>
           </div>
           <div id="list_of_places" style="display:none;">
             <%= render :partial => "shared/places_list" %>

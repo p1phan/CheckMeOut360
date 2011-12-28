@@ -1,0 +1,18 @@
+<p>
+  <b>Message:</b>
+  <%= @checkin.message %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @checkin.place.name %>
+</p>
+
+<p>
+  <b>With:</b>
+  <% @checkin.users.each do |user| %>
+    <%= link_to (user.profile.first_name.to_s + " "+ user.profile.last_name.to_s), wall_path(user.wall.wall_name), :class => "user_checkin_list btn info bottom_space", :id =>"user_checkin_listing" %>
+  <% end %>
+</p>
+
+<%= render :partial => "places/google_map" %>

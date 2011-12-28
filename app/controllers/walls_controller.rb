@@ -113,6 +113,11 @@ class WallsController < ApplicationController
     @profile = @user.profile
     @user_wall_id = current_user.id 
     @posts = Post.where(:user_id => current_user.id).order("created_at desc")
+    @places = @user.places.order("created_at desc")
+    @checkins = @user.checkins || []
+    @feeds = @posts + @places
+    @feeds.sort! {|x,y| x.created_at <=> y.created_at }.reverse!
+    
   end
   
   def get_wall_info
@@ -120,6 +125,10 @@ class WallsController < ApplicationController
     @user = @wall.user
     @profile = @user.profile
     @posts = Post.where(:wall_id => @wall.id).order("created_at desc")
+    @places = @user.places.order("created_at desc")
+    @checkins = @user.checkins || []
+    @feeds = @posts + @places
+    @feeds.sort! {|x,y| x.created_at <=> y.created_at }.reverse!
   end
 
 end

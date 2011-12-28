@@ -5,6 +5,7 @@ CheckMeOut360::Application.routes.draw do
     get "users/sign_up" => 'walls#index'
   end
   
+  resources :checkins
   resources :posts
   resources :home
   resources :places do

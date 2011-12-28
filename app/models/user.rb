@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_many :posts, inverse_of: :user, :dependent => :destroy
   has_one :wall, inverse_of: :user, :dependent => :destroy
   has_one :profile, inverse_of: :user, :dependent => :destroy
-  has_and_belongs_to_many :places
+  has_many :places, :through => :checkins
+  has_and_belongs_to_many :checkins
   
   accepts_nested_attributes_for :wall
   accepts_nested_attributes_for :profile
@@ -26,7 +27,13 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if user = User.find_by_email(data.email)
+    if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
+      unless user.token
+        user.email = data.email
+        user.uid = access_token['uid']
+        user.token = access_token['credentials']['token']
+        user.save
+      end
       @profile = Profile.find_or_initialize_by_user_id(user.id)
       update_facebook_profile(user, data, access_token)
       @profile.save
@@ -61,6 +68,13 @@ class User < ActiveRecord::Base
     @profile.position = data.work.try(:first).try(:position).try(:name)
     @profile.location = data.work.try(:first).try(:location).try(:name)
     @profile.facebook_site = data.link
+  end
+  
+  def places_from_checkins
+  end
+  
+  def self.me
+    User.find_by_email("quyminhphan@gmail.com")
   end
 
 end
