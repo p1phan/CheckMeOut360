@@ -1,6 +1,7 @@
 <% if current_user %>
-  <%= link_to current_user.email, wall_path(current_user.wall.wall_name), :class => "user_list btn primary bottom_space", :id =>"user_listing" %>
+  <%= link_to (current_user.profile.try(:first_name) + " " + current_user.profile.try(:last_name)), wall_path(current_user.wall.wall_name), :class => "user_list btn primary bottom_space", :id =>"user_listing" %>
 <% end %>
 <% @users.each do |user| %>
-  <%= link_to user.email, wall_path(user.wall.wall_name), :class => "user_list btn info bottom_space", :id =>"user_listing" %>
+  <%= link_to (user.profile.try(:first_name) + " " + user.profile.try(:last_name)), wall_path(user.wall.wall_name), :class => "user_list btn info bottom_space", :id =>"user_listing" %>
+  <br/>
 <% end %>

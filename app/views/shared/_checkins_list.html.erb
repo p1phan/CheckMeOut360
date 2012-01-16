@@ -1,3 +1,4 @@
 <% @checkins.each do |checkin| %>
   <%= link_to (checkin.message || checkin.try(:place).try(:name)), checkin_path(checkin), :class => "checkin_list btn info bottom_space", :remote => true %>
+  <br/>
 <% end %>
