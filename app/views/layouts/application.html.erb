@@ -56,8 +56,16 @@
         <div id="registration_form" style="display:none;">
           <h2>Register</h2><%= render :partial => "devise/registrations/new", :locals => { :resource => User.new, :resource_name => "user" }%>
         </div>
-      </div>      
-      <div class="row">
+      </div>
+      <div id="loader_circle" style="display:none;">
+        <center>
+          <%= image_tag "ajax-loader.gif" %>
+          <br/>
+          <br/>
+          <p> Retrieving Your Facebook Places and Checkins...</p>
+        </center>
+      </div>
+      <div id="page_contents" class="row">
         <div class="span10">
           <% if get_current_wall.try(:id) %>
             <ul id="main_nav_tab" class="tabs">

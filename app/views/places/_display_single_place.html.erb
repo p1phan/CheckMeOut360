@@ -8,4 +8,11 @@
   <%= @place.address %>
 </p>
 
+<p>
+  <b>Checkins for <%=@place.name%>:</b>
+  <% @place.checkins.each do |checkin| %>
+    <%= link_to checkin.message, checkin_path(checkin), :class => "checkin_list btn info bottom_space" %>
+  <% end %>
+</p>
+
 <%= render :partial => "google_map" %>

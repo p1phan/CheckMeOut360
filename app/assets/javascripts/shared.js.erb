@@ -1,5 +1,11 @@
 $(document).ready(function() {
   
+  $('.topbar #facebook_icon').click(function(obj) {
+    $('#page_contents').hide();
+    $('#loader_circle').show();
+    // $("#loader_circle").html('<%= image_tag "ajax-loader.gif" %>');
+  });
+  
   // The About and Show Page
   $('#top_main_global_bar #about_page').click(function(obj){
     $('#main_nav_tab').hide();
