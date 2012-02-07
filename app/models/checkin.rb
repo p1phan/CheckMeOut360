@@ -19,13 +19,15 @@ class Checkin < ActiveRecord::Base
         facebook_user_tags.each do |user|
           facebook_user = User.find_or_initialize_by_uid(user.id)
           if facebook_user.new_record?
-            facebook_user.email = user.name.downcase.gsub(" ", "")+"@gmail.com"
+            facebook_user.email = valid_available_email(user.name.downcase.gsub(" ", "")+"@checkmeout360.com")
             facebook_user.password = user.name.downcase.gsub(" ", "")
             facebook_user.password_confirmation = user.name.downcase.gsub(" ", "")
             facebook_profile = facebook_user.build_profile
             facebook_profile.first_name = user.name.split(" ").first
             facebook_profile.last_name = user.name.split(" ").last
             facebook_profile.remote_profile_picture_url = graph.get_picture(user.id, :type => "large")
+            puts facebook_user.inspect
+            
             facebook_user.save!
           end
           facebook_checkin.users << facebook_user
@@ -35,6 +37,14 @@ class Checkin < ActiveRecord::Base
         facebook_checkin.created_at = checkin.created_time
         facebook_checkin.save
       end
+    end
+  end
+  
+  def self.valid_available_email(email)
+    if User.exists?(email: email)
+      self.wall_name = valid_available_email(email + rand(10).to_s)
+    else
+      return email
     end
   end
 
