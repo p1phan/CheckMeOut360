@@ -24,6 +24,7 @@ gem 'hashie'
 
 group :devleopment do
   gem 'foreman'
+  gem 'mongrel'
 end
 
 # This is outside the test because we need it to run factory girl in the seeds.rb

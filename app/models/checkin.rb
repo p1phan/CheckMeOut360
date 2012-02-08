@@ -42,7 +42,7 @@ class Checkin < ActiveRecord::Base
   
   def self.valid_available_email(email)
     if User.exists?(email: email)
-      self.wall_name = valid_available_email(email + rand(10).to_s)
+      valid_available_email(email + rand(10).to_s)
     else
       return email
     end
