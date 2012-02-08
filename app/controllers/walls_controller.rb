@@ -115,7 +115,7 @@ class WallsController < ApplicationController
     @posts = Post.where(:user_id => current_user.id).order("created_at desc")
     @places = @user.places.order("created_at desc")
     @checkins = @user.checkins.order("created_at desc") || []
-    @feeds = @posts + @places
+    @feeds = @posts + @checkins
     @feeds.sort! {|x,y| x.created_at <=> y.created_at }.reverse!
     
   end
@@ -127,7 +127,7 @@ class WallsController < ApplicationController
     @posts = Post.where(:wall_id => @wall.id).order("created_at desc")
     @places = @user.places.order("created_at desc")
     @checkins = @user.checkins.order("created_at desc") || []
-    @feeds = @posts + @places
+    @feeds = @posts + @checkins
     @feeds.sort! {|x,y| x.created_at <=> y.created_at }.reverse!
   end
 
