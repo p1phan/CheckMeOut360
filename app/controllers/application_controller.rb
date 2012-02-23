@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   end
   
   def get_all_checkins
-    @checkins = Checkin.order("created_at desc")
+    @all_checkins = Checkin.order("created_at desc")
   end
 end
