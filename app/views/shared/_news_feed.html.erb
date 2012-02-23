@@ -3,7 +3,7 @@
     <%= checkin.message %>
     <b>With:</b>
     <% checkin.users.each do |user| %>
-      <%= link_to (user.profile.first_name.to_s + " "+ user.profile.last_name.to_s), wall_path(user.wall.wall_name), :class => "user_checkin_list"%>
+      <%= link_to user.profile.full_name, wall_path(user.wall.wall_name), :class => "user_checkin_list"%>
     <% end %>
     <b>At</b> <%= checkin.place.name %>
     <% if index == 4 %>
