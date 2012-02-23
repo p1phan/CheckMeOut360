@@ -2,7 +2,7 @@
   padding: 0 13px;
 }
 
-#user_listing {
+.user_list {
   list-style: none;
 }
 
@@ -31,4 +31,7 @@
     vertical-align: text-bottom;
     position: relative;
   }
+}
+#close_news_feed_button {
+  margin-bottom: -50px;
 }

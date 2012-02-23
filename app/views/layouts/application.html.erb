@@ -17,11 +17,12 @@
           <li><a href="#about" style="cursor:pointer;" id="about_page">About</a></li>
           <li><a href="#contact" id="contact_page">Contact</a></li>
           <li><a href="#help" style="cursor:pointer;" id="help_page">Help</a></li>
+          <li><a href="#" id="news_feed_button">News Feed</a></li>
           
           <% if current_user %>
             <li id="logout"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           <% else %>
-            <li><a href="#" id="register_button">Register</a></li>
+            <li><%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "login_with_facebook" %></a></li>
           <% end%>
 
         </ul>
@@ -29,17 +30,13 @@
           <% if current_user %>
             <li><%= image_tag display_profile_picture(current_user.profile.profile_picture), :id => "facebook_pic", :size => "30x30" %></li>
           <% else %>
-            <li><%= link_to (image_tag "facebook_32.png", :id => "facebook_icon"), user_omniauth_authorize_path(:facebook) %></li>
+            <li><%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook"), user_omniauth_authorize_path(:facebook) %></li>
           <% end %>
           
         </ul>
         <div class="pull-right">
           <% if current_user %>
-            <div class="login-group"><%= button_to current_user.email, account_path, :id => "current_user_account_button", :class => "btn info" %></div>
-          <% else %>
-            <div id="login_group">
-              <%= render :partial => "devise/sessions/form", :locals => {:resource => User.new, :resource_name => "user"} %>
-            </div>
+            <div class="login-group"><%= button_to current_user.profile.full_name, root_path, :id => "current_user_account_button", :class => "btn info" %></div>
           <% end%>
         </div>
       </div>
@@ -53,8 +50,8 @@
         </div>
         <h1 id="main_page_header">CheckMeOut-360  <small>by Quy Phan</small></h1>
 
-        <div id="registration_form" style="display:none;">
-          <h2>Register</h2><%= render :partial => "devise/registrations/new", :locals => { :resource => User.new, :resource_name => "user" }%>
+        <div id="news_feed" style="display:none;">
+          <p><h3>Whats Happening?</h3><p><%= render :partial => "shared/news_feed"%>
         </div>
       </div>
       <div id="loader_circle" style="display:none;">

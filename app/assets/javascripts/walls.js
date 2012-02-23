@@ -1,13 +1,13 @@
 $(document).ready(function() {
-  if ($('#walls_start_controller').length > 0) {
-    $('#register_button').click(function(obj){
+  // if ($('#walls_start_controller').length > 0) {
+    $('#news_feed_button').click(function(obj){
       $('#main_page_header').hide();
-      $('#registration_form').show();
+      $('#news_feed').show();
     });
   
-    $('#registration_cancel_button').click(function(obj){
+    $('#close_news_feed_button').click(function(obj){
       $('#main_page_header').show();
-      $('#registration_form').hide();
+      $('#news_feed').hide();
       return false;
     });
   
@@ -19,5 +19,5 @@ $(document).ready(function() {
     $("#posts_close_button").click(function() {
       $('#new_post #message_text_box').val("");
     });
-  }
+  // }
 });

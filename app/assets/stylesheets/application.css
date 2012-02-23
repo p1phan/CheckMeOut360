@@ -51,6 +51,8 @@ input[type="submit"] {
 }
 
 #facebook_icon {
+  padding-top: 0px;
+  margin-left: -20px;
   height: 20px;
 }
 #facebook_pic {

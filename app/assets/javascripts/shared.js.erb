@@ -1,6 +1,6 @@
 $(document).ready(function() {
   
-  $('.topbar #facebook_icon').click(function(obj) {
+  $('.login_with_facebook').click(function(obj) {
     $('#page_contents').hide();
     $('#loader_circle').show();
     // $("#loader_circle").html('<%= image_tag "ajax-loader.gif" %>');
@@ -85,6 +85,20 @@ $(document).ready(function() {
     $('li#users_list').attr("class", "active");
     $('li#places_list').removeClass("active");
     $('li#checkins_list').removeClass("active");
+  });
+  
+  $('#sub_user_navigation #active_users').click(function() {
+    $('#inactive_user_div').hide();
+    $('#active_user_div').show();
+    $('li#active_users').attr("class", "active");
+    $('li#inactive_users').removeClass("active");
+  });
+  
+  $('#sub_user_navigation #inactive_users').click(function() {
+    $('#active_user_div').hide();
+    $('#inactive_user_div').show();
+    $('li#inactive_users').attr("class", "active");
+    $('li#active_users').removeClass("active");
   });
   
   

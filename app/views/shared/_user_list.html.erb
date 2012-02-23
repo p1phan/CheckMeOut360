@@ -1,8 +1,18 @@
-<% if current_user %>
-  <%= link_to (current_user.profile.try(:first_name) + " " + current_user.profile.try(:last_name)), wall_path(current_user.wall.wall_name), :class => "user_list btn primary bottom_space", :id =>"user_listing" %>
-  <br/>
-<% end %>
-<% @users.each do |user| %>
-  <%= link_to (user.profile.try(:first_name) + " " + user.profile.try(:last_name)), wall_path(user.wall.wall_name), :class => "user_list btn info bottom_space", :id =>"user_listing" %>
-  <br/>
-<% end %>
+<div class="span4" id="sub_user_navigation">
+  <ul class="tabs"> 
+    <li id="active_users" class="users_listing active"> <%= link_to "Active", "#", :id => "active_users_list_link" %> </li>
+    <li id="inactive_users" class="users_listing"> <%= link_to "Inactive", "#", :id => "inactive_users_list_link" %> </li>
+  </ul>
+  <div id="active_user_div">
+    <% @active_users.each do |user| %>
+      <%= link_to user.profile.full_name, wall_path(user.wall.wall_name), :class => "user_list btn info bottom_space"%>
+      <br/>
+    <% end %>
+  </div>
+  <div id="inactive_user_div" style="display:none;">
+    <% @inactive_users.each do |user| %>
+      <%= link_to user.profile.full_name, wall_path(user.wall.wall_name), :class => "user_list btn info bottom_space"%>
+      <br/>
+    <% end %>
+  </div>
+</div>

@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
   accepts_nested_attributes_for :posts
   
+  scope :active, where("token is NOT NULL")
+  scope :inactive, where("token is NULL")
+  
   def create_wall_and_profile
     unless self.wall
       wall = self.build_wall 
