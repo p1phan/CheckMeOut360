@@ -6,6 +6,7 @@
       <%= link_to user.profile.full_name, wall_path(user.wall.wall_name), :class => "user_checkin_list"%>
     <% end %>
     <b>At</b> <%= checkin.place.name %>
+    <b>On</b> <%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%>
     <% if index == 4 %>
       <button id="close_news_feed_button" class="btn danger pull-right">Close</button>
     <% end %>
