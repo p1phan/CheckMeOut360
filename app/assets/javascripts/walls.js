@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#news_feed_button').click(function(obj){
-    $('#news_feed').slideDown('slow');
+    $('#news_feed').slideToggle('slow');
   });
 
   $('#close_news_feed_button').click(function(obj){
