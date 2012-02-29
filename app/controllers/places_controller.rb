@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
+  autocomplete :place, :name
+  
   def index
     wall = Wall.find_by_slug(params[:wall_id])
     @places = User.find(wall.user_id).places
@@ -48,30 +50,26 @@ class PlacesController < ApplicationController
 
   # POST /places
   # POST /places.json
-  def create
-    if current_user
-      place = Place.new(params[:place])
-      place.geocode
-      @place = Place.find_or_initialize_by_lat_and_long(place.lat, place.long)
-      respond_to do |format|
-        if @place.new_record?
-          result = @place.update_attributes(params[:place])
-          current_user.places << @place
-        else
-          result = @place.update_attribute(:count, @place.count + 1)
-        end
-        if result
-          @places = current_user.places
-          format.html { redirect_to @place, notice: 'Place was successfully created.' }
-          format.js
-        else
-          format.html { render action: "new" }
-          format.js
-        end
+  def search
+    place = Place.new(params[:place])
+    place.geocode
+    @place = Place.find_or_initialize_by_lat_and_long(place.lat, place.long)
+    current_user.places
+    respond_to do |format|
+      if @place.new_record?
+        result = @place.update_attributes(params[:place])
+        current_user.places << @place
+      else
+        result = @place.update_attribute(:count, @place.count + 1)
       end
-    else
-      flash[:error] = "You are not signed in!"
-      render :partial => 'shared/flash', :locals => {:flash => flash}
+      if result
+        @places = current_user.places
+        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.js
+      else
+        format.html { render action: "new" }
+        format.js
+      end
     end
   end
 

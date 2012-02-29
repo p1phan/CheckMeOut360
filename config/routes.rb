@@ -10,8 +10,10 @@ CheckMeOut360::Application.routes.draw do
   resources :home
   resources :places do
     collection do
+      get 'autocomplete_place_name'
       get 'list'
       get 'all_places'
+      get 'search'
     end
   end
   resources :walls do

@@ -25,30 +25,29 @@
             <li><%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "login_with_facebook" %></a></li>
           <% end%>
 
-        </ul>
-        <ul class="nav">
+        </ul> 
+        <ul class="nav"> 
           <% if current_user %>
             <li><%= image_tag display_profile_picture(current_user.profile.profile_picture), :id => "facebook_pic", :size => "30x30" %></li>
           <% else %>
-            <li><%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook"), user_omniauth_authorize_path(:facebook) %></li>
-          <% end %>
-          
+            <li><%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook"), user_omniauth_authorize_path(:facebook) %></li> <% end %>
+        
         </ul>
         <div class="pull-right">
           <% if current_user %>
-            <div class="login-group"><%= button_to current_user.profile.full_name, root_path, :id => "current_user_account_button", :class => "btn info" %></div>
-          <% end%>
+            <div class="login-group">
+              <%= button_to current_user.profile.full_name, root_path, :id => "current_user_account_button", :class => "btn info" %>
+            </div>
+          <% end%> 
         </div>
       </div>
     </div>
-  </div>
+  </div> 
   <div class="container">
     <div class="content">
       <div class="page-header">
-        <div id="flash">
-          <%= render "shared/flash", :flash => flash %>
-        </div>
-        <h1 id="main_page_header">CheckMeOut-360  <small>by Quy Phan</small></h1>
+        <div id="flash"> <%= render "shared/flash", :flash => flash %> </div> <h1 id="main_page_header">CheckMeOut-360
+        <small>by Quy Phan and Phu Phan</small></h1>
 
         <div id="news_feed" style="display:none;">
           <p><h3>Whats Happening?</h3><p><%= render :partial => "shared/news_feed"%>
@@ -97,6 +96,6 @@
 </body>
 
 <footer id="main_footer">
-  <p>&copy; Quy Phan</p>
+  <p>&copy; Quy Phan and Phu Phan</p>
 </footer>
 </html>

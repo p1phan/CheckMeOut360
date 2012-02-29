@@ -21,6 +21,7 @@ gem 'koala'
 gem 'carmen'
 gem 'geocoder'
 gem 'hashie'
+gem 'rails3-jquery-autocomplete'
 
 group :devleopment do
   gem 'foreman'

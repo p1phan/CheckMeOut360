@@ -2,7 +2,6 @@ class Place < ActiveRecord::Base
   has_many :checkins
   geocoded_by :address, :latitude => :lat, :longitude => :long
   after_validation :geocode
-  # validates :address, :presence => :true, :length => {:minimum => 3, :message => "is too short!"}
   before_save :set_name_if_none_given
   
   def build_from_checkin(checkin)

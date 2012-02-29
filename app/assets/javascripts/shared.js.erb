@@ -3,7 +3,6 @@ $(document).ready(function() {
   $('.login_with_facebook').click(function(obj) {
     $('#page_contents').hide();
     $('#loader_circle').show();
-    // $("#loader_circle").html('<%= image_tag "ajax-loader.gif" %>');
   });
   
   // The About and Show Page
@@ -51,6 +50,8 @@ $(document).ready(function() {
       type: 'get',
       data: {id: wall_id},
       beforeSend: function() {
+        // $('#page_contents').hide();
+        // $('#loader_circle').show();
         $("#map_canvas").html('<%= image_tag "ajax-loader.gif" %>');
       }
     });
