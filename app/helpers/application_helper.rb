@@ -16,5 +16,9 @@ module ApplicationHelper
   def get_current_wall
     @wall || current_user.try(:wall)
   end
+  
+  def wall_for_user(user_id)
+    User.find(user_id).wall.slug
+  end
 
 end

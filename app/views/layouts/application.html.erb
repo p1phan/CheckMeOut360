@@ -36,7 +36,7 @@
         <div class="pull-right">
           <% if current_user %>
             <div class="login-group">
-              <%= button_to current_user.profile.full_name, root_path, :id => "current_user_account_button", :class => "btn info" %>
+              <%= link_to current_user.profile.full_name, wall_path(wall_for_user(current_user.id)), :id => "current_user_account_button", :class => "btn info" %>
             </div>
           <% end%> 
         </div>
@@ -63,13 +63,6 @@
       </div>
       <div id="page_contents" class="row">
         <div class="span10">
-          <% if get_current_wall.try(:id) %>
-            <ul id="main_nav_tab" class="tabs">
-              <li id="li_for_wall" class="active"><%= link_to "Wall", "#", :id => "wall_tab" %></li>
-              <li id="li_for_place"><%= link_to "Places", "#", :id => "place_tab" %></li>
-            </ul>
-          <% end %>
-          <div id="current_wall" style="display:none;"><%=get_current_wall.try(:id)%></div>
           <div id="yield_for_main_content">
             <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
           </div>

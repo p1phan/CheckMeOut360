@@ -11,12 +11,12 @@ class WallsController < ApplicationController
     end
   end
   
-  def list
-    get_wall_info
-    respond_to do |format|
-      format.js
-    end
-  end
+  # def list
+  #   get_wall_info
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
 
   # GET /walls/1
   # GET /walls/1.json
@@ -124,11 +124,11 @@ class WallsController < ApplicationController
     @wall = Wall.find(params[:id])
     @user = @wall.user
     @profile = @user.profile
-    @posts = Post.where(:wall_id => @wall.id).order("created_at desc")
-    @places = @user.places.order("created_at desc")
-    @checkins = @user.checkins.order("created_at desc") || []
-    @feeds = @posts + @checkins
-    @feeds.sort! {|x,y| x.created_at <=> y.created_at }.reverse!
+    # @posts = Post.where(:wall_id => @wall.id).order("created_at desc")
+    # @places = @user.places.order("created_at desc")
+    # @checkins = @user.checkins.order("created_at desc") || []
+    # @feeds = @posts + @checkins
+    # @feeds.sort! {|x,y| x.created_at <=> y.created_at }.reverse!
   end
 
 end
