@@ -6,13 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-alerts
-//= require bootstrap-buttons
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require bootstrap-twipsy
-//= require bootstrap-popover
-//= require bootstrap-scrollspy
-//= require bootstrap-tabs
-//= require autocomplete-rails
+//= require bootstrap
+//= require pxem.jQuery
+//= require jQuery.equalHeights
 //= require_tree .
