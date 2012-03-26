@@ -21,7 +21,7 @@
         <a class="brand" href="#">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active"><%= link_to "Home", profile_path(current_user.id) %></li>
+            <li class="active"><%= link_to "Home", home_index_path %></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -64,7 +64,7 @@
           </ul>
         </div><!--/.well -->
       </div><!--/span-->
-      <div id="yield_for_main_content" class="container span8">
+      <div id="yield_for_main_content" class="span8">
         <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
       </div><!--/span-->
     </div><!--/row-->

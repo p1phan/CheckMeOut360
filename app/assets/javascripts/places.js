@@ -1,4 +1,3 @@
-var map;
 var places_holder = [];
 var marker = null;
 var bouncing_marker = null;
@@ -12,7 +11,8 @@ function init_google_map(lat,lon) {
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  return map;
 }
 
 function get_places_from_controller() {
@@ -38,7 +38,7 @@ function populate_lat_long(lat, lon) {
   $("#place_longitude").val(lon);
 }
 
-function place_marker(i) {
+function place_marker(map, i) {
   marker = new google.maps.Marker({
     position: new google.maps.LatLng($(places_holder[i]).attr("lat"), $(places_holder[i]).attr("long")),
     map: map,
@@ -77,21 +77,21 @@ function stop_bounce() {
   }
 }
 
-function add_marker_window_listener(marker_to_drop) {
+function add_marker_window_listener(map, marker_to_drop) {
     stop_bounce();
     toggle_bounce(marker_to_drop);
     infowindow.setContent(marker_to_drop.title);
     infowindow.open(map, marker_to_drop);
 }
 
-function drop() {
+function drop(map) {
   iterator = 0;
   marker = null;
   for (var i = 0; i < places_holder.length; i++) {
-    var marker = place_marker(iterator);
+    var marker = place_marker(map, iterator);
     iterator++;
     google.maps.event.addListener(marker, 'click', function (a) {
-      add_marker_window_listener(this);
+      add_marker_window_listener(map, this);
     });
   }
 }
