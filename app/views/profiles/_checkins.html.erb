@@ -1,0 +1,15 @@
+<% @checkins.each do |checkin| %>
+  <center class="center_block">
+    <div class="checkin-blocks mini-hero-unit span1"></div>
+    <div class="checkin-blocks sub-hero-unit span6">
+      <h3><small>>></small> <%= checkin.message %></h3>
+      <h3><small>@</small> <%= checkin.place.name %></h3>
+      <h3><small>On</small> <%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%></h3>
+      <h4><small>With</small>
+        <% checkin.users.each do |user| %>
+          <%= link_to "#{user.profile.full_name} »", profile_path(user.id), :class => "btn btn-info btn-small bottom-space" %>
+        <% end %>
+      </h4>
+    </div>
+  </center>
+<% end %>

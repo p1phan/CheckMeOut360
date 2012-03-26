@@ -7,72 +7,75 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-  <div class="topbar">
-    <div class="fill">
-      <div class="container">
-        <ul><%= link_to (image_tag "globe.png", :size => "70x40"), root_path, :id => "globe_icon_href", :locals => { :index => true } %></ul>
-        <ul class="nav" id="top_main_global_bar">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="#about" style="cursor:pointer;" id="about_page">About</a></li>
-          <li><a href="#contact" id="contact_page">Contact</a></li>
-          <li><a href="#help" style="cursor:pointer;" id="help_page">Help</a></li>
-          <li><a href="#" id="news_feed_button">News Feed</a></li>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><%= link_to "Home", profile_path(current_user.id) %></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <p id="login_logout_top_menu" class="navbar-text pull-right">
+            <% if current_user %>
+              <%= link_to "Logout of #{current_user.profile.first_name}", destroy_user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "login_with_facebook" %>
+            <% end%>
+            &nbsp;
+            <% if current_user %>
+              <%= image_tag display_profile_picture(current_user.profile.profile_picture), :id => "facebook_pic", :size => "30x30" %>
+            <% else %>
+              <%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook", :size => "20x20"), user_omniauth_authorize_path(:facebook) %>
+            <% end %>
+            </p>
           
-          <% if current_user %>
-            <li id="logout"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
-          <% else %>
-            <li><%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "login_with_facebook" %></a></li>
-          <% end%>
-
-        </ul> 
-        <ul class="nav"> 
-          <% if current_user %>
-            <li><%= image_tag display_profile_picture(current_user.profile.profile_picture), :id => "facebook_pic", :size => "30x30" %></li>
-          <% else %>
-            <li><%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook"), user_omniauth_authorize_path(:facebook) %></li> <% end %>
-        
-        </ul>
-        <div class="pull-right">
-          <% if current_user %>
-            <div class="login-group">
-              <%= link_to current_user.profile.full_name, profile_path(current_user.id), :id => "current_user_account_button", :class => "btn info" %>
-            </div>
-          <% end%> 
-        </div>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
-  </div> 
-  <div class="container">
-    <div class="content">
-      <div class="page-header">
-        <div id="flash"> <%= render "shared/flash", :flash => flash %> </div> <h1 id="main_page_header">CheckMeOut-360
-        <small>by Quy Phan and Phu Phan</small></h1>
-
-        <div id="news_feed" style="display:none;">
-          <p><h3>Whats Happening?</h3><p><%= render :partial => "shared/news_feed"%>
-        </div>
-      </div>
-      <div id="loader_circle" style="display:none;">
-        <center>
-          <%= image_tag "ajax-loader.gif" %>
-          <br/>
-          <br/>
-          <p> Retrieving Your Facebook Places and Checkins...</p>
-        </center>
-      </div>
-      <div id="page_contents" class="row">
-        <div class="span14">
-          <div id="yield_for_main_content">
-            <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
-          </div>
-        </div>
-      </div>
+  </div>
+  <div class="container-fluid content">
+    <div class="page-header">
+      <div id="flash"></div> 
+      <center><h1 id="main_page_header">CheckMeOut-360 <small>by Quy Phan and Phu Phan</small></h1></center>
     </div>
-  </div> <!-- /container -->
-</body>
+    
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">Active Users</li>
+            <% User.active.each do |user| %>
+              <li><%= link_to user.profile.full_name, profile_path(user.id) %></li>
+            <% end %>
+            <li class="nav-header">Inactive Users</li>
+            <% User.inactive.each do |user| %>
+              <li><%= link_to user.profile.full_name, profile_path(user.id) %></li>
+            <% end %>
+          </ul>
+        </div><!--/.well -->
+      </div><!--/span-->
+      <div id="yield_for_main_content" class="container span8">
+        <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
+      </div><!--/span-->
+    </div><!--/row-->
 
-<footer id="main_footer">
-  <p>&copy; Quy Phan and Phu Phan</p>
-</footer>
+    <hr>
+
+    <footer id="main_footer">
+      <p>&copy; Quy Phan and Phu Phan</p>
+    </footer>
+
+  </div><!--/.fluid-container-->
+  </body>
+  
 </html>

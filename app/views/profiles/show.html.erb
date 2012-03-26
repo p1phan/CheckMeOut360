@@ -1,25 +1,19 @@
 <div class="main_content">
-  <li class="nav-header">Header</li>
-  <ul class="nav nav-list">
-    <li>
-      <a href="#">
-        <i class="icon-book"></i>
-        Profile
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="icon-book"></i>
-        Checkins
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="icon-book"></i>
-        Places
-      </a>
-    </li>
-  </ul>
-  <div id="current_user_profile" style="display:none;"><%=@profile.id%></div>
-  <%= render :partial => "places/google_map"%>
+  <div class="hero-unit">
+    <h2><small>Check Me Out</small> <%= @user.profile.full_name %></h2>
+    <p>See where I've been and where I went</p>
+    <p>
+      <a id="profile_place_button" class="btn btn-success btn-large">Places &raquo;</a> &nbsp;
+      <a id="profile_checkin_button" class="btn btn-warning btn-large">Checkins &raquo;</a> &nbsp;
+      <a id="profile_gallery_button" class="btn btn-info btn-large">Gallery &raquo;</a> &nbsp;
+    </p>
+  </div>
+
+  <div id="current_user_profile" style="display:none;"><%=@user.id%></div>
+  <div id="profile_places">
+    <%= render :partial => "google_map"%>
+  </div>
+  <div id="profiles_checkins" style="display:none;">
+    <%= render :partial => "checkins"%>
+  </div>
 </div>

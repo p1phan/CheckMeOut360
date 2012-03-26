@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
   def index
-    @profile = current_user
-    @places = @profile.places
+    @user = current_user
+    @places = @user.places
   end
   def show
-    @profile = User.find(params[:id])
-    @places = @profile.places
+    @user = User.find(params[:id])
+    @places = @user.places
+    @checkins = @user.checkins.reverse
   end
 end

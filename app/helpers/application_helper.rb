@@ -1,5 +1,8 @@
 module ApplicationHelper
 
+  def active_users
+    User.active
+  end
   def strip_new_line(str)
     str = str.gsub("\n", "")
     str = str.gsub("'", "&apos;")
