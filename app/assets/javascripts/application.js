@@ -7,6 +7,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require pxem.jQuery
-//= require jQuery.equalHeights
 //= require_tree .
