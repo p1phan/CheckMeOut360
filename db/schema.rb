@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227193643) do
+ActiveRecord::Schema.define(:version => 20120323011301) do
 
   create_table "checkins", :force => true do |t|
     t.string   "facebook_checkin_id"
@@ -63,15 +63,11 @@ ActiveRecord::Schema.define(:version => 20111227193643) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "profile_picture"
-    t.string   "major"
-    t.string   "school"
     t.string   "location"
-    t.string   "employer"
-    t.string   "facebook_site"
-    t.string   "position"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
 
   create_table "users", :force => true do |t|

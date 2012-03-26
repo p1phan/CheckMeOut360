@@ -1,23 +1,9 @@
 var map;
 var places_holder = [];
 var marker = null;
-var iterator;
-var infowindow = null;
-var marker_array = [];
 var bouncing_marker = null;
-var result;
-var x;
 var default_lat = 32.813933;
 var default_long = -117.1628362;
-
-$(document).ready(function() {
-  google.maps.event.addDomListener(window, 'load',  function() {
-    /* now inside your initialise function */
-    infowindow = new google.maps.InfoWindow({
-    content: "holding..."
-    });
-  });
-});
 
 function init_google_map(lat,lon) {
   var latlng = new google.maps.LatLng(lat, lon);
@@ -30,7 +16,7 @@ function init_google_map(lat,lon) {
 }
 
 function get_places_from_controller() {
-  var wall_id = $('#current_wall').text();
+  var wall_id = $('#current_user_profile').text();
   $.ajax({
     dataType: 'json',
     url: '/places/all_places',
@@ -52,29 +38,28 @@ function populate_lat_long(lat, lon) {
   $("#place_longitude").val(lon);
 }
 
-function place_marker() {
+function place_marker(i) {
   marker = new google.maps.Marker({
-    position: new google.maps.LatLng($(places_holder[iterator]).attr("lat"), $(places_holder[iterator]).attr("long")),
+    position: new google.maps.LatLng($(places_holder[i]).attr("lat"), $(places_holder[i]).attr("long")),
     map: map,
-    title:  ("<h3>" + $(places_holder[iterator]).attr("name") + "</h3><h4>Been here " + $(places_holder[iterator]).attr("count") + " times.</h4>"),
+    title:  ("<h3>" + $(places_holder[i]).attr("name")),
     animation: google.maps.Animation.DROP,
     draggable:false
   });
-  iterator++;
   return marker;
 }
-
-function drop_single_marker(lat,lon,title) {
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng(lat,lon),
-    map: map,
-    title:  title,
-    animation: google.maps.Animation.DROP,
-    draggable:false
-  });
-  iterator++;
-  return marker;
-}
+// 
+// function drop_single_marker(lat,lon,title) {
+//   marker = new google.maps.Marker({
+//     position: new google.maps.LatLng(lat,lon),
+//     map: map,
+//     title:  title,
+//     animation: google.maps.Animation.DROP,
+//     draggable:false
+//   });
+//   iterator++;
+//   return marker;
+// }
 function toggle_bounce(marker) {
   if (marker != undefined) {
     if (marker.getAnimation() != null) {
@@ -103,8 +88,8 @@ function drop() {
   iterator = 0;
   marker = null;
   for (var i = 0; i < places_holder.length; i++) {
-    var marker = place_marker();
-    marker_array[i] = marker;
+    var marker = place_marker(iterator);
+    iterator++;
     google.maps.event.addListener(marker, 'click', function (a) {
       add_marker_window_listener(this);
     });

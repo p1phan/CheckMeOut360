@@ -36,7 +36,7 @@
         <div class="pull-right">
           <% if current_user %>
             <div class="login-group">
-              <%= link_to current_user.profile.full_name, wall_path(wall_for_user(current_user.id)), :id => "current_user_account_button", :class => "btn info" %>
+              <%= link_to current_user.profile.full_name, profile_path(current_user.id), :id => "current_user_account_button", :class => "btn info" %>
             </div>
           <% end%> 
         </div>
@@ -62,25 +62,9 @@
         </center>
       </div>
       <div id="page_contents" class="row">
-        <div class="span10">
+        <div class="span14">
           <div id="yield_for_main_content">
             <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
-          </div>
-        </div>
-        <div class="span4">
-          <ul class="tabs" id="right_side_tab"> 
-            <li id="users_list" class="active"> <%= link_to "Users", "#", :id => "users_link" %> </li>
-            <li id="checkins_list"> <%= link_to "Checkins", "#", :id => "checkins_link" %> </li>
-            <li id="places_list"> <%= link_to "Places", "#", :id => "places_link" %> </li>
-          </ul>
-          <div id="list_of_users">
-            <%= render :partial => "shared/user_list" %>
-          </div>
-          <div id="list_of_checkins" style="display:none;">
-            <%= render :partial => "shared/checkins_list" %>
-          </div>
-          <div id="list_of_places" style="display:none;">
-            <%= render :partial => "shared/places_list" %>
           </div>
         </div>
       </div>

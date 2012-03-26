@@ -1,0 +1,25 @@
+<div class="main_content">
+  <li class="nav-header">Header</li>
+  <ul class="nav nav-list">
+    <li>
+      <a href="#">
+        <i class="icon-book"></i>
+        Profile
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-book"></i>
+        Checkins
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon-book"></i>
+        Places
+      </a>
+    </li>
+  </ul>
+  <div id="current_user_profile" style="display:none;"><%=@profile.id%></div>
+  <%= render :partial => "places/google_map"%>
+</div>

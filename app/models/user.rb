@@ -63,14 +63,9 @@ class User < ActiveRecord::Base
 
   def self.update_facebook_profile(user, data, access_token)
     @profile.remote_profile_picture_url = access_token.info.image.gsub("square", "large")
-    @profile.major = data.education.try(:last).try(:concentration).try(:first).try(:name)
-    @profile.school = data.education.try(:last).try(:school).try(:name)
     @profile.first_name = data.first_name
     @profile.last_name = data.last_name
-    @profile.employer = data.work.try(:first).try(:employer).try(:name)
-    @profile.position = data.work.try(:first).try(:position).try(:name)
     @profile.location = data.work.try(:first).try(:location).try(:name)
-    @profile.facebook_site = data.link
   end
   
   def places_from_checkins

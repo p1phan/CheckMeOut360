@@ -59,6 +59,26 @@ $(document).ready(function() {
     $('li#li_for_place').attr("class", "active");
     $('li#li_for_wall').removeClass("active");
   });
+  
+  // NEWS FEED
+  $('#news_feed_button').click(function(obj){
+    $('#news_feed').slideToggle('slow');
+  });
+
+  $('#close_news_feed_button').click(function(obj){
+    $('#news_feed').slideUp('slow');
+    return false;
+  });
+
+  $("#new_post_button").click(function() {
+    $("#new_post_button").hide();
+    $("#new_post_form").show();
+  });
+
+  $("#posts_close_button").click(function() {
+    $('#new_post #message_text_box').val("");
+  });
+  
 
   // Right Nav-Tab Bar
   $('#right_side_tab #places_link').click(function() {

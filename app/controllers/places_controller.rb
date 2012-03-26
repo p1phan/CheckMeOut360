@@ -41,6 +41,7 @@ class PlacesController < ApplicationController
   end
   
   def all_places
+    puts "IN ALL PLACES #{params.inspect}"
     wall = Wall.find(params[:id])
     places = User.find(wall.user_id).places
     respond_to do |format|

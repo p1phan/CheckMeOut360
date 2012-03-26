@@ -6,6 +6,7 @@ CheckMeOut360::Application.routes.draw do
   end
   
   resources :checkins
+  resources :profiles
   resources :posts
   resources :home
   resources :places do
