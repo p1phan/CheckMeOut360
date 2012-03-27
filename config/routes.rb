@@ -5,18 +5,26 @@ CheckMeOut360::Application.routes.draw do
     get "users/sign_up" => 'walls#index'
   end
   
-  resources :checkins
-  resources :profiles
+  # resources :checkins
+  resources :users do
+    resources :places do
+      collection do
+        get 'map'
+        get 'all_places'
+      end
+    end
+    resources :checkins
+  end
   resources :posts
   resources :home
-  resources :places do
-    collection do
-      get 'autocomplete_place_name'
-      get 'list'
-      get 'all_places'
-      get 'search'
-    end
-  end
+  # resources :places do
+  #   collection do
+  #     get 'autocomplete_place_name'
+  #     get 'list'
+  #     get 'all_places'
+  #     get 'search'
+  #   end
+  # end
   resources :walls do
     collection do
       get 'about'

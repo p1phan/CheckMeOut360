@@ -1,0 +1,11 @@
+<div class="main_content">
+  <div class="hero-unit">
+    <h2><small>Check Me Out</small> <%= @user.profile.full_name %></h2>
+    <p>See where I've been and where I went</p>
+    <p>
+      <%= link_to "Maps »", map_user_places_path(@user.id), class: "btn btn-success btn-large" %> &nbsp;
+      <%= link_to "Places »", user_places_path(@user.id), class: "btn btn-info btn-large" %> &nbsp;
+      <%= link_to "Checkins »", user_checkins_path(@user.id), class: "btn btn-warning btn-large" %> &nbsp;
+    </p>
+  </div>
+</div>

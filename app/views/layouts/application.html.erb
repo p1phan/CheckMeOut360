@@ -55,11 +55,11 @@
           <ul class="nav nav-list">
             <li class="nav-header">Active Users</li>
             <% User.active.each do |user| %>
-              <li><%= link_to user.profile.full_name, profile_path(user.id) %></li>
+              <li><%= link_to user.profile.full_name, user_path(user.id) %></li>
             <% end %>
             <li class="nav-header">Inactive Users</li>
             <% User.inactive.each do |user| %>
-              <li><%= link_to user.profile.full_name, profile_path(user.id) %></li>
+              <li><%= link_to user.profile.full_name, user_path(user.id) %></li>
             <% end %>
           </ul>
         </div><!--/.well -->

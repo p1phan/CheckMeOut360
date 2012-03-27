@@ -4,6 +4,18 @@ var bouncing_marker = null;
 var default_lat = 32.813933;
 var default_long = -117.1628362;
 
+$(document).ready(function() {
+  /* initialize google maps and place markers */
+  google.maps.event.addDomListener(window, 'load',  function() {
+    infowindow = new google.maps.InfoWindow({
+    content: "holding..."
+    });
+  });
+  var map = init_google_map(default_lat, default_long);
+  get_places_from_controller();
+  drop(map);
+});
+
 function init_google_map(lat,lon) {
   var latlng = new google.maps.LatLng(lat, lon);
   var myOptions = {
@@ -19,7 +31,7 @@ function get_places_from_controller() {
   var wall_id = $('#current_user_profile').text();
   $.ajax({
     dataType: 'json',
-    url: '/places/all_places',
+    url: '/users/' + wall_id + '/places/all_places',
     type: 'get',
     data: {id: wall_id},
     async: false,

@@ -1,12 +1,7 @@
 class CheckinsController < ApplicationController
-  # GET /checkins/1
-  # GET /checkins/1.json
-  def show
-    @checkin = Checkin.find(params[:id])
-
-    respond_to do |format|
-      format.js
-    end
+  def index
+    @user = User.find(params[:user_id])
+    @checkins = @user.checkins
   end
   
 end

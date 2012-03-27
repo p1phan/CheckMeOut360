@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class UsersController < ApplicationController
   def index
     @user = current_user
     @places = @user.places
