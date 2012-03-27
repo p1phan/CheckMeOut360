@@ -4,26 +4,35 @@ var bouncing_marker = null;
 var default_lat = 32.813933;
 var default_long = -117.1628362;
 
-$(document).ready(function() {
-  /* initialize google maps and place markers */
-  google.maps.event.addDomListener(window, 'load',  function() {
-    infowindow = new google.maps.InfoWindow({
-    content: "holding..."
+CHECK_ME_OUT_360.places = {
+  index_action: function() {
+    /* initialize google maps and place markers */
+    resize_block('.semi-hero-unit', '.sub-hero-unit');
+    $(window).resize(function() {
+      resize_block('.semi-hero-unit', '.sub-hero-unit');
     });
-  });
-  var map = init_google_map(default_lat, default_long);
-  get_places_from_controller();
-  drop(map);
-});
+  },
+  show_action: function() {CHECK_ME_OUT_360.places.index_action(); },
+  map_action: function() {
+    google.maps.event.addDomListener(window, 'load',  function() {
+      infowindow = new google.maps.InfoWindow({
+      content: "holding..."
+      });
+    });
+    var map = init_google_map(default_lat, default_long, "map_canvas");
+    get_places_from_controller();
+    drop(map);
+  }
+}
 
-function init_google_map(lat,lon) {
+function init_google_map(lat,lon, map_id) {
   var latlng = new google.maps.LatLng(lat, lon);
   var myOptions = {
     zoom: 11,
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  var map = new google.maps.Map(document.getElementById(map_id), myOptions);
   return map;
 }
 
