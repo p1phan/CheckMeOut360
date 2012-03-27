@@ -64,6 +64,14 @@
           </ul>
         </div><!--/.well -->
       </div><!--/span-->
+      <div id="loader_circle" style="display:none;">
+        <center>
+          <%= image_tag "ajax-loader.gif" %>
+          <br/>
+          <br/>
+          <p> Retrieving Your Facebook Places and Checkins...</p>
+        </center>
+      </div>
       <div id="yield_for_main_content" class="span8">
         <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
       </div><!--/span-->

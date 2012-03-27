@@ -32,6 +32,13 @@ class Place < ActiveRecord::Base
       checkin = Facebook::Checkin.new(facebook_checkin, graph)
       @checkins << checkin
     end
+    while (facebook_checkins_for_user.size != 0)
+      facebook_checkins_for_user = facebook_checkins_for_user.next_page
+      facebook_checkins_for_user.each do |facebook_checkin|
+        checkin = Facebook::Checkin.new(facebook_checkin, graph)
+        @checkins << checkin
+      end
+    end
     return @checkins
   end
   

@@ -16,16 +16,16 @@
 <div class="clear"></div>
 <div class="row-fluid center_block no_margin span9">
   <div class="checkin-blocks sub-hero-unit">
-    <% if @checkins.first %>
+    <% if @latest_checkin %>
       <center>
         <h3>&nbsp; <%= image_tag "grey_check.png", size: "45x45" %> <b>last check in </b></h3>
         <br/>
         <h4 id="latest_checkin">
-          <small> >> </small><%= @checkins.first.message %><br/>
-          <small> @ </small><%= @checkins.first.place.name %><br/>
-          <small>On</small> <%= @checkins.first.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%><br/>
+          <small> >> </small><%= @latest_checkin.message %><br/>
+          <small> @ </small><%= @latest_checkin.place.name %><br/>
+          <small>On</small> <%= @latest_checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%><br/>
           <small>With</small>
-          <% @checkins.first.users.each do |user| %>
+          <% @latest_checkin.users.each do |user| %>
             <small><i><%= user.profile.full_name %></i></small>
           <% end %>
           </h4>
