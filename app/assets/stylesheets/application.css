@@ -40,3 +40,6 @@
 .blue {
   background-color: #49AFCD;
 }
+.no_margin {
+  margin: 0 !important;
+}

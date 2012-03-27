@@ -1,6 +1,6 @@
 <%= render partial: 'shared/profile_layout' %>
 
-<div class="row-fluid center_block span9">
+<div class="row-fluid center_block no_margin span9">
   <div class="checkin-blocks sub-hero-unit span3">
     <%= image_tag @user.profile.profile_picture %>
   </div>
@@ -12,7 +12,10 @@
     <h3><%= image_tag "grey_pound_sign.png", size: "70x45" %> &nbsp; <small>checkins </small>  &nbsp; <%= @checkins.count %></h3>
     <br/>
   </div>
-  <div class="checkin-blocks sub-hero-unit span6">
+</div>
+<div class="clear"></div>
+<div class="row-fluid center_block no_margin span9">
+  <div class="checkin-blocks sub-hero-unit">
     <% if @checkins.first %>
       <center>
         <h3>&nbsp; <%= image_tag "grey_check.png", size: "45x45" %> <b>last check in </b></h3>
