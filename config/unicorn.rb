@@ -1,6 +1,6 @@
 worker_processes 4
 preload_app true
-timeout 30
+timeout 400
 
 before_fork do |server, worker|
   # Replace with MongoDB or whatever
