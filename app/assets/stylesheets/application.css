@@ -9,7 +9,19 @@
 .mini-hero-unit {
   padding: 30px;
   margin-bottom: 15px;
+  background-color: #FAA732;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  min-height: 120px;
+}
+.blue {
   background-color: #49AFCD;
+}
+.semi-hero-unit {
+  padding: 30px;
+  margin-bottom: 15px;
+  background-color: #eeeeee;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;

@@ -9,11 +9,11 @@ class Facebook::Checkin < Hashie::Trash
   property :comments
   property :created_time
 
-  def initialize(checkin_hash)
+  def initialize(checkin_hash, graph)
     self.tags = []
     checkin_hash.each do |key,value|
       if key == "place"
-        self[key.to_sym] = Facebook::Place.new(value)
+        self[key.to_sym] = Facebook::Place.new(value, graph)
       elsif key == "tags"
         value['data'].each do |tags_hash|
           next unless tags_hash

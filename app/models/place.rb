@@ -10,7 +10,11 @@ class Place < ActiveRecord::Base
     self.facebook_place_id = checkin.place.id
     self.facebook_id = checkin.id
     self.created_at = checkin.created_time
-    self.count = count+1
+    self.likes = checkin.place.likes
+    self.checkin_count = checkin.place.checkins
+    self.picture = checkin.place.picture
+    self.description = checkin.place.description
+    self.category = checkin.place.category
   end
 
   def set_name_if_none_given
@@ -25,7 +29,7 @@ class Place < ActiveRecord::Base
     graph = Koala::Facebook::API.new(token)
     facebook_checkins_for_user = graph.get_connections("me", "checkins")
     facebook_checkins_for_user.each do |facebook_checkin|
-      checkin = Facebook::Checkin.new(facebook_checkin)
+      checkin = Facebook::Checkin.new(facebook_checkin, graph)
       @checkins << checkin
     end
     return @checkins

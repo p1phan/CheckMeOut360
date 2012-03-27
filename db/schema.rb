@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323011301) do
+ActiveRecord::Schema.define(:version => 20120327013959) do
 
   create_table "checkins", :force => true do |t|
     t.string   "facebook_checkin_id"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(:version => 20120323011301) do
     t.string   "facebook_place_id"
     t.string   "facebook_id"
     t.datetime "time_created"
+    t.string   "category"
+    t.text     "description"
+    t.string   "picture"
+    t.integer  "likes"
+    t.integer  "checkin_count"
   end
 
   create_table "places_users", :id => false, :force => true do |t|

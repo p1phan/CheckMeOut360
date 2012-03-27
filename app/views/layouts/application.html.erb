@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
+<body data-controller="<%= controller_name %>" data-action="<%= action_name + "_action" %>" class='<%= controller_name %> <%= Rails.env %>'>
 
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">

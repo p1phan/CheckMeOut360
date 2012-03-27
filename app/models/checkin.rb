@@ -26,7 +26,6 @@ class Checkin < ActiveRecord::Base
             facebook_profile.first_name = user.name.split(" ").first
             facebook_profile.last_name = user.name.split(" ").last
             facebook_profile.remote_profile_picture_url = graph.get_picture(user.id, :type => "large")
-            puts facebook_user.inspect
             
             facebook_user.save!
           end
