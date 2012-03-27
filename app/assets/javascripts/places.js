@@ -36,6 +36,10 @@ function init_google_map(lat,lon, map_id) {
   return map;
 }
 
+function cluster_marker() {
+  var markerCluster = new MarkerClusterer(map, places_holder);
+}
+
 function get_places_from_controller() {
   var wall_id = $('#current_user_profile').text();
   $.ajax({
@@ -107,12 +111,14 @@ function add_marker_window_listener(map, marker_to_drop) {
 
 function drop(map) {
   iterator = 0;
-  marker = null;
+  var marker_array = [];
   for (var i = 0; i < places_holder.length; i++) {
     var marker = place_marker(map, iterator);
     iterator++;
     google.maps.event.addListener(marker, 'click', function (a) {
       add_marker_window_listener(map, this);
     });
+    marker_array.push(marker);
   }
+  var mc = new MarkerClusterer(map, marker_array);  
 }

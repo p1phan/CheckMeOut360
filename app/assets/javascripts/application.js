@@ -7,5 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require markerclusterer
 //= require init
 //= require_tree .
