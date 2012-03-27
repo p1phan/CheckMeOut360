@@ -7,9 +7,9 @@ var default_long = -117.1628362;
 CHECK_ME_OUT_360.places = {
   index_action: function() {
     /* initialize google maps and place markers */
-    resize_block('.semi-hero-unit', '.sub-hero-unit');
+    resize_block('.sub-hero-unit', '.semi-hero-unit');
     $(window).resize(function() {
-      resize_block('.semi-hero-unit', '.sub-hero-unit');
+      // resize_block('.sub-hero-unit', '.semi-hero-unit');
     });
   },
   show_action: function() {CHECK_ME_OUT_360.places.index_action(); },

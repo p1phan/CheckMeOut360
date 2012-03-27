@@ -15,9 +15,7 @@
   border-radius: 6px;
   min-height: 120px;
 }
-.blue {
-  background-color: #49AFCD;
-}
+
 .semi-hero-unit {
   padding: 30px;
   margin-bottom: 15px;
@@ -35,4 +33,10 @@
   -moz-border-radius: 6px;
   border-radius: 6px;
   min-height: 120px;
+}
+.red {
+  background-color: #DA4F49;
+}
+.blue {
+  background-color: #49AFCD;
 }

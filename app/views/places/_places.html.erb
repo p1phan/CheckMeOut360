@@ -1,7 +1,7 @@
 <%= render partial: 'shared/profile_layout' %>
 
 <% @places.each do |place| %>
-  <center class="row-fluid center_block span9">
+  <center id="place_<%=place.id%>" class="row-fluid center_block span9">
     <div class="checkin-blocks sub-hero-unit span3">
       <h3><small>>></small> <%= place.name %></h3>
       <h3><small>@</small> <%= place.address %></h3>
@@ -12,6 +12,7 @@
       </h4>
     </div>
     <div class="checkin-blocks semi-hero-unit span5">
+      <h4><%= image_tag place.picture, size: "100x100" if place.picture %></h4>
       <h3><small>category </small> <%= place.category %></h3>
       <h4><small>checkins </small><%= place.checkin_count%></h4>
       <h4><small>likes </small><%= place.likes%></h4>
