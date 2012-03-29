@@ -1,4 +1,3 @@
-<%= render partial: 'shared/sync_checkins' %>
 <%= render partial: 'shared/profile_layout' %>
 
 <div class="row-fluid center_block no_margin span9">
@@ -6,7 +5,7 @@
     <%= image_tag @user.picture %>
   </div>
   <div class="checkin-blocks sub-hero-unit span6">
-    <h3>&nbsp; <%= image_tag "google_grey_marker.png", size: "40x60" %> &nbsp; &nbsp; &nbsp; <small>where &nbsp; &nbsp; &nbsp; &nbsp;</small><%= @user.location %></h3>
+    <h4>&nbsp; <%= image_tag "google_grey_marker.png", size: "40x60" %> &nbsp; &nbsp; &nbsp; <small>where &nbsp; &nbsp; &nbsp; &nbsp;</small><%= @user.location %></h4>
     <br/>
     <h3>&nbsp; <%= image_tag "grey_globe.png", size: "50x50" %> &nbsp; &nbsp; <small>places &nbsp; &nbsp; &nbsp;</small> <%= @places.count %></h3>
     <br/>
