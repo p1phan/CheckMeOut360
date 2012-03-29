@@ -1,3 +1,5 @@
+require 'activerecord-import'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -11,6 +13,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :checkins
   
   accepts_nested_attributes_for :facebook_checkin_logs
+  # accepts_nested_attributes_for :checkins
   
   scope :active, where("token is NOT NULL")
   scope :inactive, where("token is NULL")

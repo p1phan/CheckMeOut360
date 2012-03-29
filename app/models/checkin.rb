@@ -1,42 +1,57 @@
+require 'activerecord-import'
+
 class Checkin < ActiveRecord::Base
   belongs_to :place
   has_and_belongs_to_many :users
 
   def self.build_checkins(checkins, token)
-    graph = Koala::Facebook::API.new(token)
-    ActiveRecord::Base.transaction do
+    # graph = Koala::Facebook::API.new(token)
+    # ActiveRecord::Base.transaction do
+    bulk_facebook_checkins = []
+    bulk_facebook_places = []
+    bulk_facebook_users = []
+    @all_checkins = Checkin.all
+    @all_places = Place.all
+    @all_users = User.all
     
     checkins.each do |checkin|
-      facebook_checkin = Checkin.find_or_initialize_by_facebook_checkin_id(checkin.id)
+      facebook_checkin = find_or_init_checkin(checkin.id)
       if facebook_checkin.new_record?
-        facebook_place = Place.find_or_initialize_by_facebook_place_id(checkin.place.id)
+        facebook_place = find_or_init_place(checkin.place.id)
         facebook_checkin.place = facebook_place
         if facebook_place.new_record?
           facebook_place.build_from_checkin(checkin)
+          # bulk_facebook_places << facebook_place
           facebook_place.save!
+          @all_places << facebook_place
         end
         facebook_user_tags = checkin.tags << checkin.from
-        # facebook_user_tags = [checkin.from]
         facebook_user_tags.each do |user|
-          facebook_user = User.find_or_initialize_by_uid(user.id)
+          facebook_user = find_or_init_user(user.id)
           if facebook_user.new_record?
+            facebook_user.uid = user.id
             facebook_user.name = user.name
-            facebook_user.email = valid_available_email(user.name.downcase.gsub(" ", "")+"@checkmeout360.com")
+            facebook_user.email = user.name.downcase.gsub(" ", "")+"#{rand(10).to_s}" + "@checkmeout360.com"
             facebook_user.password = user.name.downcase.gsub(" ", "")
             facebook_user.password_confirmation = user.name.downcase.gsub(" ", "")
             # facebook_profile.remote_picture_url = graph.get_picture(user.id, :type => "large")
-            
+            # bulk_facebook_users << facebook_user
             facebook_user.save!
+            @all_users << facebook_user
           end
           facebook_checkin.users << facebook_user
         end
-
         facebook_checkin.message = checkin.message
         facebook_checkin.created_at = checkin.created_time
-        facebook_checkin.save
+        facebook_checkin.save!
+        @all_checkins << facebook_checkin
+        # bulk_facebook_checkins << facebook_checkin
       end
     end
-    end
+    # Checkin.import bulk_facebook_checkins
+    # User.import bulk_facebook_users
+    # Place.import bulk_facebook_places
+    # end
   end
   
   def self.get_checkins_facebook_url(user)
@@ -75,10 +90,10 @@ class Checkin < ActiveRecord::Base
     @checkins = []
     checkin_data = checkins_json['data']
     checkin_data.each do |facebook_checkin|
-      checkin = Facebook::Checkin.new(facebook_checkin, graph)
+      checkin = Facebook::Checkin.new(facebook_checkin)
       @checkins << checkin
     end
-    build_checkins(@checkins, token)
+    return @checkins
   end
   
   private
@@ -88,6 +103,33 @@ class Checkin < ActiveRecord::Base
       valid_available_email(email + rand(10).to_s)
     else
       return email
+    end
+  end
+  
+  def self.find_or_init_checkin(checkin_id)
+    index = @all_checkins.collect{|checkin| checkin.facebook_checkin_id}.find_index(checkin_id)
+    if index
+      return @all_checkins[index]
+    else
+      return Checkin.new(facebook_checkin_id: checkin_id)
+    end
+  end
+  
+  def self.find_or_init_place(fb_place_id)
+    index = @all_places.collect{|place| place.facebook_place_id}.find_index(fb_place_id)
+    if index
+      return @all_places[index]
+    else
+      return Place.new(facebook_place_id: fb_place_id)
+    end
+  end
+  
+  def self.find_or_init_user(fb_uid)
+    index = @all_users.collect{|user| user.uid}.find_index(fb_uid)
+    if index
+      return @all_users[index]
+    else
+      return User.new
     end
   end
 

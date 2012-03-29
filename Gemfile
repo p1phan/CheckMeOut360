@@ -23,6 +23,7 @@ gem 'geocoder'
 gem 'hashie'
 gem 'rails3-jquery-autocomplete'
 gem 'netrc'
+gem "activerecord-import", ">= 0.2.0"
 
 group :devleopment do
   gem 'foreman'

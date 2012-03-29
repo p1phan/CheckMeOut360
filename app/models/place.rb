@@ -1,9 +1,8 @@
+require 'activerecord-import'
+
 class Place < ActiveRecord::Base
   has_many :checkins
-  # geocoded_by :address, :latitude => :lat, :longitude => :long
-  # after_validation :geocode
-  # before_save :set_name_if_none_given
-  
+
   def build_from_checkin(checkin)
     self.address = "#{checkin.place.location.street} #{checkin.place.location.city} #{checkin.place.location.state}"
     self.name = checkin.place.name
@@ -13,7 +12,6 @@ class Place < ActiveRecord::Base
     self.likes = checkin.place.likes
     self.checkin_count = checkin.place.checkins
     self.picture = checkin.place.picture
-    self.description = checkin.place.description
     self.category = checkin.place.category
     self.lat = checkin.place.location.latitude
     self.long = checkin.place.location.longitude
@@ -26,9 +24,4 @@ class Place < ActiveRecord::Base
     end
   end
 
-  def self.places_for_users_checkin(user)
-    user.checkins.collect{|c| 
-      puts c.place.inspect
-    }
-  end
 end

@@ -4,7 +4,6 @@ class Facebook::Place < Hashie::Trash
   property :location
   property :picture
   property :category
-  property :description
   property :checkins
   property :likes
 
@@ -14,12 +13,13 @@ class Facebook::Place < Hashie::Trash
         self[key.to_sym] = Facebook::Location.new(value)
       elsif key == "id"
         self[key.to_sym] = value
-        fb_place_extra = graph.get_object(value)
-        self.description = fb_place_extra['description']
-        self.picture = fb_place_extra['picture']
-        self.category = fb_place_extra['category']
-        self.checkins = fb_place_extra['checkins']
-        self.likes = fb_place_extra['likes']
+        if graph
+          fb_place_extra = graph.get_object(value)
+          self.picture = fb_place_extra['picture']
+          self.category = fb_place_extra['category']
+          self.checkins = fb_place_extra['checkins']
+          self.likes = fb_place_extra['likes']
+        end
       else
         self[key.to_sym] = value
       end

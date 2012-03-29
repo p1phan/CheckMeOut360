@@ -6,9 +6,11 @@ class CheckinsController < ApplicationController
   
   def sync
     @user = User.find(params[:user_id])
+    @checkins = []
     @user.facebook_checkin_logs.each do |checkin_page|
-      Checkin.store_checkins(@user.token, checkin_page.current)
+      @checkins += Checkin.store_checkins(@user.token, checkin_page.current)
     end
+    Checkin.build_checkins(@checkins, @user.token)
     redirect_to user_path(@user.id)
   end
   

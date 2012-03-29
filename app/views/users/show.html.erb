@@ -22,7 +22,7 @@
         <h3>&nbsp; <%= image_tag "grey_check.png", size: "45x45" %> <b>last check in </b></h3>
         <br/>
         <h4 id="latest_checkin">
-          <small> >> </small><%= @latest_checkin.message %><br/>
+          <small> >> </small><%= @latest_checkin.message || "Checkin!" %><br/>
           <small> @ </small><%= @latest_checkin.place.name %><br/>
           <small>On</small> <%= @latest_checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%><br/>
           <small>With</small>
