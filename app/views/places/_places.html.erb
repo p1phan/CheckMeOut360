@@ -14,7 +14,7 @@
       </h4>
     </div>
     <div class="checkin-blocks semi-hero-unit span5">
-      <h4><%= image_tag place.picture, size: "100x100" if place.picture %></h4>
+      <h4><%= image_tag place.picture if place.picture %></h4>
       <h3><small>category </small> <%= place.category %></h3>
       <h4><small>checkins </small><%= place.checkin_count%></h4>
       <h4><small>likes </small><%= place.likes%></h4>

@@ -6,6 +6,10 @@
  *= require bootstrap
  *= require_tree . 
 */
+img {
+  max-width: 100% !important;
+}
+
 .mini-hero-unit {
   padding: 30px;
   margin-bottom: 15px;
