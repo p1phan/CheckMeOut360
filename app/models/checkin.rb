@@ -59,26 +59,30 @@ class Checkin < ActiveRecord::Base
     @checkins = []
     graph = Koala::Facebook::API.new(token)
     facebook_checkins_for_user = graph.get_connections("me", "checkins")
-    # facebook_checkins_for_user.each do |facebook_checkin|
-    #   checkin = Facebook::Checkin.new(facebook_checkin, graph)
-    #   @checkins << checkin
-    # end
-    next_facebook_checkins_for_user = nil
-    index = 0
-    while (true)
-      next_facebook_checkins_for_user = facebook_checkins_for_user.next_page
-      return @checkins if next_facebook_checkins_for_user.size == 0
-      if index == 0
-        fcl = user.facebook_checkin_logs.build(next: facebook_checkins_for_user.paging['next'], previous: nil, done: false)
-        fcl.current = next_facebook_checkins_for_user.paging['previous'] if next_facebook_checkins_for_user.size != 0
-      else
-        fcl = user.facebook_checkin_logs.build(current: facebook_checkins_for_user.paging['next'],
-                   next: next_facebook_checkins_for_user.paging['next'], previous: next_facebook_checkins_for_user.paging['previous'], done: false)
+    while(facebook_checkins_for_user.size != 0)
+      facebook_checkins_for_user.each do |facebook_checkin|
+        checkin = Facebook::Checkin.new(facebook_checkin)
+        @checkins << checkin
       end
-      facebook_checkins_for_user = next_facebook_checkins_for_user
-      index = index + 1
-      fcl.save!
+      facebook_checkins_for_user = facebook_checkins_for_user.next_page
     end
+    
+    # next_facebook_checkins_for_user = nil
+    # index = 0
+    # while (true)
+    #   next_facebook_checkins_for_user = facebook_checkins_for_user.next_page
+    #   return @checkins if next_facebook_checkins_for_user.size == 0
+    #   if index == 0
+    #     fcl = user.facebook_checkin_logs.build(next: facebook_checkins_for_user.paging['next'], previous: nil, done: false)
+    #     fcl.current = next_facebook_checkins_for_user.paging['previous'] if next_facebook_checkins_for_user.size != 0
+    #   else
+    #     fcl = user.facebook_checkin_logs.build(current: facebook_checkins_for_user.paging['next'],
+    #                next: next_facebook_checkins_for_user.paging['next'], previous: next_facebook_checkins_for_user.paging['previous'], done: false)
+    #   end
+    #   facebook_checkins_for_user = next_facebook_checkins_for_user
+    #   index = index + 1
+    #   fcl.save!
+    # end
     return @checkins
   end
 
