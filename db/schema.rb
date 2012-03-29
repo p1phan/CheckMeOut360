@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327013959) do
+ActiveRecord::Schema.define(:version => 20120329004917) do
 
   create_table "checkins", :force => true do |t|
     t.string   "facebook_checkin_id"
@@ -20,9 +20,25 @@ ActiveRecord::Schema.define(:version => 20120327013959) do
     t.integer  "place_id"
   end
 
+  add_index "checkins", ["facebook_checkin_id"], :name => "index_checkins_on_facebook_checkin_id"
+  add_index "checkins", ["place_id"], :name => "index_checkins_on_place_id"
+
   create_table "checkins_users", :id => false, :force => true do |t|
     t.integer  "user_id"
     t.integer  "checkin_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "checkins_users", ["checkin_id"], :name => "index_checkins_users_on_checkin_id"
+  add_index "checkins_users", ["user_id"], :name => "index_checkins_users_on_user_id"
+
+  create_table "facebook_checkin_logs", :force => true do |t|
+    t.string   "current"
+    t.string   "next"
+    t.string   "previous"
+    t.string   "done"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,30 +65,14 @@ ActiveRecord::Schema.define(:version => 20120327013959) do
     t.integer  "checkin_count"
   end
 
+  add_index "places", ["facebook_id"], :name => "index_places_on_facebook_id"
+  add_index "places", ["facebook_place_id"], :name => "index_places_on_facebook_place_id"
+
   create_table "places_users", :id => false, :force => true do |t|
     t.integer  "user_id"
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "posts", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "wall_id"
-  end
-
-  create_table "profiles", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "profile_picture"
-    t.string   "location"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "permalink"
   end
 
   create_table "users", :force => true do |t|
@@ -91,10 +91,13 @@ ActiveRecord::Schema.define(:version => 20120327013959) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
+    t.string   "location"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["uid"], :name => "index_users_on_uid"
 
   create_table "walls", :force => true do |t|
     t.integer  "user_id"

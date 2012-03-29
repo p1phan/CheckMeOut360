@@ -1,8 +1,8 @@
 class Place < ActiveRecord::Base
   has_many :checkins
-  geocoded_by :address, :latitude => :lat, :longitude => :long
-  after_validation :geocode
-  before_save :set_name_if_none_given
+  # geocoded_by :address, :latitude => :lat, :longitude => :long
+  # after_validation :geocode
+  # before_save :set_name_if_none_given
   
   def build_from_checkin(checkin)
     self.address = "#{checkin.place.location.street} #{checkin.place.location.city} #{checkin.place.location.state}"
@@ -15,6 +15,8 @@ class Place < ActiveRecord::Base
     self.picture = checkin.place.picture
     self.description = checkin.place.description
     self.category = checkin.place.category
+    self.lat = checkin.place.location.latitude
+    self.long = checkin.place.location.longitude
   end
 
   def set_name_if_none_given
@@ -24,24 +26,6 @@ class Place < ActiveRecord::Base
     end
   end
 
-  def self.get_checkins(token)
-    @checkins = []
-    graph = Koala::Facebook::API.new(token)
-    facebook_checkins_for_user = graph.get_connections("me", "checkins")
-    facebook_checkins_for_user.each do |facebook_checkin|
-      checkin = Facebook::Checkin.new(facebook_checkin, graph)
-      @checkins << checkin
-    end
-    while (facebook_checkins_for_user.size != 0)
-      facebook_checkins_for_user = facebook_checkins_for_user.next_page
-      facebook_checkins_for_user.each do |facebook_checkin|
-        checkin = Facebook::Checkin.new(facebook_checkin, graph)
-        @checkins << checkin
-      end
-    end
-    return @checkins
-  end
-  
   def self.places_for_users_checkin(user)
     user.checkins.collect{|c| 
       puts c.place.inspect

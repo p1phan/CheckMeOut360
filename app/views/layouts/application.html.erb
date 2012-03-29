@@ -27,13 +27,13 @@
           </ul>
           <p id="login_logout_top_menu" class="navbar-text pull-right">
             <% if current_user %>
-              <%= link_to "Logout of #{current_user.profile.first_name}", destroy_user_session_path, :method => :delete %>
+              <%= link_to "Logout of #{current_user.name}", destroy_user_session_path, :method => :delete %>
             <% else %>
               <%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "login_with_facebook" %>
             <% end%>
             &nbsp;
             <% if current_user %>
-              <%= image_tag display_profile_picture(current_user.profile.profile_picture), :id => "facebook_pic", :size => "30x30" %>
+              <%= image_tag display_profile_picture(current_user.picture), :id => "facebook_pic", :size => "30x30" %>
             <% else %>
               <%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook", :size => "20x20"), user_omniauth_authorize_path(:facebook) %>
             <% end %>
@@ -55,11 +55,11 @@
           <ul class="nav nav-list">
             <li class="nav-header">Active Users</li>
             <% User.active.each do |user| %>
-              <li><%= link_to user.profile.full_name, user_path(user.id) %></li>
+              <li><%= link_to user.name, user_path(user.id) %></li>
             <% end %>
             <li class="nav-header">Inactive Users</li>
             <% User.inactive.each do |user| %>
-              <li><%= link_to user.profile.full_name, user_path(user.id) %></li>
+              <li><%= link_to user.name, user_path(user.id) %></li>
             <% end %>
           </ul>
         </div><!--/.well -->

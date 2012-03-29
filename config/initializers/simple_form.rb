@@ -8,10 +8,10 @@ SimpleForm.setup do |config|
   # config.hint_tag = :span
 
   # CSS class to add to all hint tags.
-  config.hint_class = 'help-block'
+  # config.hint_class = 'help-block'
 
   # CSS class used on errors.
-  config.error_class = 'help-inline'
+  # config.error_class = 'help-inline'
 
   # Default tag used on errors.
   # config.error_tag = :span
@@ -29,13 +29,13 @@ SimpleForm.setup do |config|
   # config.error_notification_id = nil
 
   # You can wrap all inputs in a pre-defined tag.
-  config.wrapper_tag = nil
-
-  # CSS class to add to all wrapper tags.
-  config.wrapper_class = 'clearfix'
+  # config.wrapper_tag = nil
+  # 
+  # # CSS class to add to all wrapper tags.
+  # config.wrapper_class = 'clearfix'
 
   # CSS class to add to the wrapper if the field has errors.
-  config.wrapper_error_class = 'error'
+  # config.wrapper_error_class = 'error'
 
   # You can wrap a collection of radio/check boxes in a pre-defined tag, defaulting to none.
   config.collection_wrapper_tag = nil
@@ -69,7 +69,7 @@ SimpleForm.setup do |config|
   # (e.g. required) are used or not. True by default.
   # Having this on in non-HTML5 compliant sites can cause odd behavior in
   # HTML5-aware browsers such as Chrome.
-  config.html5 = false
+  # config.html5 = false
 
   # Custom mappings for input types. This should be a hash containing a regexp
   # to match as key, and the input type that will be used when the field name

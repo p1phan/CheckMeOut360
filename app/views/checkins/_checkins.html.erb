@@ -9,7 +9,7 @@
       <h3><small>On</small> <%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%></h3>
       <h4><small>With</small>
         <% checkin.users.each do |user| %>
-          <%= link_to "#{user.profile.full_name} »", user_path(user.id), :class => "btn btn-warning btn-small bottom-space" %>
+          <%= link_to "#{user.name} »", user_path(user.id), :class => "btn btn-warning btn-small bottom-space" %>
         <% end %>
       </h4>
     </div>

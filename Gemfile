@@ -22,10 +22,11 @@ gem 'carmen'
 gem 'geocoder'
 gem 'hashie'
 gem 'rails3-jquery-autocomplete'
+gem 'netrc'
 
 group :devleopment do
   gem 'foreman'
-  gem 'mongrel'
+  gem 'mongrel', "~>1.2.0.pre2"
 end
 
 # This is outside the test because we need it to run factory girl in the seeds.rb
