@@ -5,9 +5,6 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable
-         
-  # mount_uploader :picture, ProfilePictureUploader
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :places, :through => :checkins
@@ -19,7 +16,13 @@ class User < ActiveRecord::Base
   
   scope :active, where("token is NOT NULL")
   scope :inactive, where("token is NULL")
-  # scope :unique_places, lambda {|u| places.uniq}
+
+  PRIVATE = 'private'.freeze
+  PROTECTED = 'protected'.freeze
+  PUBLIC = 'public'.freeze
+  PRIVACY = [PRIVATE, PROTECTED, PUBLIC]
+  validates :privacy, :inclusion => PRIVACY, allow_nil: false
+  
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info

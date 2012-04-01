@@ -1,0 +1,20 @@
+<div class="main_content">
+  <div class="hero-unit">
+    <h2><small>getting started</small> Here is your security and privacy settings </h2>
+    <p><i><small><b>private »</b></small></i> No one can see your profile, PERIOD</p>
+    <p><i><small><b>protected (default) »</b></small></i> Only friends can view your profile</p>
+    <p><i><small><b>public »</b></small></i> EVERYONE can view your profile</p>
+    
+    <%= simple_form_for @user do |f| %>
+    <div class="btn-group" data-toggle="buttons-radio">
+      <input checked="checked" class="btn btn-success unselectable" id="user_privacy_protected" name="user[privacy]" value="private"></input>
+      <input checked="checked" class="btn btn-success unselectable" id="user_privacy_protected" name="user[privacy]" value="protected"></input>
+      <input checked="checked" class="btn btn-success unselectable" id="user_privacy_protected" name="user[privacy]" value="public"></input>
+    </div>
+    
+    <%= f.input :privacy, as: :check_boxes, collection: User::PRIVACY %>
+      <br/>
+      <%= f.button :submit, class: "btn btn-success btn-large", value: "Update Settings" %>
+    <% end %>
+  </div>
+</div>

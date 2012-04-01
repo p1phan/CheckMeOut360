@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329004917) do
+ActiveRecord::Schema.define(:version => 20120401180226) do
 
   create_table "checkins", :force => true do |t|
     t.string   "facebook_checkin_id"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20120329004917) do
     t.string   "name"
     t.string   "uid"
     t.string   "token"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",          :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",          :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120329004917) do
     t.datetime "updated_at"
     t.string   "picture"
     t.string   "location"
+    t.string   "privacy",                               :default => "protected"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
