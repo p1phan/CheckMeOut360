@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
   
   def index
     @user = User.find(params[:user_id])
-    @places = @user.places
+    @places = @user.places.order('created_at desc').page(params[:page])
   end
   
   def map

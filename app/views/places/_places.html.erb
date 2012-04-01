@@ -1,5 +1,7 @@
 <%= render partial: 'shared/profile_layout' %>
 
+<center><%= paginate @places %></center>
+
 <% @places.each do |place| %>
   <center id="place_<%=place.id%>" class="row-fluid center_block span9">
     <div class="checkin-blocks sub-hero-unit span3">

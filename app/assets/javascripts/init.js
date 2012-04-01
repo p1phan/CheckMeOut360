@@ -2,9 +2,9 @@ CHECK_ME_OUT_360 = {
   common: {
     init: function() {
       // application-wide code
-      $('.login_logout_top_menu').click(function(obj) {
-        $('#yield_for_main_content').hide();
-        $('#loader_circle').show();
+      $('#login_logout_top_menu').click(function(obj) {
+        $('#yield_for_main_content').fadeOut();
+        $('#loader_circle').fadeIn();
       });
     }
   }
