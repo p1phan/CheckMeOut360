@@ -5,7 +5,13 @@ CheckMeOut360::Application.routes.draw do
     get "users/sign_up" => 'walls#index'
   end
   
-  # resources :checkins
+  resources :home, only: [:index] do
+    collection do
+      get 'about'
+      get 'contact'
+      get 'help'
+    end
+  end
   resources :users do
     resources :places do
       collection do
@@ -20,20 +26,7 @@ CheckMeOut360::Application.routes.draw do
       end
     end
   end
-  resources :posts
-  resources :home
 
-  resources :walls do
-    collection do
-      get 'about'
-      get 'contact'
-      get 'help'
-      get 'list'
-    end
-  end
-  
-  match 'account' => 'account#edit'
-  match 'users' => 'walls#index'
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   
   root :to => 'home#index'

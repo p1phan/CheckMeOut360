@@ -18,12 +18,19 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
+        <a class="brand" href="/">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
         <div class="nav-collapse">
-          <ul class="nav">
-            <li class="active"><%= link_to "Home", home_index_path %></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <ul id="nav_options" class="nav">
+            <li class="active" id="home_tab">
+              <% if current_user %>
+                <%= link_to "Home", user_path(current_user) %>
+              <% else %>
+                <%= link_to "Home", home_index_path %>
+              <% end %>
+            </li>
+            <li id="about_tab"><%= link_to "About", about_home_index_path %></li>
+            <li id="contact_tab"><%= link_to "Contacts", contact_home_index_path %></li>
+            <li id="help_tab"><%= link_to "Getting Started", help_home_index_path %></li>
           </ul>
           <p id="login_logout_top_menu" class="navbar-text pull-right">
             <% if current_user %>
