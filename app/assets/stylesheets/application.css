@@ -10,6 +10,10 @@ img {
   max-width: 100% !important;
 }
 
+#map_canvas {
+  height: 650px !important;
+}
+
 .mini-hero-unit {
   padding: 30px;
   margin-bottom: 15px;
