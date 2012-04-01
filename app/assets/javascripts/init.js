@@ -4,7 +4,7 @@ CHECK_ME_OUT_360 = {
       // application-wide code
       $('#login_logout_top_menu').click(function(obj) {
         $('#yield_for_main_content').fadeOut();
-        $('#loader_circle').fadeIn();
+        $('#application_loader_circle').fadeIn();
       });
     }
   }

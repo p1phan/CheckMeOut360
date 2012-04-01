@@ -11,6 +11,7 @@ CheckMeOut360::Application.routes.draw do
       collection do
         get 'map'
         get 'all_places'
+        get 'sync'
       end
     end
     resources :checkins do

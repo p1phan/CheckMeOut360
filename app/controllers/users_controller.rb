@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @user.get_profile_pic
     @places = @user.places.order('created_at desc')
     @checkins = @user.checkins.order('created_at desc')
     @latest_checkin = @checkins.first

@@ -6,6 +6,10 @@
  *= require bootstrap
  *= require_tree . 
 */
+
+#current_user_in_list {
+  color: green !important;
+}
 img {
   max-width: 100% !important;
 }

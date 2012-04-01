@@ -4,12 +4,8 @@ class Checkin < ActiveRecord::Base
   belongs_to :place
   has_and_belongs_to_many :users
 
-  def self.build_checkins(checkins, token)
-    # graph = Koala::Facebook::API.new(token)
-    # ActiveRecord::Base.transaction do
-    bulk_facebook_checkins = []
-    bulk_facebook_places = []
-    bulk_facebook_users = []
+  def self.build_checkins(checkins)
+    ActiveRecord::Base.transaction do
     @all_checkins = Checkin.all
     @all_places = Place.all
     @all_users = User.all
@@ -21,7 +17,6 @@ class Checkin < ActiveRecord::Base
         facebook_checkin.place = facebook_place
         if facebook_place.new_record?
           facebook_place.build_from_checkin(checkin)
-          # bulk_facebook_places << facebook_place
           facebook_place.save!
           @all_places << facebook_place
         end
@@ -34,8 +29,7 @@ class Checkin < ActiveRecord::Base
             facebook_user.email = user.name.downcase.gsub(" ", "")+"#{rand(10).to_s}" + "@checkmeout360.com"
             facebook_user.password = user.name.downcase.gsub(" ", "")
             facebook_user.password_confirmation = user.name.downcase.gsub(" ", "")
-            # facebook_profile.remote_picture_url = graph.get_picture(user.id, :type => "large")
-            # bulk_facebook_users << facebook_user
+            # facebook_user.remote_profile_picture_url = graph.get_picture(user.id, :type => "large")
             facebook_user.save!
             @all_users << facebook_user
           end
@@ -45,13 +39,9 @@ class Checkin < ActiveRecord::Base
         facebook_checkin.created_at = checkin.created_time
         facebook_checkin.save!
         @all_checkins << facebook_checkin
-        # bulk_facebook_checkins << facebook_checkin
       end
     end
-    # Checkin.import bulk_facebook_checkins
-    # User.import bulk_facebook_users
-    # Place.import bulk_facebook_places
-    # end
+    end
   end
   
   def self.get_checkins_facebook_url(user)

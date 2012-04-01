@@ -6,11 +6,17 @@ class Facebook::Place < Hashie::Trash
   property :category
   property :checkins
   property :likes
+  property :from
 
-  def initialize(place_hash, graph)
+  def initialize(hash, graph)
+    place_hash = hash
+    place_hash = hash['place'] if hash.keys.include?('place')
+    
     place_hash.each do |key,value|
       if key == "location"
         self[key.to_sym] = Facebook::Location.new(value)
+      elsif key == "name"
+        self[key.to_sym] = value
       elsif key == "id"
         self[key.to_sym] = value
         if graph
@@ -20,8 +26,6 @@ class Facebook::Place < Hashie::Trash
           self.checkins = fb_place_extra['checkins']
           self.likes = fb_place_extra['likes']
         end
-      else
-        self[key.to_sym] = value
       end
     end
   end

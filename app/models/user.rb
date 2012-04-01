@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable
+         
+  # mount_uploader :picture, ProfilePictureUploader
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -17,6 +19,7 @@ class User < ActiveRecord::Base
   
   scope :active, where("token is NOT NULL")
   scope :inactive, where("token is NULL")
+  # scope :unique_places, lambda {|u| places.uniq}
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -49,9 +52,21 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def unique_places
+    places.order('created_at desc').uniq
+  end
 
   def self.me
     User.find_by_email("quyminhphan@gmail.com")
+  end
+  
+  def get_profile_pic
+    unless picture
+      token = User.me.token
+      @graph = Koala::Facebook::API.new(token)
+      update_attribute(:picture, @graph.get_picture(uid, type: "large"))
+    end
   end
 
 end

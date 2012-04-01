@@ -54,25 +54,21 @@
         <div class="well sidebar-nav">
           <ul class="nav nav-list">
             <li class="nav-header">Active Users</li>
-            <% User.active.each do |user| %>
-              <li><%= link_to user.name, user_path(user.id) %></li>
+            <% User.active.order("name").each do |user| %>
+              <% if user == current_user %>
+                <li><%= link_to "» #{user.name}", user_path(user.id), id: "current_user_in_list" %></li>
+              <% else %>
+                <li><%= link_to user.name, user_path(user.id) %></li>
+              <% end %>
             <% end %>
             <li class="nav-header">Inactive Users</li>
-            <% User.inactive.each do |user| %>
+            <% User.inactive.order("name").each do |user| %>
               <li><%= link_to user.name, user_path(user.id) %></li>
             <% end %>
           </ul>
         </div><!--/.well -->
       </div><!--/span-->
-      <div id="loader_circle" style="display:none;">
-        <br/>
-        <center>
-          <%= image_tag "ajax-loader.gif" %>
-          <br/>
-          <br/>
-          <p> Retrieving Your Facebook Places and Checkins...</p>
-        </center>
-      </div>
+      <%= render partial: 'shared/ajax_loader', locals: {div_id: "application"}%>
       <div id="yield_for_main_content" class="span8">
         <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
       </div><!--/span-->

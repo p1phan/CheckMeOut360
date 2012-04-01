@@ -10,7 +10,7 @@ class CheckinsController < ApplicationController
     @user.facebook_checkin_logs.each do |checkin_page|
       @checkins += Checkin.store_checkins(@user.token, checkin_page.current)
     end
-    Checkin.build_checkins(@checkins, @user.token)
+    Checkin.build_checkins(@checkins)
     redirect_to user_path(@user.id)
   end
   

@@ -5,7 +5,11 @@ class PlacesController < ApplicationController
   
   def index
     @user = User.find(params[:user_id])
-    @places = @user.places.order('created_at desc').page(params[:page])
+    places = @user.unique_places
+    @places = Kaminari.paginate_array(places).page(params[:page])
+    @places.each do |place|
+      place.get_picture_for_place
+    end
   end
   
   def map

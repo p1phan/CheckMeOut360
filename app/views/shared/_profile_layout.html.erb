@@ -5,7 +5,7 @@
     <p>
       <%= link_to "Myself »", user_path(@user.id), class: "btn btn-danger btn-large" %> &nbsp;
       <%= link_to "Map »", map_user_places_path(@user.id), class: "btn btn-success btn-large" %> &nbsp;
-      <%= link_to "Places »", user_places_path(@user.id), class: "btn btn-info btn-large" %> &nbsp;
+      <%= link_to "Places »", user_places_path(@user.id), class: "btn btn-info btn-large user_show_places" %> &nbsp;
       <%= link_to "Checkins »", user_checkins_path(@user.id), class: "btn btn-warning btn-large" %> &nbsp;
     </p>
   </div>

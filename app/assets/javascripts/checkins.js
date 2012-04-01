@@ -13,7 +13,6 @@ function resize_block(block_1, block_2) {
   $('.center_block').each(function(index, obj) {
     b1 = $(obj).children(block_1);
     b2 = $(obj).children(block_2);
-    console.log(b1.attr("class") + " || " + b2.attr("class") + " || " + b1.height() + " || " + b2.height());
     if (b1.height() > b2.height()) {
       b2.height(b1.height());
     }

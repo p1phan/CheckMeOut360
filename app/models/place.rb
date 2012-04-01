@@ -16,6 +16,17 @@ class Place < ActiveRecord::Base
     self.lat = checkin.place.location.latitude
     self.long = checkin.place.location.longitude
   end
+  
+  def get_picture_for_place
+    unless picture
+      token = User.me.token
+      @graph = Koala::Facebook::API.new(token)
+      fb_place = Facebook::Place.new(@graph.get_object(facebook_id), @graph)
+      update_attributes(name: fb_place.name, picture: fb_place.picture, category: fb_place.category, likes: fb_place.likes, checkin_count: fb_place.checkins)
+    end
+  end
+  
+  private
 
   def set_name_if_none_given
     if name.to_s.blank?
@@ -23,5 +34,4 @@ class Place < ActiveRecord::Base
       self.name = address_split.try(:first).to_s + address_split.try(:second).to_s
     end
   end
-
 end

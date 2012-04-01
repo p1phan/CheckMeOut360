@@ -1,7 +1,8 @@
 <%= render partial: 'shared/sync_checkins' %>
 <%= render partial: 'shared/profile_layout' %>
+<%= render partial: 'shared/ajax_loader', locals: {div_id: "profile"}%>
 
-<div class="row-fluid center_block no_margin span9">
+<div class="row-fluid center_block no_margin span9 profile_contents">
   <div class="checkin-blocks sub-hero-unit span3">
     <%= image_tag @user.picture %>
   </div>
@@ -16,7 +17,7 @@
 </div>
 <div class="clear"></div>
 <% if @latest_checkin %>
-  <div class="row-fluid center_block no_margin span9">
+  <div class="row-fluid center_block no_margin span9 profile_contents">
     <div class="checkin-blocks sub-hero-unit">
       <center>
         <h3>&nbsp; <%= image_tag "grey_check.png", size: "45x45" %> <b>last check in </b></h3>
