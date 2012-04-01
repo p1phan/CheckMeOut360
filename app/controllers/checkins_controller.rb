@@ -1,6 +1,7 @@
 class CheckinsController < ApplicationController
+  before_filter :access_rights, only: 'index'
+  
   def index
-    @user = User.find(params[:user_id])
     @checkins = @user.checkins.order('created_at desc').page(params[:page])
   end
   

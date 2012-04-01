@@ -1,10 +1,9 @@
 class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
-  autocomplete :place, :name
+  before_filter :access_rights, only: 'index'
   
   def index
-    @user = User.find(params[:user_id])
     places = @user.unique_places
     @places = Kaminari.paginate_array(places).page(params[:page])
     @places.each do |place|

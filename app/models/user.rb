@@ -56,6 +56,14 @@ class User < ActiveRecord::Base
     end
   end
   
+  def friend_with(user)
+    graph = Koala::Facebook::API.new(token)
+    graph.get_connection("me", "friends").each do |friend|
+      return true if friend['id'] == user.uid
+    end
+    return false
+  end
+  
   def unique_places
     places.order('created_at desc').uniq
   end
@@ -64,11 +72,13 @@ class User < ActiveRecord::Base
     User.find_by_email("quyminhphan@gmail.com")
   end
   
-  def get_profile_pic
+  def get_profile_pic(token)
     unless picture
-      token = User.me.token
-      @graph = Koala::Facebook::API.new(token)
-      update_attribute(:picture, @graph.get_picture(uid, type: "large"))
+      begin
+        @graph = Koala::Facebook::API.new(token)
+        update_attribute(:picture, @graph.get_picture(uid, type: "large"))
+      rescue Exception => e
+      end
     end
   end
 
