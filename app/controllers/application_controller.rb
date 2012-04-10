@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       @allowed_access = true if @user.privacy == User::PUBLIC
     end
   end
+  
+  def render_404(exception)
+    render :file => "#{Rails.root}/public/404.html", :status => "404 Not Found", layout: false
+  end
 end

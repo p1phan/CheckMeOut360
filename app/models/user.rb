@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
         user.location = data.work.try(:first).try(:location).try(:name)
         user.save
       end
+      user.token = access_token['credentials']['token']
     else
       user = User.new(:email => data.email)
       user.uid = access_token['uid']

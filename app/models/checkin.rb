@@ -48,7 +48,12 @@ class Checkin < ActiveRecord::Base
     token = user.token
     @checkins = []
     graph = Koala::Facebook::API.new(token)
-    facebook_checkins_for_user = graph.get_connections("me", "checkins")
+    begin
+      facebook_checkins_for_user = graph.get_connections("me", "checkins")
+    rescue Koala::Facebook::APIError => e
+      return e
+    end
+    
     while(facebook_checkins_for_user.size != 0)
       facebook_checkins_for_user.each do |facebook_checkin|
         checkin = Facebook::Checkin.new(facebook_checkin)
