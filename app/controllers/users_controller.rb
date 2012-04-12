@@ -2,12 +2,7 @@ class UsersController < ApplicationController
   before_filter only: %w(index show) do |controller|
     controller.current_ability(current_user, @user = User.find(params[:user_id] || params[:id]))
   end
-  
-  def index
-    @user = current_user
-    @places = @user.places
-  end
-  
+
   def show
     @ability.authorize! :show, @user
 

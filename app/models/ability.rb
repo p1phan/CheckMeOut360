@@ -6,7 +6,7 @@ class Ability
   end
   
   def has_access_rights(current_user, user)
-    return true if (current_user && current_user.id = user.id)
+    return true if (current_user && current_user.id == user.id)
     if user.privacy == User::PUBLIC
       return true
     elsif user.privacy == User::PROTECTED
