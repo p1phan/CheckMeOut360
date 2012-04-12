@@ -1,7 +1,6 @@
 <div class="main_content">
   <div class="hero-unit">
     <h2><small>Check Me Out</small> <%= @user.name %></h2>
-    <% if @allowed_access %>
       <p>See where I've been and where I went</p>
       <p>
         <%= link_to "Myself »", user_path(@user.id), class: "btn btn-danger btn-large" %> &nbsp;
@@ -9,8 +8,6 @@
         <%= link_to "Places »", user_places_path(@user.id), class: "btn btn-info btn-large user_show_places" %> &nbsp;
         <%= link_to "Checkins »", user_checkins_path(@user.id), class: "btn btn-warning btn-large" %> &nbsp;
       </p>
-    <% else %>
       <p><b>Sorry</b> this is a Private Profile or it is Protected and are only viewable if you are friends on Facebook</p>
-    <% end %>
   </div>
 </div>

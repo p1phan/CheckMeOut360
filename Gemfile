@@ -25,6 +25,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'netrc'
 gem "activerecord-import", ">= 0.2.0"
 gem 'kaminari'
+gem "cancan"
 
 group :devleopment do
   gem 'foreman'

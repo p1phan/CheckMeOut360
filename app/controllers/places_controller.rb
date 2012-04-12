@@ -1,9 +1,11 @@
 class PlacesController < ApplicationController
-  # GET /places
-  # GET /places.json
-  before_filter :access_rights, only: 'index'
-  
+  before_filter only: %w(index map) do |controller|
+    controller.current_ability(current_user, @user = User.find(params[:user_id] || params[:id]))
+  end
+
   def index
+    @ability.authorize! :index, @user
+
     places = @user.unique_places
     @places = Kaminari.paginate_array(places).page(params[:page])
     @places.each do |place|
@@ -12,6 +14,8 @@ class PlacesController < ApplicationController
   end
   
   def map
+    @ability.authorize! :map, @user
+
     @user = User.find(params[:user_id])
   end
 

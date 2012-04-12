@@ -1,14 +1,14 @@
 <% if current_user == @user %>
 <div class="main_content">
   <div class="hero-unit">
-    <h2><small>getting started</small> Here is your security and privacy settings </h2>
+    <h2><%=image_tag "#{@user.privacy}_lock.png", id: "privacy_lock"%><small>getting started</small> Here is your security and privacy settings </h2>
     <div id="privacy_description_block">
       <p id="private"><i><small><b>&nbsp; private »</b></small></i> No one can see your profile, PERIOD</p>
       <p id="protected"><i><small><b>&nbsp; protected (default) »</b></small></i> Only friends can view your profile</p>
       <p id="public"><i><small><b>&nbsp; public »</b></small></i> EVERYONE can view your profile</p>
     </div>
     <%= simple_form_for @user do |f| %>    
-    <%= f.input :privacy, label: false, collection: User::PRIVACY %>
+    <%= f.input :privacy, label: false, collection: User::PRIVACY, priority: User::PROTECTED, include_blank: false  %>
       <br/>
       <%= f.button :submit, class: "btn btn-success btn-large", value: "Update Settings" %>
     <% end %>
@@ -17,7 +17,7 @@
 <% else %>
 <div class="main_content">
   <div class="hero-unit">
-    <h3><small>security setting</small> <%=@user.name + "'s"%> privacy setting is set to <b style="color:red;"><%=@user.privacy.upcase%></b> </h3>
+    <h3><%=image_tag "#{@user.privacy}_lock.png", id: "privacy_lock"%><small>security setting</small> <%=@user.name + "'s"%> privacy setting is set to <b style="color:red;"><%=@user.privacy.upcase%></b> </h3>
   </div>
 </div>
 <% end %>
