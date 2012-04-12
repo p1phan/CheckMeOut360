@@ -15,6 +15,7 @@ class Ability
         return false
       end
     else
+      return false unless current_user
       return true if current_user.id = user.id
     end
     return false
