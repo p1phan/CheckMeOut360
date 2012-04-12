@@ -26,6 +26,18 @@ class Place < ActiveRecord::Base
     end
   end
   
+  def self.categories
+    categories = []
+    Place.select('distinct category').each do |place|
+      categories << place.category
+    end
+    return categories
+  end
+  
+  def self.places_for_categories(category)
+    Place.find_all_by_category(category)
+  end
+
   private
 
   def set_name_if_none_given

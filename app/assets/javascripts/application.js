@@ -8,5 +8,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require markerclusterer
+//= require highcharts
 //= require init
 //= require_tree .

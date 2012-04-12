@@ -131,5 +131,18 @@ class Checkin < ActiveRecord::Base
       return User.new
     end
   end
+  
+  def self.oldest_checkin
+    Checkin.order("created_at").first
+  end
+
+  def self.checkins_count_by_month(year)
+    checkins_hash = Checkin.where("date(created_at) > ? and date(created_at) < ?", DateTime.new(year), DateTime.new(year+1)).group_by{ |t| t.created_at.month }
+    month_array = [0,0,0,0,0,0,0,0,0,0,0,0]
+    checkins_hash.each do |key,value|
+      month_array[key-1] = value.count
+    end
+    return month_array
+  end
 
 end

@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :all_users
+  
+  def all_users
+    @active ||= User.active.order("name")
+    @inactive ||= User.inactive.order("name")
+  end
 
   def get_user
     @user = User.find(params[:user_id] || params[:id])
