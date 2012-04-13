@@ -367,12 +367,83 @@
                   ]
                 }]
               });
-            });
+              
+              <% top_places = Place.top_places %>
+              chart = new Highcharts.Chart({
+                  chart: {
+                    renderTo: 'checkin_place_chart',
+                    type: 'bar'
+                  },
+                  title: {
+                    text: 'Top Places'
+                  },
+                  subtitle: {
+                    text: 'Highest Visits'
+                  },
+                  xAxis: {
+                    categories: [
+                      <% top_places.keys.each_with_index do |key,index| %>
+                        <% if index == Place.categories.length-1 %>
+                          "<%= key %>"
+                          <% break %>
+                        <% end %>
+                        "<%= key %>",
+                      <% end %>
+                    ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  yAxis: {
+                    min: 0,
+                    title: {
+                      text: 'Checkin Count',
+                      align: 'high'
+                    }
+                  },
+                  tooltip: {
+                    formatter: function() {
+                      return ''+
+                        this.series.name +': '+ this.y;
+                    }
+                  },
+                  plotOptions: {
+                    bar: {
+                      dataLabels: {
+                        enabled: true
+                      }
+                    }
+                  },
+                  legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -100,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: '#FFFFFF',
+                    shadow: true
+                  },
+                  credits: {
+                    enabled: false
+                  },
+                    series: [{
+                    name: 'Most Visited Places',
+                    data: <%= top_places.values %>
+                  }]
+                });
+  
+  });
     </script>
+
   <div class="row-fluid center_block checkin-blocks sub-hero-unit">
     <div id="checkins_chart" ></div>
   </div>
   <div class="row-fluid center_block checkin-blocks sub-hero-unit">
     <div id="places_category_chart" ></div>
+  </div>
+  <div class="row-fluid center_block checkin-blocks sub-hero-unit">
+    <div id="checkin_place_chart" ></div>
   </div>
 </div>

@@ -19,12 +19,10 @@ CHECK_ME_OUT_360 = {
         $('#nav_options').children('li').removeClass("active");
         $('#help_tab').addClass("active"); 
       }
-      
-      
-      
-      
-      
-      
+      else if (pathname.indexOf('home') >= 0) {
+        $('#nav_options').children('li').removeClass("active");
+        $('#home_tab').addClass("active"); 
+      }
     }
   }
 };

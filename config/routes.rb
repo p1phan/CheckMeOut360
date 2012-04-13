@@ -29,7 +29,7 @@ CheckMeOut360::Application.routes.draw do
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   
-  root :to => 'home#index'
+  root :to => 'home#about'
   
   
   # The priority is based upon order of creation:

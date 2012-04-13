@@ -37,6 +37,17 @@ class Place < ActiveRecord::Base
   def self.places_for_categories(category)
     Place.find_all_by_category(category)
   end
+  
+  def self.top_places
+    top_places = {}
+    places_hash = Checkin.all.group_by{|c| c.place_id}
+    places_hash.each do |key,value|
+      if value.count > 1
+        top_places["#{Place.find(key).name}"] = value.count
+      end
+    end
+    return Hash[top_places.sort{|a,b| a.last<=>b.last}]
+  end
 
   private
 

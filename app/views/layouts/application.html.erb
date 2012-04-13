@@ -21,12 +21,13 @@
         <a class="brand" href="/">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
         <div class="nav-collapse">
           <ul id="nav_options" class="nav">
-            <li class="active" id="home_tab">
+            <li class="active" id="profile_tab">
               <% if current_user %>
-                <%= link_to "Home", user_path(current_user) %>
-              <% else %>
-                <%= link_to "Home", home_index_path %>
+                <%= link_to "Profile", user_path(current_user) %>
               <% end %>
+            </li>
+            <li id="home_tab">
+              <%= link_to "Statistics", home_index_path %>
             </li>
             <li id="about_tab"><%= link_to "About", about_home_index_path %></li>
             <li id="contact_tab"><%= link_to "Contacts", contact_home_index_path %></li>
