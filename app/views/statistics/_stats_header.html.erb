@@ -1,0 +1,16 @@
+<div id="stats_header" class="main_content">
+  <div class="hero-unit">
+    <h2><small>Check Me Out</small> 360 </h2>
+      <p>
+        <%= link_to (image_tag "graphs.png"), "#", id: "show_me_graphs" %> » Show me some cool graphs!
+      </p>
+      <label class="stats_selection">
+        &rsaquo; <%=link_to "total checkins", line_statistics_path %><br/>
+        &rsaquo; <%=link_to "places categories", pie_statistics_path %><br/>
+        &rsaquo; <%=link_to "top places", bar_statistics_path %><br/>
+      </label>
+      
+      <br/>
+      <p><%= link_to (image_tag "maps.png"), map_statistics_path, id: "show_me_maps" %> » Let me see maps!</p>
+  </div>
+</div>

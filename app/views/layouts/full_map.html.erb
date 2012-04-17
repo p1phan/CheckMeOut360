@@ -54,30 +54,12 @@
   <div class="container-fluid content">
     <div class="page-header">
       <div id="flash"></div> 
-      <center><h1 id="main_page_header">CheckMeOut-360 <small>by Quy Phan and Phu Phan</small></h1></center>
+      <center><h1 id="main_page_header">CheckMeOut-360 <small>by Quy Phan and Phu Phan</small><br/><h3>Full Map View</h3></h1></center>
     </div>
     
     <div class="row-fluid">
-      <div class="span3">
-        <div class="well sidebar-nav">
-          <ul class="nav nav-list">
-            <li class="nav-header">Active Users</li>
-            <% @active.each do |user| %>
-              <% if user == current_user %>
-                <li><%= link_to "» #{user.name}", user_path(user.id), id: "current_user_in_list" %></li>
-              <% else %>
-                <li><%= link_to user.name, user_path(user.id) %></li>
-              <% end %>
-            <% end %>
-            <li class="nav-header">Inactive Users</li>
-            <% @inactive.each do |user| %>
-              <li><%= link_to user.name, user_path(user.id) %></li>
-            <% end %>
-          </ul>
-        </div><!--/.well -->
-      </div><!--/span-->
       <%= render partial: 'shared/ajax_loader', locals: {div_id: "application"}%>
-      <div id="yield_for_main_content" class="span8">
+      <div id="yield_for_main_content">
         <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
       </div><!--/span-->
     </div><!--/row-->

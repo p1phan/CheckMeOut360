@@ -1,6 +1,6 @@
 CHECK_ME_OUT_360 = {
   common: {
-    init: function() {      
+    init: function() {
       // application-wide code
       $('#login_logout_top_menu').click(function(obj) {
         $('#yield_for_main_content').fadeOut();
@@ -19,9 +19,9 @@ CHECK_ME_OUT_360 = {
         $('#nav_options').children('li').removeClass("active");
         $('#help_tab').addClass("active"); 
       }
-      else if (pathname.indexOf('home') >= 0) {
+      else if (pathname.indexOf('statistics') >= 0) {
         $('#nav_options').children('li').removeClass("active");
-        $('#home_tab').addClass("active"); 
+        $('#statistics_tab').addClass("active"); 
       }
     }
   }

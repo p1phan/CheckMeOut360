@@ -26,10 +26,21 @@ CheckMeOut360::Application.routes.draw do
       end
     end
   end
+  
+  resources :statistics, only: [:index, :map, :graph] do
+    collection do
+      get 'map'
+      get 'graph'
+      get 'pie'
+      get 'line'
+      get 'bar'
+      get 'all_places'
+    end
+  end
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   
-  root :to => 'home#about'
+  root :to => 'home#index'
   
   
   # The priority is based upon order of creation:

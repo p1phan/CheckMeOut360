@@ -20,8 +20,8 @@ CHECK_ME_OUT_360.places = {
       });
     });
     var map = init_google_map(default_lat, default_long, "map_canvas");
-    get_places_from_controller();
-    drop(map);
+    var places = get_places_from_controller();
+    drop(places, map);
   }
 }
 
@@ -42,6 +42,7 @@ function cluster_marker() {
 
 function get_places_from_controller() {
   var wall_id = $('#current_user_profile').text();
+  var places;
   $.ajax({
     dataType: 'json',
     url: '/users/' + wall_id + '/places/all_places',
@@ -49,9 +50,10 @@ function get_places_from_controller() {
     data: {id: wall_id},
     async: false,
     success: function(data,textStatus) {
-      places_holder = data;
+      places = data;
     }
   });
+  return places;
 }
 
 function populate_lat_long(lat, lon) {
@@ -63,28 +65,17 @@ function populate_lat_long(lat, lon) {
   $("#place_longitude").val(lon);
 }
 
-function place_marker(map, i) {
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng($(places_holder[i]).attr("lat"), $(places_holder[i]).attr("long")),
+function place_marker(map, place) {
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng($(place).attr("lat"), $(place).attr("long")),
     map: map,
-    title:  ("<h3>" + $(places_holder[i]).attr("name")),
+    title:  ("<h3>" + $(place).attr("name")),
     animation: google.maps.Animation.DROP,
     draggable:false
   });
   return marker;
 }
-// 
-// function drop_single_marker(lat,lon,title) {
-//   marker = new google.maps.Marker({
-//     position: new google.maps.LatLng(lat,lon),
-//     map: map,
-//     title:  title,
-//     animation: google.maps.Animation.DROP,
-//     draggable:false
-//   });
-//   iterator++;
-//   return marker;
-// }
+
 function toggle_bounce(marker) {
   if (marker != undefined) {
     if (marker.getAnimation() != null) {
@@ -109,11 +100,11 @@ function add_marker_window_listener(map, marker_to_drop) {
     infowindow.open(map, marker_to_drop);
 }
 
-function drop(map) {
-  iterator = 0;
+function drop(places, map) {
+  var iterator = 0;
   var marker_array = [];
-  for (var i = 0; i < places_holder.length; i++) {
-    var marker = place_marker(map, iterator);
+  for (var i = 0; i < places.length; i++) {
+    var marker = place_marker(map, places[iterator]);
     iterator++;
     google.maps.event.addListener(marker, 'click', function (a) {
       add_marker_window_listener(map, this);
