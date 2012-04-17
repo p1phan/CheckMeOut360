@@ -1,15 +1,16 @@
-<% @all_checkins.limit(5).each_with_index do |checkin, index| %>
-  <p>
-    <%= checkin.message %>
-    <b>With:</b>
-    <% checkin.users.each do |user| %>
-      <%= link_to user.profile.full_name, wall_path(user.wall.wall_name), :class => "user_checkin_list"%>
-    <% end %>
-    <b>At</b> <%= checkin.place.name %>
-    <b>On</b> <%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%>
-    <% if index == 4 %>
-      <button id="close_news_feed_button" class="btn danger pull-right">Close</button>
-    <% end %>
-    <hr/>
-  </p>
-<% end %>
+<div id="news_feed" class="hero-unit">
+  <center><%=image_tag "news.png", size:"50x50" %><h2>Whats Going On?</h2></center> 
+  <hr/>
+  <% @all_checkins.each_with_index do |checkin, index| %>
+    <p>
+      <%= checkin.message %>
+      <b>With:</b>
+      <% checkin.users.each do |user| %>
+        <%= link_to user.name, user_path(user), :class => "user_checkin_list" %>
+      <% end %>
+      <b>At</b> <small style="font-size: 15px;"><%= checkin.place.name %></small>
+      <b>On</b> <small style="font-size: 15px;"><%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%></small>
+      <hr/>
+    </p>
+  <% end %>
+</div>
