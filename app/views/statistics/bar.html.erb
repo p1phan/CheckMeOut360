@@ -277,7 +277,7 @@
                 xAxis: {
                   categories: [
                     <% top_places.keys.each_with_index do |key,index| %>
-                      <% if index == Place.categories.length-1 %>
+                      <% if index == top_places.length-1 %>
                         "<%= key %>"
                         <% break %>
                       <% end %>
