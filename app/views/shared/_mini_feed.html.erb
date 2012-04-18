@@ -1,13 +1,18 @@
 <div id="mini_feed">
   <% @all_checkins.each_with_index do |checkin, index| %>
     <a>
-      <%= checkin.message %>
-      <b>With:</b>
-      <% checkin.users.each do |user| %>
-        <%= link_to user.name, user_path(user), :class => "user_checkin_list" %>
+      <% checkin.users.each_with_index do |user, index| %>
+        <% if index > 3 %>
+          <small style="font-size: 10px;">...</small>
+          <% break %>
+        <% elsif index == checkin.users.count-1 %>
+          <small style="font-size: 10px;"><%= link_to user.name, user_path(user), :class => "user_checkin_list" %></small>
+        <% else %>
+          <small style="font-size: 10px;"><%= link_to user.name, user_path(user), :class => "user_checkin_list" %></small>,
+        <% end %>
       <% end %>
-      <b>At</b> <small style="font-size: 10px;"><%= checkin.place.name %></small>
-      <b>On</b> <small style="font-size: 10px;"><%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%></small>
+      <%= image_tag "marker_icon.png" %><small style="font-size: 10px;"><%= checkin.place.name %></small>
+      <b>On</b> <small style="font-size: 10px;"><%= checkin.created_at.strftime("on %A") + " #{day_format(checkin.created_at)}" %></small>
       <hr/>
     </a>
   <% end %>

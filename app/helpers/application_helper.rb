@@ -23,5 +23,23 @@ module ApplicationHelper
   def wall_for_user(user_id)
     User.find(user_id).wall.slug
   end
+  
+  def day_format(date)
+    today = Time.now
+    date_diff = today.day - date.day
+    if date.month == today.month
+      if date_diff > 21
+        return "4 weeks ago"
+      elsif date_diff > 14
+        return "3 weeks ago"
+      elsif date_diff > 7
+        return  "a week ago"
+      else
+        return ""
+      end
+    else
+      return "#{date.month - today.month} month ago"
+    end
+  end
 
 end
