@@ -1,25 +1,65 @@
-<div class="span8">
-  <%= image_tag "rails.jpg", class: "home_images" %>
-  <br/>
-  <hr/>
-  <div class="main_content">
-    <div class="hero-unit">
-      <center><%=image_tag "instruction.png", size:"50x50" %><h2>Instructions</h2></center>
-      <hr/>
-      <% if current_user %>
-      <h3><small>Getting Started &#9658;</small> <%= link_to "Profile Page", user_path(current_user) %></h3>
-        <h3><small>Then &#9658;</small> You will be able to see your <%= link_to "Profile", user_path(current_user) %> and set your <%= link_to "Security Settings", user_path(current_user) %> </h3>
-        <h3><small>Finally &#9658;</small> View a <%= link_to "Map", map_user_places_path(current_user) %> of where you been, the <%= link_to "Places", user_places_path(current_user) %> and your <%= link_to "Checkins", user_places_path(current_user) %> </h3>
-      <% else %>
-        <h3><small>Getting Started &#9658;</small> <%= link_to "Sign in »", user_omniauth_authorize_path(:facebook) %></h3>
-        <h3><small>Then &#9658;</small> You will be able to see your <small>Profile</small> and set your <small>Security Settings</small></h3>
-        <h3><small>Finally &#9658;</small> View a <small>Map</small> of where you been, the <small>Places</small> and your <small>Checkins</small> </h3>
-      <% end %>
-      <h3><small>Just for fun &#9658;</small> See how everything stack up with some <%= link_to "Data", map_statistics_path %> and <%= link_to "Charts", graph_statistics_path %></h3>
+<section id="collapse">
+  <div class="accordion" id="accordion2">
+    <div class="accordion-group">
+      <div class="accordion-heading" id="about_accordion_head">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+          <h2><%= image_tag "about_icon.png", class: "accordion_header_img" %>About</h2>
+        </a>
+      </div>
+      <div id="collapseOne" class="accordion-body in">
+        <div class="accordion-inner">
+          <%= render partial: "overview" %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading" id="technical_accordion_head">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+          <h2><%= image_tag "technical_icon.png", class: "accordion_header_img" %>Technical Overview</h2>
+        </a>
+      </div>
+      <div id="collapseTwo" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <%= render partial: "technical" %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading" id="author_accordion_head">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+          <h2><%= image_tag "author_icon.png", class: "accordion_header_img" %>About the Author</h2>
+        </a>
+      </div>
+      <div id="collapseThree" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <%= render partial: "myself" %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading" id="getting_started_accordion_head">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+          <h2><%= image_tag "start_icon.png", class: "accordion_header_img" %>Getting Started</h2>
+        </a>
+      </div>
+      <div id="collapseFour" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <%= render partial: "getting_started" %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-heading" id="news_accordion_head">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+          <h2><%= image_tag "news_icon.png", class: "accordion_header_img" %>News Feed</h2>
+        </a>
+      </div>
+      <div id="collapseFive" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <%= render partial: "news_feed" %>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <%= render partial: "shared/news_feed" %>
-  
-</div>
+</section>
 

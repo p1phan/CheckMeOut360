@@ -6,6 +6,7 @@ CHECK_ME_OUT_360 = {
         $('#yield_for_main_content').fadeOut();
         $('#application_loader_circle').fadeIn();
       });
+
       var pathname = window.location.pathname;
       if (pathname.indexOf('about') >= 0) {
         $('#nav_options').children('li').removeClass("active");

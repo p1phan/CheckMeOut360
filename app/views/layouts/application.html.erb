@@ -69,10 +69,8 @@
                 <li><%= link_to user.name, user_path(user.id) %></li>
               <% end %>
             <% end %>
-            <li class="nav-header">Inactive Users</li>
-            <% @inactive.each do |user| %>
-              <li><%= link_to user.name, user_path(user.id) %></li>
-            <% end %>
+            <li class="nav-header">Whats Going On?</li>
+              <%= render partial: "shared/mini_feed" %>
           </ul>
         </div><!--/.well -->
       </div><!--/span-->

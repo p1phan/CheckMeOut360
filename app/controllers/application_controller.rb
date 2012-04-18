@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :all_users
+  before_filter :news
   
   def all_users
     @active ||= User.active.order("name")
     @inactive ||= User.inactive.order("name")
+  end
+  
+  def news
+    @all_checkins = Checkin.find(:all, limit: 10, order: "created_at desc")
   end
 
   def get_user

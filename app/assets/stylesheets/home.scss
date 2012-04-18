@@ -1,0 +1,26 @@
+body.home {
+  .hero-unit {
+    margin-bottom: 0px;
+  }
+  
+  .accordion {
+    #about_accordion_head {
+      background-color: #D9EDF7;
+    }
+    #getting_started_accordion_head {
+      background-color: #dff0d8;
+    }
+    #news_accordion_head {
+      background-color: #aff1d8;
+    }
+    #technical_accordion_head {
+      background-color: #fcf8e3;
+    }
+    #author_accordion_head {
+      background-color: #f2dede;
+    }
+    .accordion_header_img {
+      padding-right: 10px;
+    }
+  }
+}
