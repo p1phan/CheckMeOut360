@@ -8,8 +8,10 @@ class PlacesController < ApplicationController
 
     places = @user.unique_places
     @places = Kaminari.paginate_array(places).page(params[:page])
+    token = User.me.token
+    graph = Koala::Facebook::API.new(token)
     @places.each do |place|
-      place.get_picture_for_place
+      place.get_picture_for_place(graph)
     end
   end
   

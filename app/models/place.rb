@@ -17,18 +17,19 @@ class Place < ActiveRecord::Base
     self.long = checkin.place.location.longitude
   end
   
-  def get_picture_for_place
+  def get_picture_for_place(graph)
     unless picture
-      token = User.me.token
-      @graph = Koala::Facebook::API.new(token)
-      fb_place = Facebook::Place.new(@graph.get_object(facebook_id), @graph)
+      fb_place = Facebook::Place.new(graph.get_object(facebook_id), graph)
       update_attributes(name: fb_place.name, picture: fb_place.picture, category: fb_place.category, likes: fb_place.likes, checkin_count: fb_place.checkins)
     end
   end
   
   def self.categories
     categories = []
-    Place.select('distinct category').each do |place|
+    token = User.me.token
+    graph = Koala::Facebook::API.new(token)
+    Place.all.each do |place|
+      place.get_picture_for_place(graph)
       categories << place.category
     end
     return categories
