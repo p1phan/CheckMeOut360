@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    @all_checkins = Checkin.find(:all, limit: 10, order: "created_at desc")
+    @all_checkins = Kaminari.paginate_array(Checkin.find(:all, order: "created_at desc")).page(params[:page])
   end
   
   def about
@@ -12,5 +12,4 @@ class HomeController < ApplicationController
   
   def help
   end
-
 end

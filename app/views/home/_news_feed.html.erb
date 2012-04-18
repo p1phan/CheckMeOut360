@@ -1,5 +1,5 @@
 <div id="news_feed" class="hero-unit">
-  <center><%=image_tag "news.png", size:"50x50" %><h2>Whats Going On?</h2></center> 
+  <h2><center><%=image_tag "news.png", size:"50x50" %> Whats Going On?</center></h2>
   <hr/>
   <% @all_checkins.each_with_index do |checkin, index| %>
     <p>
@@ -13,4 +13,5 @@
       <hr/>
     </p>
   <% end %>
+  <center><%= paginate @all_checkins %></center>
 </div>
