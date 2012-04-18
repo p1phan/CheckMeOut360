@@ -26,7 +26,7 @@ class Checkin < ActiveRecord::Base
           if facebook_user.new_record?
             facebook_user.uid = user.id
             facebook_user.name = user.name
-            facebook_user.email = user.name.downcase.gsub(" ", "")+"#{rand(10).to_s}" + "@checkmeout360.com"
+            facebook_user.email = user.name.downcase.gsub(" ", "#{rand(10).to_s}")+"#{rand(10).to_s}" + "@checkmeout360.com"
             facebook_user.password = user.name.downcase.gsub(" ", "")
             facebook_user.password_confirmation = user.name.downcase.gsub(" ", "")
             # facebook_user.remote_profile_picture_url = graph.get_picture(user.id, :type => "large")
