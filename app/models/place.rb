@@ -24,11 +24,13 @@ class Place < ActiveRecord::Base
     end
   end
   
-  def self.categories
+  def self.categories(time)
+    rounded_time = Time.local(time.year, time.month, 1, 0, 0)
+    max_time = rounded_time + 1.month
     categories = []
     token = User.me.token
     graph = Koala::Facebook::API.new(token)
-    Place.all.each do |place|
+    Place.where("created_at > ? and created_at < ?", rounded_time, max_time).each do |place|
       place.get_picture_for_place(graph)
       categories << place.category
     end

@@ -294,8 +294,9 @@
                 type: 'pie',
                 name: 'places category',
                 data: [
-                  <% Place.categories.each_with_index do |category, index| %>
-                    <% if index == Place.categories.length-1 %>
+                  <% categories = Place.categories(Time.now) %>
+                  <% categories.each_with_index do |category, index| %>
+                    <% if index == categories.length-1 %>
                       ['<%= "#{category}" %>',   <%= Place.places_for_categories(category).count %>]
                       <% break %>
                     <% end %>
