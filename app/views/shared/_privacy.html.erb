@@ -1,23 +1,35 @@
 <% if current_user == @user %>
-<div class="main_content">
-  <div class="hero-unit">
-    <h2><%=image_tag "#{@user.privacy}_lock.png", id: "privacy_lock"%><small>getting started</small> Here is your security and privacy settings </h2>
-    <div id="privacy_description_block">
-      <p id="private"><i><small><b>&nbsp; private »</b></small></i> No one can see your profile, PERIOD</p>
-      <p id="protected"><i><small><b>&nbsp; protected (default) »</b></small></i> Only friends can view your profile</p>
-      <p id="public"><i><small><b>&nbsp; public »</b></small></i> EVERYONE can view your profile</p>
+  <div class="accordion_2" id="accordion2">
+    <div class="accordion-group">
+      <div class="accordion-heading" id="news_accordion_head">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapseSix">
+          <h2><center>Security Setting</center></h2>
+        </a>
+      </div>
+      <div id="collapseSix" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <div class="hero-unit">
+            <h2><%=image_tag "#{@user.privacy}_lock.png", id: "privacy_lock"%><small>getting started</small> Here is your security and privacy settings </h2>
+            <div id="privacy_description_block">
+              <p id="private"><i><small><b>&nbsp; private »</b></small></i> No one can see your profile, PERIOD</p>
+              <p id="protected"><i><small><b>&nbsp; protected (default) »</b></small></i> Only friends can view your profile</p>
+              <p id="public"><i><small><b>&nbsp; public »</b></small></i> EVERYONE can view your profile</p>
+            </div>
+            <%= simple_form_for @user do |f| %>    
+            <%= f.input :privacy, label: false, collection: User::PRIVACY, priority: User::PROTECTED, include_blank: false  %>
+              <br/>
+              <%= f.button :submit, class: "btn btn-success btn-large", value: "Update Settings" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <%= simple_form_for @user do |f| %>    
-    <%= f.input :privacy, label: false, collection: User::PRIVACY, priority: User::PROTECTED, include_blank: false  %>
-      <br/>
-      <%= f.button :submit, class: "btn btn-success btn-large", value: "Update Settings" %>
-    <% end %>
   </div>
-</div>
 <% else %>
-<div class="main_content">
-  <div class="hero-unit">
-    <h3><%=image_tag "#{@user.privacy}_lock.png", id: "privacy_lock"%><small>security setting</small> <%=@user.name + "'s"%> privacy setting is set to <b style="color:red;"><%=@user.privacy.upcase%></b> </h3>
+  <div class="main_content">
+    <div class="hero-unit">
+      <h3><%=image_tag "#{@user.privacy}_lock.png", id: "privacy_lock"%><small>security setting</small> <%=@user.name + "'s"%> privacy setting is set to <b style="color:red;"><%=@user.privacy.upcase%></b> </h3>
+    </div>
   </div>
-</div>
 <% end %>
+<br/  >
