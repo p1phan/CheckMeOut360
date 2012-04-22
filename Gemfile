@@ -30,6 +30,7 @@ gem "cancan"
 group :devleopment do
   gem 'foreman'
   gem 'mongrel', "~>1.2.0.pre2"
+  gem 'thin'
 end
 
 # This is outside the test because we need it to run factory girl in the seeds.rb
