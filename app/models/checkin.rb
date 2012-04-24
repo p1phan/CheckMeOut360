@@ -24,7 +24,8 @@ class Checkin < ActiveRecord::Base
           facebook_user_tags.each do |user|
             facebook_user = find_or_init_user(user.id)
             if facebook_user.new_record?
-              facebook_user = populate_user(user)
+              facebook_user.populate_user(user)
+              facebook_user.save!
               @all_users << facebook_user
             end
             facebook_checkin.users << facebook_user
@@ -107,17 +108,7 @@ class Checkin < ActiveRecord::Base
       return User.new
     end
   end
-  
-  def populate_user(user)
-    facebook_user.uid = user.id
-    facebook_user.name = user.name
-    facebook_user.email = user.name.downcase.gsub(" ", "#{rand(10).to_s}")+"#{rand(10).to_s}" + "@checkmeout360.com"
-    facebook_user.password = user.name.downcase.gsub(" ", "")
-    facebook_user.password_confirmation = user.name.downcase.gsub(" ", "")
-    facebook_user.save!
-    return facebook_user
-  end
-  
+
   def self.oldest_checkin
     Checkin.order("created_at").first
   end

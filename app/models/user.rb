@@ -82,5 +82,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def populate_user(user)
+    self.uid = user.id
+    self.name = user.name
+    self.email = user.name.downcase.gsub(" ", "#{rand(10).to_s}")+"#{rand(10).to_s}" + "@checkmeout360.com"
+    self.password = user.name.downcase.gsub(" ", "")
+    self.password_confirmation = user.name.downcase.gsub(" ", "")
+  end
 
 end
