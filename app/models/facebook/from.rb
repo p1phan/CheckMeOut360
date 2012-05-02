@@ -4,7 +4,7 @@ class Facebook::From < Hashie::Trash
 
   def initialize(from_hash)
     from_hash.each do |key,value|
-      self[key.to_sym] = value
+      self[key.to_sym] = value if self.respond_to?(key)
     end
   end
 

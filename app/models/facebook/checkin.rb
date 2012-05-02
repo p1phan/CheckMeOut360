@@ -22,7 +22,7 @@ class Facebook::Checkin < Hashie::Trash
       elsif key == "from"
         self[key.to_sym] = Facebook::From.new(value)
       else
-        self[key.to_sym] = value
+        self[key.to_sym] = value if self.respond_to?(key)
       end
     end
   end
