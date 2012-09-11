@@ -1,19 +1,21 @@
 <%= render partial: 'shared/profile_layout' %>
-
+<div class="clearfix"></div>
 <center><%= paginate @checkins %></center>
 
 <% @checkins.each do |checkin| %>
-  <center class="row-fluid center_block span9">
-    <div class="checkin-blocks mini-hero-unit span1"></div>
-    <div class="checkin-blocks sub-hero-unit span6">
-      <h3><small>>></small> <%= checkin.message || "Checkin!" %></h3>
-      <h3><small>@</small> <%= checkin.place.name %></h3>
-      <h3><small>On</small> <%= checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%></h3>
-      <h4><small>With</small>
-        <% checkin.users.each do |user| %>
-          <%= link_to "#{user.name} »", user_path(user.id), :class => "btn btn-warning btn-small bottom-space" %>
-        <% end %>
-      </h4>
-    </div>
-  </center>
+<div class="list-widget">
+  <a><%= image_tag "marker_icon.png", size: "42x42", class: "avatar left" %>
+  <div class="list-head">
+    <h3><a class="no-dec"><%= checkin.message || "Checkin!" %></a></h3>
+    <div class="no-dec list-meta">Where · <a><%= checkin.place.name %></a></div>
+    <p><small>On</small> <%= checkin.created_at.strftime("%A %B %d, %Y at %I:%M %p")%></p>
+  </div>
+  <div class="list_pad extra">
+  <ul>
+    <% checkin.users.each do |user| %>
+      <%= link_to "#{user.name} »", user_path(user.id), class: "list-view" %>
+    <% end %>
+  </ul>
+  </div>
+</div>
 <% end %>

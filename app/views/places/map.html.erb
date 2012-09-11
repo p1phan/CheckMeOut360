@@ -1,5 +1,6 @@
 <%= render partial: 'shared/profile_layout' %>
-
+<div class="clearfix"></div>
+<hr/>
 <div id="profile_maps" class="profile_contents">
   <div id="current_user_profile" style="display:none;"><%=@user.id%></div>
   <%= render :partial => "google_map"%>

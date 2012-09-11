@@ -1,0 +1,27 @@
+<div class="list-widget">
+  <a><%= image_tag "marker_icon.png", size: "42x42", class: "avatar left" %>
+  <div class="list-head">
+    <h3><a class="no-dec">Latest Checkin</a></h3>
+      <div class="no-dec list-meta"> 
+        <a>Total Checkins</a> · <%= @checkins.count %>
+      </div>
+  </div>
+  <ul>
+      <li>
+          <div>
+            <a class="purple no_dec">Message »</a><i class="grey"> <%= @latest_checkin.message || "Checkin!" %></i>
+          </div>
+      </li>
+      <li>
+          <div>
+            <a class="purple no_dec">Place »</a><i class="grey"> <%= @latest_checkin.place.name %></i>
+          </div>
+      </li>
+      <li>
+          <div>
+            <a class="purple no_dec">Time »</a><i class="grey"> <%= @latest_checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%></i>
+          </div>
+      </li>
+      <li><%= link_to "View All Checkins ›", user_checkins_path(current_user), class: "list-view" %></li>
+  </ul>
+</div>

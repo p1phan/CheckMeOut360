@@ -139,7 +139,7 @@ body {
   background-color: #ffffff;
 }
 a {
-  color: #0088cc;
+  color: #2b3884;
   text-decoration: none;
 }
 a:hover {
@@ -2996,7 +2996,7 @@ input[type="submit"].btn.btn-mini {
 }
 .pagination {
   height: 36px;
-  margin: 18px 0;
+  margin-top: 24px;
 }
 .pagination ul {
   display: inline-block;

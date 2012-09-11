@@ -3,7 +3,6 @@ class StatisticsController < ApplicationController
   end
   
   def map
-    render layout: 'full_map'
   end
   
   def line

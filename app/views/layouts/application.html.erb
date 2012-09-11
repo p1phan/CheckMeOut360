@@ -21,7 +21,7 @@
         <a class="brand" href="/">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
         <div class="nav-collapse">
           <ul id="nav_options" class="nav">
-            <li class="active" id="profile_tab">
+            <li id="profile_tab">
               <% if current_user %>
                 <%= link_to "Profile", user_path(current_user) %>
               <% end %>
@@ -32,7 +32,7 @@
               <%= link_to "Statistics", statistics_path %>
             </li>
           </ul>
-          <p id="login_logout_top_menu" class="navbar-text pull-right">
+          <p class="login_logout_top_menu navbar-text pull-right">
             <% if current_user %>
               <%= link_to "Logout of #{current_user.name}", destroy_user_session_path, :method => :delete %>
             <% else %>
@@ -50,40 +50,39 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid content">
+  <div id="main_page" class="container-fluid content">
     <div class="page-header">
       <div id="flash"></div> 
-      <center><h1 id="main_page_header">CheckMeOut-360 <small>by Quy Phan and Phu Phan</small></h1></center>
+      <center id="mini_title_bar">
+        <% if current_user %>
+          <div class="title_block">
+            <%= image_tag current_user.picture, size: "100x100" %>
+            <span style="color: white;"><%= current_user.name %> +</span><span style="color: #990B00"> <%= current_user.location %> +</span><span style="color: #007899"> Total Checkins »</span><span style="color: #129900"><%=current_user.checkins.count %></span>
+          </div>
+        <% else %>
+          <br/><br/>
+          <span id="title_header">CheckMeOut 360</span>
+          <span style="color:white"><br/><small>Quy Phan</small></span>
+        <% end %>
+      </center>
     </div>
-    <div class="row-fluid">
-      <div class="span3">
-        <div class="well sidebar-nav">
-          <ul class="nav nav-list">
-            <li class="nav-header">Active Users</li>
-            <% @active.each do |user| %>
-              <% if user == current_user %>
-                <li><%= link_to "» #{user.name}", user_path(user.id), id: "current_user_in_list" %></li>
-              <% else %>
-                <li><%= link_to user.name, user_path(user.id) %></li>
-              <% end %>
-            <% end %>
-             <li class="nav-header">Inactive Users</li>
-             <% @inactive.each do |user| %>
-               <li><%= link_to user.name, user_path(user.id) %></li>
-             <% end %>
-          </ul>
-        </div><!--/.well -->
-      </div><!--/.span -->
+    <div id="inner_body" class="row-fluid">
       <%= render partial: 'shared/ajax_loader', locals: {div_id: "application"}%>
-      <div id="yield_for_main_content" class="span8">
+      <div id="yield_for_main_content">
         <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
       </div>
+      
     </div><!--/row-->
   </div><!--/.fluid-container-->
   </body>
-  
   <footer id="main_footer">
-    <hr/>
-    <p>&copy; Quy Phan and Phu Phan</p>
+    <p>
+      <span style="color: #007899;">Software</span>
+      <span id="main_page_plus"> + </span>
+      <span style="color: #129900;">Develop</span>
+      <span id="main_page_plus"> + </span>
+      <span style="color: #990B00">Design </span>
+      &copy; Quy Phan
+    </p>
   </footer>
 </html>

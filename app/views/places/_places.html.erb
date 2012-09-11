@@ -1,26 +1,23 @@
 <%= render partial: 'shared/profile_layout' %>
-
+<div class="clearfix"></div>
 <center><%= paginate @places %></center>
 
 <% @places.each do |place| %>
-  <center id="place_<%=place.id%>" class="row-fluid center_block span9">
-    <div class="checkin-blocks sub-hero-unit span3">
-      <h3><small>>></small> <%= place.name %></h3>
-      <h3><small>@</small> <%= place.address %></h3>
-      <h4><small>For</small>
-        <% place.checkins.each do |checkin| %>
-          <% unless checkin.message.blank? %>
-            <a class="btn btn-info bottom-space btn-small"><%="#{checkin.message}"%></a>
-          <% end %>
-        <% end %>
-      </h4>
-    </div>
-    <div class="checkin-blocks semi-hero-unit span5">
-      <h4><%= image_tag place.picture if place.picture %></h4>
-      <h3><small>category </small> <%= place.category %></h3>
-      <h4><small>checkins </small><%= place.checkin_count%></h4>
-      <h4><small>likes </small><%= place.likes%></h4>
-    </div>
-  </center>
+<div class="list-widget">
+  <a><%= image_tag "maps.png", size: "42x42", class: "avatar left" %>
+  <div class="list-head">
+    <h3><a class="no-dec"><%= place.name %></a></h3>
+    <div class="no-dec list-meta">Where · <a><%= place.address %></a></div>
+    <p><small>On</small> <%= place.created_at.strftime("%A %B %d, %Y at %I:%M %p")%></p>
+  </div>
+  <div class="list_pad extra">
+  <ul>
+    <% place.checkins.each do |checkin| %>
+      <% unless checkin.message.blank? %>
+        <a>For checkins · <%="#{checkin.message}"%></a>
+      <% end %>
+    <% end %>
+  </ul>
+  </div>
+</div>
 <% end %>
-

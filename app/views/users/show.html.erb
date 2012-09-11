@@ -1,37 +1,5 @@
-<%= render partial: 'shared/privacy' %>
 <%= render partial: 'shared/profile_layout' %>
-<%= render partial: 'shared/ajax_loader', locals: {div_id: "profile"}%>
+<%= render partial: 'shared/checkins_summary'%>
+<%= render partial: 'shared/privacy' %>
 
-<div class="row-fluid center_block no_margin span9 profile_contents">
-  <div class="checkin-blocks sub-hero-unit span3">
-    <%= image_tag @user.picture %>
-  </div>
-  <div class="checkin-blocks sub-hero-unit span6">
-    <h4>&nbsp; <%= image_tag "google_grey_marker.png", size: "40x60" %> &nbsp; &nbsp; &nbsp; <small>where &nbsp; &nbsp; &nbsp; &nbsp;</small><%= @user.location %></h4>
-    <br/>
-    <h3>&nbsp; <%= image_tag "grey_globe.png", size: "50x50" %> &nbsp; &nbsp; <small>places &nbsp; &nbsp; &nbsp;</small> <%= @places.count %></h3>
-    <br/>
-    <h3><%= image_tag "grey_pound_sign.png", size: "70x45" %> &nbsp; <small>checkins </small>  &nbsp; <%= @checkins.count %></h3>
-    <br/>
-  </div>
-</div>
-<div class="clear"></div>
-<% if @latest_checkin %>
-  <div class="row-fluid center_block no_margin span9 profile_contents">
-    <div class="checkin-blocks sub-hero-unit">
-      <center>
-        <h3>&nbsp; <%= image_tag "grey_check.png", size: "45x45" %> <b>last check in </b></h3>
-        <br/>
-        <h4 id="latest_checkin">
-          <small> >> </small><%= @latest_checkin.message || "Checkin!" %><br/>
-          <small> @ </small><%= @latest_checkin.place.name %><br/>
-          <small>On</small> <%= @latest_checkin.created_at.strftime("on %A %B %d, %Y at %I:%M %p")%><br/>
-          <small>With</small>
-          <% @latest_checkin.users.each do |user| %>
-            <small><i><%= user.name %></i></small>
-          <% end %>
-          </h4>
-      </center>
-    </div>
-  </div>
-<% end %>
+<%= render partial: 'shared/ajax_loader', locals: {div_id: "profile"}%>
