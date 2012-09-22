@@ -1,5 +1,9 @@
 CHECK_ME_OUT_360.home = {
   index_action: function() {
-    $('.page-header').height(700);
+    $('.navbar').hide();
+    $('#main_footer').hide();
+    $('.page-header').removeClass("partial_background");
+    
+    $('.page-header').addClass("full_background");
   }
 }

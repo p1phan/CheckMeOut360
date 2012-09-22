@@ -9,5 +9,6 @@
 //= require bootstrap
 //= require markerclusterer
 //= require highcharts
+//= require slidetounlock
 //= require init
 //= require_tree .
