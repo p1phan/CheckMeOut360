@@ -1,7 +1,7 @@
 defaults: &defaults
   adapter: postgresql
   username: postgres
-  password: postgresql
+  password: 
   reconnect: true
   pool: 5
   wait_timeout: 5

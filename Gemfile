@@ -16,7 +16,6 @@ gem 'execjs'
 gem 'oa-core'
 gem "friendly_id", "~> 4.0.0.beta14"
 gem 'fog'
-gem 'unicorn'
 gem 'koala'
 gem 'carmen'
 gem 'geocoder'
@@ -27,6 +26,10 @@ gem "activerecord-import", ">= 0.2.0"
 gem 'kaminari'
 gem "cancan"
 
+group :production do
+	gem 'unicorn'
+
+end
 group :devleopment do
   gem 'foreman'
   gem 'mongrel', "~>1.2.0.pre2"
