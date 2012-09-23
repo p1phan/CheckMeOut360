@@ -1,3 +1,38 @@
+<% content_for :intro_message do %>
+  <div id="intro_message" class="span5">
+    <h1><b>Welcome</b></h1><h3> CheckMeOut-360</h3>
+    <p>Where your places come alive</p>
+    <h2><small>by</small> Quy Phan</h2>
+    </p>
+  </div>
+<% end %>
+
+<% content_for :splash_page do %>
+<div id="mini_title_bar">
+  <div id="section_1_title_bar" class="span3">
+    <div class="title_block">
+      <br/>
+      <span id="title_header">CheckMeOut 360</span>
+    </div>
+  </div>
+
+  <div id="section_2_title_bar">
+    <div id="splash_page_login_button_group">
+      <% if current_user %>
+        <%= link_to "Profile »", user_path(current_user), :class => "login_logout_top_menu btn btn-primary" %>
+      <% else %>
+        <%= link_to "Login »", user_omniauth_authorize_path(:facebook), :class => "login_logout_top_menu btn btn-primary" %>
+      <% end %>
+      &nbsp;&nbsp;
+      <%= link_to "What »", about_home_index_path, :class => "btn" %>&nbsp;&nbsp;
+      <%= link_to "Why »", "#product_info", :class => "btn" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
 <!-- <section id="start_guide">
   <center>
     <% if current_user %>

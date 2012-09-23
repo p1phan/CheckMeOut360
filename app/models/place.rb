@@ -49,7 +49,7 @@ class Place < ActiveRecord::Base
         top_places["#{Place.find(key).name}"] = value.count
       end
     end
-    return Hash[top_places.sort{|a,b| a.last<=>b.last}]
+    return Hash[top_places.sort{|a,b| b.last<=>a.last}.first(7)]
   end
 
   private

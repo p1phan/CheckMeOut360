@@ -88,7 +88,6 @@ body {
   padding-top: 13px !important;
 }
 .navbar-inner {
-  background: #111836 repeat !important;
   a {
     font-weight: 400;
     font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif !important;
@@ -153,8 +152,7 @@ footer {
 	min-height:100%;	
 }
 .partial_background {
-  background: url("world_map.jpg") no-repeat;
-  background-size: 100%;
+  background: url("low_contrast_linen_@2X.png");
   height: 135px;
   line-height: 135px;
 }
@@ -207,6 +205,9 @@ footer {
   h2, p {
     color: #5A5A5A;
   }
+}
+#profile_banner {
+  text-align: center;
 }
 #mini_title_bar {
   margin-left: 0px !important;
