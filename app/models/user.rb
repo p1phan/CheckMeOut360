@@ -69,6 +69,10 @@ class User < ActiveRecord::Base
     places.order('created_at desc').uniq
   end
 
+  def first_name
+    name.split(' ')[0].downcase
+  end
+
   def self.me
     User.find_by_email("quyminhphan@gmail.com")
   end

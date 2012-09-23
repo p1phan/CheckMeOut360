@@ -5,12 +5,11 @@
     <div class="no-dec list-meta">Where · <a><%= @user.location %></a></div>
   </div>
   <ul>
-    <div class="list_pad">
-      <%= link_to "Myself »", user_path(@user.id), class: "btn btn-danger btn-small" %> &nbsp;
-      <%= link_to "Map »", map_user_places_path(@user.id), class: "btn btn-success btn-small" %> &nbsp;
-      <%= link_to "Places »", user_places_path(@user.id), class: "btn btn-info btn-small user_show_places" %> &nbsp;
-      <%= link_to "Checkins »", user_checkins_path(@user.id), class: "btn btn-warning btn-small" %> &nbsp;
+    <div>
+      <%= link_to "Myself »", user_path(@user.id), class: "btn btn-danger btn-mini" %> &nbsp;
+      <%= link_to "Map »", map_user_places_path(@user.id), class: "btn btn-success btn-mini" %> &nbsp;
+      <%= link_to "Places »", user_places_path(@user.id), class: "btn btn-info btn-mini user_show_places" %> &nbsp;
+      <%= link_to "Checkins »", user_checkins_path(@user.id), class: "btn btn-warning btn-mini" %> &nbsp;
     </div>
-    <li><%= link_to "Back to Home ›", root_path, class: "list-view" %></li>
   </ul>
 </div>

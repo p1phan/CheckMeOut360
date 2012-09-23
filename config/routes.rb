@@ -10,6 +10,7 @@ CheckMeOut360::Application.routes.draw do
       get 'about'
       get 'contact'
       get 'help'
+      get 'who'
     end
   end
   resources :users do

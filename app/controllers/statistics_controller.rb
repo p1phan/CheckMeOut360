@@ -1,5 +1,6 @@
 class StatisticsController < ApplicationController
   def index
+    render :line
   end
   
   def map

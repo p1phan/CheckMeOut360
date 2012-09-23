@@ -1,10 +1,32 @@
 <% content_for :intro_message do %>
-  <div id="intro_message" class="span5">
+<br/><br/><br/><br/>
+  <div id="intro_message" class="span3">
     <h1><b>Welcome</b></h1><h3> CheckMeOut-360</h3>
     <p>Where your places come alive</p>
     <h2><small>by</small> Quy Phan</h2>
     </p>
   </div>
+  <div id="product_info" class="row-fluid">
+    <center>
+        <div id="tag_part_1" class="span3">
+          <center>
+            <%= image_tag "computer_screens.png", size: "225x109"%>
+            <br/><br/>
+            <h2>Made for Everyone.</h2>
+            <p>All you need is a Facebook Account and now you set to run <%= link_to "Login »", user_omniauth_authorize_path(:facebook), style: "color: red" %></a>. Have fun!</p>
+          </center>
+        </div>
+        <div id="tag_part_2" class="span3">
+          <center>
+            <%= image_tag "visualized.png", size: "225x109"%>
+            <br/><br/>
+            <h2>Simple Features.</h2>
+            <p>See where you been in many different forms; from graphs to charts, to list to maps.</p>
+          </center>
+        </div>
+    </center>
+  </div>
+
 <% end %>
 
 <% content_for :splash_page do %>
@@ -25,50 +47,8 @@
       <% end %>
       &nbsp;&nbsp;
       <%= link_to "What »", about_home_index_path, :class => "btn" %>&nbsp;&nbsp;
-      <%= link_to "Why »", "#product_info", :class => "btn" %>
+      <%= link_to "Who »", who_home_index_path, :class => "btn" %>
     </div>
   </div>
 </div>
 <% end %>
-
-
-
-<!-- <section id="start_guide">
-  <center>
-    <% if current_user %>
-      <%= link_to "Profile »", user_path(current_user), :class => "login_logout_top_menu btn btn-primary btn-large bottom-space" %>
-    <% else %>
-      <%= link_to "Login »", user_omniauth_authorize_path(:facebook), :class => "login_logout_top_menu btn btn-primary btn-large bottom-space" %>
-    <% end %>
-    <%= link_to "Who »", "#about_myself", :class => "btn  btn-large bottom-space" %>
-    <%= link_to "What »", "#product_overview", :class => "btn  btn-large bottom-space" %>
-    <%= link_to "Why »", "#product_info", :class => "btn  btn-large bottom-space" %>
-  </center>
-</section> -->
-<!-- <section>
-  <div id="product_info" class="row-fluid">
-    <br/><br/>
-    <center>
-        <div id="tag_part_1" class="span4">
-          <center>
-            <%= image_tag "computer_screens.png"%>
-            <br/><br/>
-            <h2>Made for Everyone.</h2>
-            <p>All you need is a Facebook Account and now you set to run <%= link_to "Login »", user_omniauth_authorize_path(:facebook) %></a>. Have fun!</p>
-          </center>
-        </div>
-        <div id="tag_part_2" class="span4">
-          <center>
-            <%= image_tag "visualized.png"%>
-            <br/><br/>
-            <h2>Simple Features.</h2>
-            <p>See where you been in many different forms; from graphs to charts, to list to maps. Many ways to see where you have been.</p>
-          </center>
-        </div>
-    </center>
-  </div>
-</section>
-<section id="splash_page">
-  <%= render 'about_page' %>
-</section> -->
-

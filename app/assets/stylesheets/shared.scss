@@ -3,6 +3,9 @@ body {
   padding-top: 60px;
   padding-bottom: 40px;
 }
+#main_page {
+  background: url("fabric_plaid_@2X.png");
+}
 .sidebar-nav {
   padding: 9px 0;
 }
@@ -114,8 +117,10 @@ body {
   }
 }
 
-#inner_body {  
-  width: 940px;
+#inner_body {
+  background-color: white;
+  padding-bottom: 30px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -125,12 +130,14 @@ body {
 }
 
 footer {
-  margin-top: 30px;
-  height: 100px;
+/*  margin-top: 30px;*/
+  padding: 10px 0 10px 0;
   bottom: 0;
+  position: fixed;
+  width: 100%;
   margin-bottom: 0;
-  text-align: right;
-  background-color: #eee;
+  text-align: center;
+  background: url("low_contrast_linen_@2X.png");
   border-top: 1px solid #111836;
   p {
     text-align: center; /* center align it with the container */
@@ -153,8 +160,8 @@ footer {
 }
 .partial_background {
   background: url("low_contrast_linen_@2X.png");
-  height: 135px;
-  line-height: 135px;
+  height: 65px;
+  line-height: 65px;
 }
 .page-header {
   padding: 20px 20px 10px;
@@ -192,18 +199,11 @@ footer {
   position: absolute;
 }
 #product_info {
-  margin: auto;
-  text-align: center;
-  border-bottom:solid;
-  border-width:1px;
-  border-color: #2b3884;
-  margin-bottom: 20px;
-  
   #tag_part_1 {
     padding-left: 55px;
   }
   h2, p {
-    color: #5A5A5A;
+    color: white;
   }
 }
 #profile_banner {
