@@ -200,7 +200,10 @@ footer {
 }
 #product_info {
   #tag_part_1 {
-    padding-left: 55px;
+    border-color: red;
+  }
+  #tag_part_2 {
+    border-color: blue;
   }
   h2, p {
     color: white;
@@ -238,11 +241,18 @@ footer {
   }
 }
 
+.style_for_intro_block {
+    height: 220px;
+    border-bottom: 1px solid;
+    border-color: white;
+}
 #intro_block {
   padding-top: 10%;
   padding-left: 10%;
   
   #intro_message {
+    border-color: orange;
+
     small {
       color: white;
     }
