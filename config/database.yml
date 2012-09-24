@@ -1,0 +1,22 @@
+defaults: &defaults
+  adapter: postgresql
+  username: postgres
+  password: phan
+  reconnect: true
+  pool: 5
+  wait_timeout: 5
+
+development:
+  database: check_me_out_360_development
+  host: localhost
+  <<: *defaults
+
+test:
+  database: check_me_out_360_test
+  host: localhost
+  <<: *defaults
+  
+production:
+  database: check_me_out_360_prod
+  host: localhost
+  <<: *defaults

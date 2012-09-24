@@ -199,7 +199,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #'/usr/lib/ssl/certs/ca-certificates.crt'
+  config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, 
+    user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}}
   
   # config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/etc/ssl/certs'}}}
   
