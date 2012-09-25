@@ -25,28 +25,29 @@ class User < ActiveRecord::Base
   
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    data = access_token.extra.raw_info
-    if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
-      unless user.token
-        user.email = data.email
-        user.uid = access_token['uid']
-        user.token = access_token['credentials']['token']
-        # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
-        user.name = data.first_name + " " + data.last_name
-        user.location = data.work.try(:first).try(:location).try(:name)
-        user.save
-      end
-      user.token = access_token['credentials']['token']
-    else
-      user = User.new(:email => data.email)
-      user.uid = access_token['uid']
-      user.token = access_token['credentials']['token']
-      # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
-      user.name = data.first_name + " " + data.last_name
-      user.location = data.work.try(:first).try(:location).try(:name)
-      user.save!(:validate => false)
-    end
-    return user
+    # data = access_token.extra.raw_info
+    # if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
+    #   unless user.token
+    #     user.email = data.email
+    #     user.uid = access_token['uid']
+    #     user.token = access_token['credentials']['token']
+    #     # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
+    #     user.name = data.first_name + " " + data.last_name
+    #     user.location = data.work.try(:first).try(:location).try(:name)
+    #     user.save
+    #   end
+    #   user.token = access_token['credentials']['token']
+    # else
+    #   user = User.new(:email => data.email)
+    #   user.uid = access_token['uid']
+    #   user.token = access_token['credentials']['token']
+    #   # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
+    #   user.name = data.first_name + " " + data.last_name
+    #   user.location = data.work.try(:first).try(:location).try(:name)
+    #   user.save!(:validate => false)
+    # end
+    return User.me
+    # return user
   end
   
   def self.new_with_session(params, session)
