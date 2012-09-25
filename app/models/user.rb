@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
+    puts "!!!!!!!!!!!!!!!!!!!!!"
+    puts access_token.inspect
     if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
       unless user.token
         user.email = data.email
@@ -41,7 +43,7 @@ class User < ActiveRecord::Base
       user = User.new(:email => data.email)
       user.uid = access_token['uid']
       user.token = access_token['credentials']['token']
-      user.picture = access_token.info.image.gsub("square", "large")
+      user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
       user.name = data.first_name + " " + data.last_name
       user.location = data.work.try(:first).try(:location).try(:name)
       user.save!(:validate => false)
