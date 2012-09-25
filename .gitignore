@@ -5,3 +5,4 @@ log/*.log
 tmp/
 .sass-cache/
 null.txt
+db/database.yml
