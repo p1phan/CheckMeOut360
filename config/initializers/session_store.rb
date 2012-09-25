@@ -1,8 +1,8 @@
 # Be sure to restart your server when you modify this file.
 
-CheckMeOut360::Application.config.session_store :cookie_store, key: '_check_me_out_360_session'
+# CheckMeOut360::Application.config.session_store :cookie_store, key: '_check_me_out_360_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
-# CheckMeOut360::Application.config.session_store :active_record_store
+CheckMeOut360::Application.config.session_store :active_record_store

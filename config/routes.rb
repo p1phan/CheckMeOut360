@@ -39,7 +39,7 @@ CheckMeOut360::Application.routes.draw do
     end
   end
 
-  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  # get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   
   root :to => 'home#index'
   

@@ -21,24 +21,32 @@ class User < ActiveRecord::Base
   PROTECTED = 'protected'.freeze
   PUBLIC = 'public'.freeze
   PRIVACY = [PRIVATE, PROTECTED, PUBLIC]
-  validates :privacy, :inclusion => PRIVACY, allow_nil: false
-  
+  validates :privacy, :inclusion => PRIVACY, allow_nil: false  
+
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    # data = access_token.extra.raw_info
-    # if user = User.find_by_email(data.email)
-    #   @profile = Profile.find_or_initialize_by_user_id(user.id)
-    #   update_facebook_profile(user, data, access_token)
-    #   @profile.save
-    #   user
-    # else
-    #   user = User.new(:email => data.email)
-    #   @profile = user.build_profile
-    #   update_facebook_profile(user, data, access_token)
-    #   user.save!(:validate => false)
-    #   user
-    # end
-    # return user
-    return User.me
+    data = access_token.extra.raw_info
+    if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
+      unless user.token
+        user.email = data.email
+        user.uid = access_token['uid']
+        user.token = access_token['credentials']['token']
+        user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
+        user.name = data.first_name + " " + data.last_name
+        user.location = data.work.try(:first).try(:location).try(:name)
+        user.save
+      end
+      user.token = access_token['credentials']['token']
+    else
+      user = User.new(:email => data.email)
+      user.uid = access_token['uid']
+      user.token = access_token['credentials']['token']
+      user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
+      user.name = data.first_name + " " + data.last_name
+      user.location = data.work.try(:first).try(:location).try(:name)
+      user.save!(:validate => false)
+    end
+    return user
   end
   
   def self.new_with_session(params, session)
@@ -48,52 +56,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-    # def self.update_facebook_profile(user, data, access_token)
-    #   @profile.remote_profile_picture_url = access_token.info.image.gsub("square", "large")
-    #   @profile.major = data.education.try(:last).try(:concentration).try(:first).try(:name)
-    #   @profile.school = data.education.try(:last).try(:school).try(:name)
-    #   @profile.first_name = data.first_name
-    #   @profile.last_name = data.last_name
-    #   @profile.employer = data.work.try(:first).try(:employer).try(:name)
-    #   @profile.position = data.work.try(:first).try(:position).try(:name)
-    #   @profile.location = data.work.try(:first).try(:location).try(:name)
-    #   @profile.facebook_site = data.link
-    # end
-
-  # def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-  #   # data = access_token.extra.raw_info
-  #   # if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
-  #   #   unless user.token
-  #   #     user.email = data.email
-  #   #     user.uid = access_token['uid']
-  #   #     user.token = access_token['credentials']['token']
-  #   #     # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
-  #   #     user.name = data.first_name + " " + data.last_name
-  #   #     user.location = data.work.try(:first).try(:location).try(:name)
-  #   #     user.save
-  #   #   end
-  #   #   user.token = access_token['credentials']['token']
-  #   # else
-  #   #   user = User.new(:email => data.email)
-  #   #   user.uid = access_token['uid']
-  #   #   user.token = access_token['credentials']['token']
-  #   #   # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
-  #   #   user.name = data.first_name + " " + data.last_name
-  #   #   user.location = data.work.try(:first).try(:location).try(:name)
-  #   #   user.save!(:validate => false)
-  #   # end
-  #   return User.me
-  #   # return user
-  # end
-  # 
-  # def self.new_with_session(params, session)
-  #   super.tap do |user|
-  #     if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
-  #       user.email = data["email"]
-  #     end
-  #   end
-  # end
   
   def friend_with(user)
     graph = Koala::Facebook::API.new(token)

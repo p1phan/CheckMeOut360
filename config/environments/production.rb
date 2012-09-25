@@ -31,7 +31,7 @@ CheckMeOut360::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  config.log_level = :debug
+  # config.log_level = :debug
 
   # config.logger = SyslogLogger.new
 
@@ -57,9 +57,7 @@ CheckMeOut360::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  # FACEBOOK_APP_ID = '244261292303188'
-  # FACEBOOK_APP_SECRET = 'f5566253849a3ca829aa9756379745d0'
-  FACEBOOK_APP_ID = '401565496577646'
-  FACEBOOK_APP_SECRET = '81d00441f3152eba2b5ce2985605588a'
+  FACEBOOK_APP_ID = '244261292303188'
+  FACEBOOK_APP_SECRET = 'f5566253849a3ca829aa9756379745d0'
   
 end

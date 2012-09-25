@@ -96,7 +96,7 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
+  # config.use_salt_as_remember_token = true
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -194,23 +194,18 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-
+  OmniAuth.config.logger = Logger.new(STDOUT)
+  OmniAuth.logger.progname = "omniauth"
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   #'/usr/lib/ssl/certs/ca-certificates.crt'
-  # if Rails.env == 'development'
-  #   config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, 
-  #     user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}}
-  # else
-    # config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, 
-    #   user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "/usr/lib/ssl/certs/ca-certificates.crt"}}}
-  # end
-  
-  
-  config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-  
+  if Rails.env == 'development'
+    config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}}
+  else
+    config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "/usr/lib/ssl/certs/ca-certificates.crt"}}}
+  end
   # config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/etc/ssl/certs'}}}
   
   # ==> Warden configuration

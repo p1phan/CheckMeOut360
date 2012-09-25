@@ -6,7 +6,7 @@ gem 'rails', '3.1.1'
 gem 'pg'
 gem 'simple_form'
 gem 'carrierwave'
-gem 'devise', '1.4.9'
+gem 'devise' #, '1.4.9'
 gem 'jquery-rails'
 gem 'omniauth'
 gem "omniauth-facebook"
