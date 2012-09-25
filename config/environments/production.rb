@@ -31,15 +31,8 @@ CheckMeOut360::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  config.log_level = :debug
+  # config.log_level = :debug
 
-  # Use a different logger for distributed setups
-  STDOUT.sync = true
-
-  logger = Logger.new(STDOUT)
-  logger.level = 0
-  config.logger = Logger.new(STDOUT)
-  Rails.logger = Rails.application.config.logger = logger
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
