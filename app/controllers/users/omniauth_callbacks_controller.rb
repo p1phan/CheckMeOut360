@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def facebook
+    puts "!!!! IN FACEBOOK #{request.env['omniauth.auth'].inspect}"
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
     @checkins = Checkin.get_checkins_facebook_url(@user)
     if @checkins.instance_of? Koala::Facebook::APIError
