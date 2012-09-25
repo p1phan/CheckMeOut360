@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
         user.email = data.email
         user.uid = access_token['uid']
         user.token = access_token['credentials']['token']
-        user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
+        # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
         user.name = data.first_name + " " + data.last_name
         user.location = data.work.try(:first).try(:location).try(:name)
         user.save
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
       user = User.new(:email => data.email)
       user.uid = access_token['uid']
       user.token = access_token['credentials']['token']
-      user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
+      # user.picture = access_token.try(:info).try(:image).to_s.gsub("square", "large")
       user.name = data.first_name + " " + data.last_name
       user.location = data.work.try(:first).try(:location).try(:name)
       user.save!(:validate => false)
