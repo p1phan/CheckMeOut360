@@ -204,9 +204,13 @@ Devise.setup do |config|
   #   config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, 
   #     user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}}
   # else
-    config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, 
-      user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "/usr/lib/ssl/certs/ca-certificates.crt"}}}
+    # config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access, user_activities, user_checkins, 
+    #   user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => "/usr/lib/ssl/certs/ca-certificates.crt"}}}
   # end
+  
+  
+  config.omniauth :facebook, '401565496577646', '81d00441f3152eba2b5ce2985605588a', {:scope => 'email, offline_access, user_activities, user_checkins, user_photos, friends_photos, friends_checkins, friends_location, user_events, user_location', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  
   # config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/etc/ssl/certs'}}}
   
   # ==> Warden configuration
