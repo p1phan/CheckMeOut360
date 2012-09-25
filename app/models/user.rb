@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
     data = access_token.extra.raw_info
     puts "!!!!!!!!!!!!!!!!!!!!!"
     puts access_token.inspect
+    Rails.logger.info(access_token.inspect)
+    Rails.logger.error(access_token.inspect)
     if user = User.where("email = ? or uid = ?", data.email, access_token['uid']).first
       unless user.token
         user.email = data.email
