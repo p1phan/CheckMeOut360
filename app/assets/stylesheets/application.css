@@ -47,7 +47,10 @@ img {
   min-height: 120px;
 }
 .red {
-  background-color: #DA4F49;
+  font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif !important;
+  font-weight: 400px !important;
+  color: #af1616 !important;
+/*  background-color: #DA4F49;*/
 }
 .blue {
   background-color: #49AFCD;

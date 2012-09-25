@@ -34,9 +34,9 @@
           </ul>
           <p class="login_logout_top_menu navbar-text pull-right">
             <% if current_user %>
-              <%= link_to "Logout of #{current_user.name}", destroy_user_session_path, :method => :delete %>
+              <%= link_to "Logout of #{current_user.name}", destroy_user_session_path, :method => :delete, class: "btn btn-info btn-mini" %>
             <% else %>
-              <%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "login_with_facebook" %>
+              <%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-info btn-mini login_with_facebook" %>
             <% end%>
             &nbsp;
             <% if current_user %>
@@ -54,14 +54,13 @@
       <div id="flash"></div> 
       <div id="profile_banner">
         <% if current_user %>
-          <div class="title_block">
+          <div id="user_headline" class="title_block">
             <%= image_tag current_user.picture, size: "70x70" %>
-            <span style="color: white;"><%= current_user.name %> +</span><span style="color: #990B00"> <%= current_user.location %> +</span><span style="color: #007899"> Total Checkins »</span><span style="color: #129900"><%=current_user.checkins.count %></span>
+            <span style="color: white;"><%= current_user.name %> +</span><span style="color: orange"> <%= current_user.location %> +</span><span style="color: #007899"> Total Checkins »</span><span style="color: #129900"><%=current_user.checkins.count %></span>
           </div>
         <% else %>
           <div class="title_block">
-            <br/>
-            <span id="title_header">CheckMeOut 360</span>
+            <span id="title_header">CheckMeOut 360 </span> <span style="color: red"> Ground Zero Labs</span>
           </div>
         <% end %>
       </div>

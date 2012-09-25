@@ -2,9 +2,10 @@
 body {
   padding-top: 60px;
   padding-bottom: 40px;
+  background: url("fabric_plaid_@2X.png") repeat !important;
 }
 #main_page {
-  background: url("fabric_plaid_@2X.png");
+/*  background: url("fabric_plaid_@2X.png");*/
 }
 .sidebar-nav {
   padding: 9px 0;
@@ -123,6 +124,8 @@ body {
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  min-height: 700px;
+  border-top: 3px solid red;
 }
 body {
   background: white repeat;
@@ -178,6 +181,9 @@ footer {
     font-weight: bold;
   }
   
+}
+#user_headline {
+  text-align: center;
 }
 
 #splash_page, #home_page, #contact_page {
