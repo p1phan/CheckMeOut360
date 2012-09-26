@@ -19,8 +19,15 @@ class Place < ActiveRecord::Base
   
   def get_picture_for_place(graph)
     unless picture
-      fb_place = Facebook::Place.new(graph.get_object(facebook_id), graph)
+      puts facebook_id.inspect
+      begin
+        place_object = graph.get_object(facebook_id)
+      rescue
+        return false
+      end
+      fb_place = Facebook::Place.new(place_object, graph)
       update_attributes(name: fb_place.name, picture: fb_place.picture, category: fb_place.category, likes: fb_place.likes, checkin_count: fb_place.checkins)
+      return true
     end
   end
   
