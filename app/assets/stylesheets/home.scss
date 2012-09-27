@@ -1,15 +1,20 @@
 body.home {
-  #product_info {
-    #tag_part_1 {
-      border-color: red;
-    }
-    #tag_part_2 {
-      border-color: blue;
-    }
-    h2, p {
-      color: white;
-    }
+  .margin-top.large {
+    margin-top: 100px;
   }
+
+  .underline {
+    text-decoration: underline;
+  }
+  #tag_part_1 {
+    border-color: red;
+    color: white;
+  }
+  #tag_part_2 {
+    border-color: blue;
+    color: white;
+  }
+
   #profile_banner {
     text-align: center;
   }
