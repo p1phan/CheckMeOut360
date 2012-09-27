@@ -1,29 +1,29 @@
 <% content_for :intro_message do %>
-<br/><br/><br/><br/>
-  <div id="intro_message" class="span4 style_for_intro_block">
-    <h1><b>Welcome</b></h1><h3> CheckMeOut-360</h3>
+<div class='row-fluid margin-top large'>
+  <div id="intro_message" class="span4 offset1">
+    <h1>Welcome</h1>
+    <h3> CheckMeOut-360</h3>
     <p>Where your places come alive</p>
-    <h1><small style="color: red">design</small> <small style="color: orange">+</small> <small style="color: blue"> develop</small> <small style="color: green">by</small> <br/></h1>
-    <h1 id="ground_zero_h1" class="red">GroundZero Labs</h1>
-    </p>
+    <h1>
+      <small style="color: red">design</small> <small style="color: orange">+</small> <small style="color: blue"> develop by</small>
+    </h1>
+    <h2 id="ground_zero_h1" class="red underline">GroundZero Labs</h2>
   </div>
-  <div class="span2"></div>
-  <div id="product_info" class="row-fluid">
-    <center>
-        <div id="tag_part_1" class="span3 style_for_intro_block">
-            <%= image_tag "computer_screens.png", size: "225x109"%>
-            <br/><br/>
-            <h2>Made for Everyone.</h2>
-            <p>All you need is a Facebook Account and now you set to run <%= link_to "Login »", user_omniauth_authorize_path(:facebook), style: "color: red" %></a>. Have fun!</p>
-        </div>
-        <div id="tag_part_2" class="span3 style_for_intro_block">
-            <%= image_tag "visualized.png", size: "225x109"%>
-            <br/><br/>
-            <h2>Simple Features.</h2>
-            <p>See where you been in many different forms; from graphs to charts, to list to maps.</p>
-        </div>
-    </center>
+  <div id="tag_part_1" class="span3">
+    <%= image_tag "computer_screens.png", size: "225x109"%>
+    <br/><br/>
+    <h2 class='underline'>Made for Everyone.</h2>
+    <p>All you need is a Facebook Account and now you set to run
+      <%= link_to "Login »", user_omniauth_authorize_path(:facebook), style: "color: red" %>. Have fun!</p>
   </div>
+
+  <div id='tag_part_2' class='span3'>
+    <%= image_tag "visualized.png", size: "225x109"%>
+    <br/><br/>
+    <h2 class='underline'>Simple Features.</h2>
+    <p>See where you been in many different forms; from graphs to charts, to list to maps.</p>
+  </div>
+</div>
 
 <% end %>
 
