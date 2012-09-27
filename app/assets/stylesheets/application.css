@@ -7,44 +7,14 @@
  *= require_tree . 
 */
 
-#current_user_in_list {
-  color: green !important;
-}
-img {
-  max-width: 100% !important;
-}
-
 #map_canvas {
   height: 650px !important;
 }
 
-.mini-hero-unit {
-  padding: 30px;
-  margin-bottom: 15px;
-  background-color: #FAA732;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  min-height: 120px;
-}
-
-.semi-hero-unit {
-  padding: 30px;
-  margin-bottom: 15px;
-  background-color: #eeeeee;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  min-height: 120px;
-}
-.sub-hero-unit {
-  padding: 30px;
-  margin-bottom: 15px;
-  background-color: #eeeeee;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  min-height: 120px;
+.zero_red {
+  font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif !important;
+  font-weight: 400px !important;
+  color: #af1616;
 }
 .red {
   font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif !important;

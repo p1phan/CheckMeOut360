@@ -1,0 +1,35 @@
+.navbar{
+  .nav > li > a {
+    padding-top: 13px !important;
+  }
+  .navbar-inner {
+    a {
+      font-weight: 400;
+      font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif !important;
+    }
+    #profile_tab {
+      a {
+        color: white !important;
+      }
+    }
+    #about_tab {
+      a {
+        color: #129900 !important;
+      }
+    }
+    #contact_tab {
+      a {
+        color: #007899 !important;
+      }
+    }
+    #statistics_tab {
+      a {
+        color: #990B00 !important;
+      }
+    }
+  }
+  .navbar_login_out {
+    margin-top: 10px;
+  }
+  
+}

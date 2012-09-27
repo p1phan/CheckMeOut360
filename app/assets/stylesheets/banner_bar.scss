@@ -1,0 +1,36 @@
+.page-header {
+  padding: 20px 20px 10px;
+  margin: -20px -20px 20px;
+  border: none;
+  #title_header {
+    padding-left: 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #header_punchline{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #user_headline {
+    text-align: center;
+  }
+}
+.partial_background {
+  background: url("low_contrast_linen_@2X.png");
+  height: 65px;
+  line-height: 65px;
+}
+
+.full_background {
+  z-index: -1;
+  background: url("low_contrast_linen_@2X.png");
+	position:fixed;
+	top:0;
+	left:0;
+
+	/* Preserve aspet ratio */
+	min-width:100%;
+	min-height:100%;
+}

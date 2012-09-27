@@ -78,12 +78,11 @@ class User < ActiveRecord::Base
   end
   
   def get_profile_pic(token)
-    unless picture
-      begin
-        @graph = Koala::Facebook::API.new(token)
-        update_attribute(:picture, @graph.get_picture(uid, type: "large"))
-      rescue Exception => e
-      end
+    return picture if picture.present? 
+    begin
+      @graph = Koala::Facebook::API.new(token)
+      update_attribute(:picture, @graph.get_picture(uid, type: "large"))
+    rescue Exception => e
     end
   end
   

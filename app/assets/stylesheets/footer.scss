@@ -1,0 +1,16 @@
+footer#main_footer {
+    padding: 10px 0 10px 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    background: url("low_contrast_linen_@2X.png");
+    border-top: 1px solid #111836;
+    p {
+      text-align: center; /* center align it with the container */
+      margin: auto;
+      vertical-align: center;
+        line-height: 100px;
+    }
+}
