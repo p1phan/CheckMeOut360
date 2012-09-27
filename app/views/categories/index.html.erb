@@ -22,101 +22,196 @@
 		<li><a href="#t_8" data-toggle="tab"><i class="icon-eye-open"></i> Beauty and Spas</a></li>
 		<li><a href="#t_9" data-toggle="tab"><i class="icon-plane"></i> Hotels & Travel</a></li>
 	</ul>
-	
-	<div class="tab-content" id="categories_placeListings">
+	<div class="container-fluid">
+	<div class="row-fluid" id="categories_frame">
 		
-		<div class="tab-pane active" id="t_0">
-			<h4>Top 10 YoloSpots</h4>
-			<hr width="100%">
-			<div style="width:100%; height: 500px; margin-bottom: 20px;">
-				<table>
-					<tr>
-						<td>
-							<!-- Display location Image -->
-							<div class="img-polaroid">
-								<%= image_tag "places/pacific-beach-bar.jpg", :size => "300x200" %>
-							</div>
-						</td>
+		<div class="span6">
+			<div class="tab-content" id="categories_placeListings" style="display: inline">
+
+				<div class="tab-pane active" id="t_0">
+					<h4>Top 10 YoloSpots</h4>
+					<hr width="100%">
+					<div style="width:100%; height: 100%; margin-bottom: 20px;">
+						<table>
+							<!-- #1 -->
+							<tr>
+								<td>
+									<!-- Display location Image -->
+									<div class="img-polaroid">
+										<%= image_tag "places/pacific-beach-bar.jpg", :size => "300x200" %> 
+									</div>
+								</td>
+				
+								<!-- Text display region-->
+								<td>
+									<div class="categories_topten_info">
+										<h3 style="color: rgba(119,119,119,1)">#1 - PB Bar & Grill</h3>
+										<strong>Total Check-Ins:</strong> <i style="font-size: large;">&nbsp;517</i> <br >
+										<strong>Location:</strong> Pacific Beach <br >
+										<strong>Categories:</strong> Bar, Nightlife, Drinks <br >
+										<strong>Hours:</strong> Mon-Sat 11 am - 2 am <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sun 9 am - 2 am <br ><br >
 						
-						<!-- Text display region-->
-						<td>
-							<div class="categories_top_image">
-								<h3 style="color: rgba(119,119,119,1)">#1 - PB Bar & Grill</h3>
-								<strong>Total Check-Ins:</strong> <i style="font-size: large;">&nbsp;517</i> <br >
-								<strong>Location:</strong> Pacific Beach <br >
-								<strong>Hours:</strong> <br >
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mon-Sat 11 am - 2 am <br >
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sun 9 am - 2 am <br ><br >
-								
-								<!-- Button to trigger modal -->
-								<a href="#top_ten_rank1" role="button" class="btn btn-info specialties-btn" data-toggle="modal">Whats Hot?</a>
-								
-							</div>
-						</td>
-							
-					</tr>
-				</table>
+										<!-- Button to trigger modal -->
+										<a href="#top_ten_rank1" role="button" class="btn btn-info specialties-btn" data-toggle="modal">Whats Hot?</a>
+									</div>
+								</td>	
+							</tr>
+			
+							<!-- #2 -->
+							<tr>
+								<td>
+									<!-- Display location Image -->
+									<div class="img-polaroid">
+										<%= image_tag "places/placeholder.png", :resize_to_fit => [150, nil] %>
+									</div>
+								</td>
+				
+								<!-- Text display region-->
+								<td>
+									<div class="categories_topten_info">
+										<h3 style="color: rgba(119,119,119,1)">#2 - Testing</h3>
+										<strong>Total Check-Ins:</strong> <i style="font-size: large;">&nbsp;517</i> <br >
+										<strong>Location:</strong> Pacific Beach <br >
+										<strong>Hours:</strong> <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mon-Sat 11 am - 2 am <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sun 9 am - 2 am <br ><br >
+						
+										<!-- Button to trigger modal -->
+										<a href="#top_ten_rank1" role="button" class="btn btn-info specialties-btn" data-toggle="modal">Whats Hot?</a>
+									</div>
+								</td>	
+							</tr>
+			
+							<!-- #3 -->
+							<tr>
+								<td>
+									<!-- Display location Image -->
+									<div class="img-polaroid">
+										<%= image_tag "places/placeholder.png", :resize_to_fit => [150, nil] %>
+									</div>
+								</td>
+
+								<!-- Text display region-->
+								<td>
+									<div class="categories_topten_info">
+										<h3 style="color: rgba(119,119,119,1)">#3 - Testing</h3>
+										<strong>Total Check-Ins:</strong> <i style="font-size: large;">&nbsp;517</i> <br >
+										<strong>Location:</strong> Pacific Beach <br >
+										<strong>Hours:</strong> <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mon-Sat 11 am - 2 am <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sun 9 am - 2 am <br ><br >
+
+										<!-- Button to trigger modal -->
+										<a href="#top_ten_rank1" role="button" class="btn btn-info specialties-btn" data-toggle="modal">Whats Hot?</a>
+									</div>
+								</td>	
+							</tr>
+						</table>
+		
+					</div>
+				</div> <!-- end of 't_0' -->
+
+				<div class="tab-pane" id="t_1">
+					<h4>Events of the Week</h4>
+					<hr width="100%">
+					<div style="width:100%; height: 100%; margin-bottom: 20px;">
+						<table>
+							<!-- #1 -->
+							<tr>
+								<td>
+									<!-- Display location Image -->
+									<div class="img-polaroid">
+										<%= image_tag "places/pacific-beach-bar.jpg", :size => "300x200" %> 
+									</div>
+								</td>
+				
+								<!-- Text display region-->
+								<td>
+									<div class="categories_topten_info">
+										<h3 style="color: rgba(119,119,119,1)">#1 - Prototyping</h3>
+										<strong>Total Check-Ins:</strong> <i style="font-size: large;">&nbsp;517</i> <br >
+										<strong>Location:</strong> Pacific Beach <br >
+										<strong>Hours:</strong> <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mon-Sat 11 am - 2 am <br >
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sun 9 am - 2 am <br ><br >
+						
+										<!-- Button to trigger modal -->
+										<a href="#top_ten_rank1" role="button" class="btn btn-info specialties-btn" data-toggle="modal">Whats Hot?</a>
+									</div>
+								</td>	
+							</tr>
+						</table>
+					</div>
+				</div> <!-- end of 't_1' -->
+
+				<div class="tab-pane" id="t_2">
+					<h4>Restaurants</h4>
+				</div> <!-- end of 't_2' -->
+
+				<div class="tab-pane" id="t_3">
+					<h4>Nightlife</h4>
+				</div> <!-- end of 't_3' -->
+
+				<div class="tab-pane" id="t_4">
+					<h4>Shopping</h4>
+				</div> <!-- end of 't_4' -->
+
+				<div class="tab-pane" id="t_5">
+					<h4>Entertainment</h4>
+				</div> <!-- end of 't_5' -->
+
+				<div class="tab-pane" id="t_6">
+					<h4>Active Life</h4>
+				</div> <!-- end of 't_6' -->
+
+				<div class="tab-pane" id="t_7">
+					<h4>Attractions</h4>
+				</div> <!-- end of 't_7' -->
+
+				<div class="tab-pane" id="t_8">
+					<h4>Beauty and Spas</h4>
+				</div> <!-- end of 't_8' -->
+
+				<div class="tab-pane" id="t_9">
+					<h4>Hotels & Travel</h4>
+				</div> <!-- end of 't_9' -->
+
+			</div>
+			
+		</div> <!-- end of span6 -->
+
+		<div class="span4">
+			
+			<div class="verticalLine"></div>
+			
+			<!-- Map | Location of Place -->
+			<div id="categories_mapLocation">
+				<%= image_tag "places/staticmap.png" %> 
+				
+				
 				
 			</div>
-			
-		
-			
-		</div>
-		
-		<div class="tab-pane" id="t_1">
-			<h4>Events of the Week</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_2">
-			<h4>Restaurants</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_3">
-			<h4>Nightlife</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_4">
-			<h4>Shopping</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_5">
-			<h4>Entertainment</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_6">
-			<h4>Active Life</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_7">
-			<h4>Attractions</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_8">
-			<h4>Beauty and Spas</h4>
-		</div>
-		
-		<div class="tab-pane" id="t_9">
-			<h4>Hotels & Travel</h4>
-		</div>
-		
+		</div> <!-- end of span3 -->
+	</div> <!-- end of categories_frame -->
 	</div>
 	
-		<-- Modal -->
-		<div class="modal hide fade" id="top_ten_rank1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3>PB Bar and Grill</h3>
-			</div>
-			<div class="modal-body">
-				<h4>The Scoop:</h4>
-				<ul>
-					<li>Best Nights: Tue, Fri, Thu</li>
-					<li> Tuesday: Taco Tuesday </li>
-					<li> Thursday: 50% on drinks until 10pm </li>
-				</ul>
-			</div>
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">YoloMore</button>
-			</div>
+	<!-- Modal -->
+	<div class="modal hide fade" id="top_ten_rank1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3>PB Bar and Grill</h3>
 		</div>
+		<div class="modal-body">
+			<h4>The Scoop:</h4>
+			<ul>
+				<li>Best Nights: Tue, Fri, Thu</li>
+				<li> Tuesday: Taco Tuesday </li>
+				<li> Thursday: 50% on drinks until 10pm </li>
+			</ul>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">YoloMore</button>
+		</div>
+	</div>
 </div>
