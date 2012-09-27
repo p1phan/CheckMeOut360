@@ -1,18 +1,32 @@
-<% @users.each do |user| %>
-<div class="list-widget fixed" style='display:inline-block'>
-  <a><%= image_tag user.picture, size: "42x42", class: "avatar left" %>
-  <div class="list-head">
-    <h3><a class="no-dec"><%= user.name %></a></h3>
-    <div class="no-dec list-meta">Where · <a><%= user.location %></a></div>
-  </div>
-  <ul>
-    <div>
-      <%= link_to "Myself »", user_path(user.id), class: "btn btn-danger btn-mini" %> &nbsp;
-      <%= link_to "Map »", map_user_places_path(user.id), class: "btn btn-success btn-mini" %> &nbsp;
-      <%= link_to "Places »", user_places_path(user.id), class: "btn btn-info btn-mini user_show_places" %> &nbsp;
-      <%= link_to "Checkins »", user_checkins_path(user.id), class: "btn btn-warning btn-mini" %> &nbsp;
+
+<div class='row-fluid'>
+  <div class='span6 offset3'>
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <% @users.each_with_index do |user, index| %>
+        <% active = index == 0 ? 'active' : '' %>
+        <div class="item <%= active %>">
+          <%= image_tag user.picture, size: "400x400", class: "avatar left" %>
+          <div class="carousel-caption">
+            <h4><%= user.name %></h4>
+            <p>
+              Where · <%= user.location %>
+            </p>
+            <%= render :partial => "#{user.first_name}_myself", :locals => {:id => user.id}, inline: true %>
+
+          </div>
+        </div>
+
+        <% end %>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
     </div>
-  </ul>
-  <%= render :partial => "#{user.first_name}_myself", inline: true %>
+
+  </div>
 </div>
-<% end %>
+
+<div class='row-fluid'>
+  <div id='full_description_container' class='span6 offset3'>
+  </div>
+</div>
