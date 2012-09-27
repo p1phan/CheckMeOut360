@@ -1,0 +1,122 @@
+<div class="tabbable tabs-left" id='categories'>
+	
+	<!-- City Title -->
+	<div id="categories_city_display" style="font-family: 'Nunito', sans-serif; margin-bottom: 20px;">
+		<p style="font-size: large; color: #a4a4a4; display: inline">best </p>
+		<p style="font-style: italic; font-size: large; color: #a4a4a4; display: inline">yolospots in &nbsp</p> 
+		<h2 style="display: inline"> San Diego</h2>
+	</div>
+	
+	<hr width="100%">
+	
+	<ul class="nav nav-tabs">
+		
+		<li class="active"><a href="#t_0" data-toggle="tab"><i class="icon-fire"></i> Top 10 YoloSpots</a></li>
+		<li><a href="#t_1" data-toggle="tab"><i class="icon-calendar"></i> Events of the Week</a></li>
+		<li><a href="#t_2" data-toggle="tab"><i class="icon-thumbs-up"></i> Restaurants</a></li>
+		<li><a href="#t_3" data-toggle="tab"><i class="icon-glass"></i> Nightlife</a></li>
+		<li><a href="#t_4" data-toggle="tab"><i class="icon-gift"></i> Shopping</a></li>
+		<li><a href="#t_5" data-toggle="tab"><i class="icon-music"></i> Entertainment</a></li>
+		<li><a href="#t_6" data-toggle="tab"><i class="icon-headphones"></i> Activities</a></li>
+		<li><a href="#t_7" data-toggle="tab"><i class="icon-camera"></i> Attractions</a></li>
+		<li><a href="#t_8" data-toggle="tab"><i class="icon-eye-open"></i> Beauty and Spas</a></li>
+		<li><a href="#t_9" data-toggle="tab"><i class="icon-plane"></i> Hotels & Travel</a></li>
+	</ul>
+	
+	<div class="tab-content" id="categories_placeListings">
+		
+		<div class="tab-pane active" id="t_0">
+			<h4>Top 10 YoloSpots</h4>
+			<hr width="100%">
+			<div style="width:100%; height: 500px; margin-bottom: 20px;">
+				<table>
+					<tr>
+						<td>
+							<!-- Display location Image -->
+							<div class="img-polaroid">
+								<%= image_tag "places/pacific-beach-bar.jpg", :size => "300x200" %>
+							</div>
+						</td>
+						
+						<!-- Text display region-->
+						<td>
+							<div class="categories_top_image">
+								<h3 style="color: rgba(119,119,119,1)">#1 - PB Bar & Grill</h3>
+								<strong>Total Check-Ins:</strong> <i style="font-size: large;">&nbsp;517</i> <br >
+								<strong>Location:</strong> Pacific Beach <br >
+								<strong>Hours:</strong> <br >
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mon-Sat 11 am - 2 am <br >
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sun 9 am - 2 am <br ><br >
+								
+								<!-- Button to trigger modal -->
+								<a href="#top_ten_rank1" role="button" class="btn btn-info specialties-btn" data-toggle="modal">Whats Hot?</a>
+								
+							</div>
+						</td>
+							
+					</tr>
+				</table>
+				
+			</div>
+			
+		
+			
+		</div>
+		
+		<div class="tab-pane" id="t_1">
+			<h4>Events of the Week</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_2">
+			<h4>Restaurants</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_3">
+			<h4>Nightlife</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_4">
+			<h4>Shopping</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_5">
+			<h4>Entertainment</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_6">
+			<h4>Active Life</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_7">
+			<h4>Attractions</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_8">
+			<h4>Beauty and Spas</h4>
+		</div>
+		
+		<div class="tab-pane" id="t_9">
+			<h4>Hotels & Travel</h4>
+		</div>
+		
+	</div>
+	
+		<-- Modal -->
+		<div class="modal hide fade" id="top_ten_rank1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>PB Bar and Grill</h3>
+			</div>
+			<div class="modal-body">
+				<h4>The Scoop:</h4>
+				<ul>
+					<li>Best Nights: Tue, Fri, Thu</li>
+					<li> Tuesday: Taco Tuesday </li>
+					<li> Thursday: 50% on drinks until 10pm </li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">YoloMore</button>
+			</div>
+		</div>
+</div>
