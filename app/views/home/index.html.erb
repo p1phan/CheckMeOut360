@@ -39,9 +39,9 @@
   <div id="section_2_title_bar">
     <div id="splash_page_login_button_group">
       <% if current_user %>
-        <%= link_to "Profile »", user_path(current_user), :class => "login_logout_top_menu btn btn-primary" %>
+        <%= link_to "Profile »", user_path(current_user), :class => "login_logout_link btn btn-primary" %>
       <% else %>
-        <%= link_to "Login »", user_omniauth_authorize_path(:facebook), :class => "login_logout_top_menu btn btn-primary" %>
+        <%= link_to "Login »", user_omniauth_authorize_path(:facebook), :class => "login_logout_link btn btn-primary" %>
       <% end %>
       &nbsp;&nbsp;
 	  <%= link_to "Categories »", categories_path, :class => "btn" %>&nbsp;&nbsp;
