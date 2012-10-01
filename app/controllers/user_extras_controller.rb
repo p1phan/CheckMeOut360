@@ -6,7 +6,10 @@ class UserExtrasController < ApplicationController
   end
 
   def create
-    puts ("@@@@@@ params : #{params.inspect}")
+    extra = params[:user_extra][:extra]
+    unless extra.starts_with?("http://") && params[:user_extra][:link] == "true"
+      params[:user_extra][:extra] = "http://#{extra}"
+    end
     @user_extra = UserExtra.create(params[:user_extra])
     redirect_to params[:redirect_path]
   end
