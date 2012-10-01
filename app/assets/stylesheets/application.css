@@ -66,3 +66,48 @@ img {
   height: 200px;
   width: 100%;
 }
+
+#categories {
+	height: 100%;
+}
+
+#categories_placeListings h4 {
+	font-weight: bold;
+	color: #ff8500;
+}
+
+.inline {
+	float:left; 
+}
+
+.verticalLine {
+	position:absolute;
+	margin-left:-5px;
+	height: 100%;
+    top:255px;
+    border-left:1px solid rgba(215,215,215,0.38);
+}
+
+.categories_topten_info {
+	width: 250px; 
+	height: 220px; 
+	margin-left: -2px; 
+	margin-bottom: 10px;
+	padding-left: 10px; 
+	background-color: rgba(205,205,205,0.30);	
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.specialties-btn {
+	width: 100px;
+	margin-left: 50px;
+}
+
+
+#categories_mapLocation {
+	margin-left: 20px;
+}
+
+
+

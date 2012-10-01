@@ -1,0 +1,11 @@
+class Image < ActiveRecord::Base
+  
+  def categories_image_path
+    "/system/assets/images/places/pacific-beach-bar.jpg"
+  end
+  
+  
+  def image_path
+     "/system/assets/#{id}/original/#{filename}"
+  end
+end

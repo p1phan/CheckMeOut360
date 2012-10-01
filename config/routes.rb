@@ -7,7 +7,8 @@ CheckMeOut360::Application.routes.draw do
     get "users/sign_up" => 'walls#index'
   end
   
-  resources :categories
+  resources :categories do
+  end
   
   resources :home, only: [:index] do
     collection do
