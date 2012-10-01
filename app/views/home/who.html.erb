@@ -1,32 +1,31 @@
-
-<div class='row-fluid'>
-  <div class='span6 offset3'>
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
+<div>
+<div id="members_navbar" class="navbar navbar-static navbar-fixed">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand nav-banner" href="#">Team Members</a>
+      <ul class="nav">
         <% @users.each_with_index do |user, index| %>
-        <% active = index == 0 ? 'active' : '' %>
-        <div class="item <%= active %>">
-          <%= image_tag user.picture, size: "400x400", class: "avatar left" %>
-          <div class="carousel-caption">
-            <h4><%= user.name %></h4>
-            <p>
-              Where · <%= user.location %>
-            </p>
-            <%= render :partial => "#{user.first_name}_myself", :locals => {:id => user.id}, inline: true %>
-
-          </div>
-        </div>
-
+        <li class=""><a href="#user_<%= user.id %>"><%= user.name %></a></li>
         <% end %>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+      </ul>
     </div>
-
   </div>
 </div>
 
 <div class='row-fluid'>
-  <div id='full_description_container' class='span6 offset3'>
+  <div class='span10 offset1'>
+    <div data-spy="scroll" data-target="#members_navbar" data-offset="0" class="scrollspy-fixed">
+      <% @users.each_with_index do |user, index| %>
+        <div class='row-fluid'>
+        <div class='span2'>
+          <%= image_tag user.picture, size: "200x150", class: "avatar left pad-top img-polaroid" %>
+        </div>
+        <div class='span10'>
+          <h4 id="user_<%= user.id %>"><%= link_to "@#{user.first_name}", user_path(:id => user.id) %></h4>
+          <p><%= render :partial => "#{user.first_name}_myself", :locals => {:id => user.id}, inline: true %></p>
+        </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
