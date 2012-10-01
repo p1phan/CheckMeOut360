@@ -10,71 +10,16 @@
 </head>
 
 <body data-controller="<%= controller_name %>" data-action="<%= action_name + "_action" %>" class='<%= controller_name %> <%= Rails.env %>'>
-
-  <div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="/">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
-        <div class="nav-collapse">
-          <ul id="nav_options" class="nav">
-            <li id="profile_tab">
-              <% if current_user %>
-                <%= link_to "Profile", user_path(current_user) %>
-              <% end %>
-            </li>
-            <li id="about_tab"><%= link_to "About", about_home_index_path %></li>
-            <li id="contact_tab"><%= link_to "Ground Zero", who_home_index_path %></li>
-            <li id="statistics_tab">
-              <%= link_to "Statistics", statistics_path %>
-            </li>
-          </ul>
-          <p class="login_logout_top_menu splash_pagebar-text pull-right">
-            <% if current_user %>
-              <%= link_to "Logout of #{current_user.name}", destroy_user_session_path, :method => :delete, class: "btn btn-info btn-mini" %>
-            <% else %>
-              <%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-info btn-mini login_with_facebook" %>
-            <% end%>
-            &nbsp;
-            <% if current_user %>
-              <%= image_tag display_profile_picture(current_user.picture), :id => "facebook_pic", :size => "30x30" %>
-            <% else %>
-              <%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook", :size => "20x20"), user_omniauth_authorize_path(:facebook) %>
-            <% end %>
-            </p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-  </div>
-  <div id="main_page" class="container-fluid content">
-    <div class="page-header partial_background">
-      <div id="flash"></div>
-      <div id="profile_banner">
-        <% if current_user %>
-          <div id="user_headline" class="title_block">
-            <%= image_tag current_user.picture, size: "70x70" %>
-            <span style="color: white;"><%= current_user.name %> +</span><span style="color: orange"> <%= current_user.location %> +</span><span style="color: #007899"> Total Checkins »</span><span style="color: #129900"><%=current_user.checkins.count %></span>
-          </div>
-        <% else %>
-          <div class="title_block">
-            <span id="title_header">CheckMeOut 360 </span> <span style="color: red"> Ground Zero Labs</span>
-          </div>
-        <% end %>
-      </div>
-      <%= yield :splash_page %>
-      <div id="intro_block">
-        <%= yield :intro_message %>
-      </div>
-
-    </div>
-    <div id="inner_body" class="well">
-      <%= render partial: 'shared/ajax_loader', locals: {div_id: "application"}%>
-      <div id="yield_for_main_content">
-        <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
+  
+  <%= render partial: "templates/navbar" %>
+  <div id="main_page" class="container-fluid">
+    <%= render partial: "templates/banner_bar" %>
+    <div class="row-fluid">
+      <div id="inner_body" class="well offset1 span10">
+        <%= render partial: 'shared/ajax_loader', locals: {div_id: "application"}%>
+        <div id="yield_for_main_content">
+          <%= yield %> <!-- !!! This is where all the contents of the views will render !!! -->
+        </div>
       </div>
     </div><!--/row-->
   </div><!--/.fluid-container-->
@@ -84,7 +29,7 @@
     <span id="main_page_plus"> + </span>
     <span style="color: #129900;">Develop</span>
     <span id="main_page_plus"> + </span>
-    <span style="color: #990B00">Design </span>
-    <span style="color: white">&copy; Quy Phan </span>
+    <span style="color: white">Design </span>
+    <span class="zero_red">&copy; GroundZero Labs </span>
 </footer>
 </html>

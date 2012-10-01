@@ -6,10 +6,16 @@ CheckMeOut360::Application.routes.draw do
     get "users/sign_in" => 'walls#index'
     get "users/sign_up" => 'walls#index'
   end
+<<<<<<< HEAD
   
   resources :categories do
   end
   
+=======
+
+  resources :categories
+  resources :user_extras
+>>>>>>> 12333d4f6f027208e5fc5e9f7dacb8abb9671793
   resources :home, only: [:index] do
     collection do
       get 'about'
@@ -32,7 +38,7 @@ CheckMeOut360::Application.routes.draw do
       end
     end
   end
-  
+
   resources :statistics, only: [:index, :map, :graph] do
     collection do
       get 'map'
@@ -45,10 +51,10 @@ CheckMeOut360::Application.routes.draw do
   end
 
   # get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
-  
+
   root :to => 'home#index'
-  
-  
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

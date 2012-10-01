@@ -1,15 +1,20 @@
 body.home {
-  #product_info {
-    #tag_part_1 {
-      border-color: red;
-    }
-    #tag_part_2 {
-      border-color: blue;
-    }
-    h2, p {
-      color: white;
-    }
+  .margin-top.large {
+    margin-top: 100px;
   }
+
+  .underline {
+    text-decoration: underline;
+  }
+  #tag_part_1 {
+    border-color: red;
+    color: white;
+  }
+  #tag_part_2 {
+    border-color: blue;
+    color: white;
+  }
+
   #profile_banner {
     text-align: center;
   }
@@ -17,14 +22,14 @@ body.home {
     margin-left: 0px !important;
     position: absolute;
     width: 100%;
-    top: 75px;
+    bottom: 50px;
     height: 55px;
     background: black;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-  	filter: alpha(opacity=60);
-  	-moz-opacity:0.9;
-  	-khtml-opacity: 0.9;
-  	opacity: 0.9;
+  	filter: alpha(opacity=75);
+  	-moz-opacity:0.75;
+  	-khtml-opacity: 0.75;
+  	opacity: 0.75;
   	#slide_to_unlock_group {
     }
   	#section_1_title_bar {

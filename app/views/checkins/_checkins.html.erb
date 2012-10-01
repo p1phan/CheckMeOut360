@@ -1,21 +1,29 @@
-<%= render partial: 'shared/profile_layout' %>
+<%= render partial: 'shared/profile_layout', :locals => {:span_class => 'span6 offset3'}%>
 <div class="clearfix"></div>
 <center><%= paginate @checkins %></center>
 
-<% @checkins.each do |checkin| %>
-<div class="list-widget">
-  <a><%= image_tag "marker_icon.png", size: "42x42", class: "avatar left" %>
-  <div class="list-head">
-    <h3><a class="no-dec"><%= checkin.message || "Checkin!" %></a></h3>
-    <div class="no-dec list-meta">Where · <a><%= checkin.place.name %></a></div>
-    <p><small>On</small> <%= checkin.created_at.strftime("%A %B %d, %Y at %I:%M %p")%></p>
-  </div>
-  <div class="list_pad extra">
-  <ul>
+<% @checkins.each_with_index do |checkin, index| %>
+  <div class='span3 list-widget'>
     <% checkin.users.each do |user| %>
-      <%= link_to "#{user.name} »", user_path(user.id), class: "list-view" %>
+      <%= link_to user_path(user.id), class: "list-view", "rel" => "tooltip", "data-original-title" => "#{user.name}", "data-placement" => "top" do %>
+        <%= image_tag(user.get_profile_pic(User.me.token), class: "img_thumb") %>
+      <% end %>
     <% end %>
-  </ul>
   </div>
-</div>
+  <div class='span6 list-widget'>
+    <a><%= image_tag "marker_icon.png", size: "42x42", class: "avatar left" %>
+    <div class="list-head">
+      <h3><a class="no-dec"><%= checkin.message || "Checkin!" %></a></h3>
+      <div class="no-dec list-meta">Where · <a><%= checkin.place.name %></a></div>
+      <p><small>On</small> <%= checkin.created_at.strftime("%A %B %d, %Y at %I:%M %p")%></p>
+    </div>
+    <div class="list_pad extra">
+      <ul>
+        <% checkin.users.each do |user| %>
+          <%= link_to "#{user.name}", user_path(user.id), class: "list-view" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
 <% end %>

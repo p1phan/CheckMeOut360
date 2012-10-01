@@ -2,10 +2,12 @@ CHECK_ME_OUT_360 = {
   common: {
     init: function() {
       // application-wide code
-      $('.login_logout_top_menu').click(function(obj) {
+      $('.login_logout_link').click(function(obj) {
         $('#yield_for_main_content').fadeOut();
         $('#application_loader_circle').fadeIn();
       });
+        
+      $('a[rel="tooltip"]').tooltip()
 
       var pathname = window.location.pathname;
       if (pathname.indexOf('users') >= 0) {

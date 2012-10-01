@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
   has_many :places, :through => :checkins
   has_many :facebook_checkin_logs, :dependent => :destroy
   has_and_belongs_to_many :checkins
-  
+  has_many :user_extras
   accepts_nested_attributes_for :facebook_checkin_logs
   # accepts_nested_attributes_for :checkins
-  
+
   scope :active, where("token is NOT NULL")
   scope :inactive, where("token is NULL")
 
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   PROTECTED = 'protected'.freeze
   PUBLIC = 'public'.freeze
   PRIVACY = [PRIVATE, PROTECTED, PUBLIC]
-  validates :privacy, :inclusion => PRIVACY, allow_nil: false  
+  validates :privacy, :inclusion => PRIVACY, allow_nil: false
 
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     end
     return user
   end
-  
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
   def friend_with(user)
     graph = Koala::Facebook::API.new(token)
     graph.get_connection("me", "friends").each do |friend|
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
     end
     return false
   end
-  
+
   def unique_places
     places.order('created_at desc').uniq
   end
@@ -76,17 +76,16 @@ class User < ActiveRecord::Base
   def self.me
     User.find_by_email("quyminhphan@gmail.com")
   end
-  
+
   def get_profile_pic(token)
-    unless picture
-      begin
-        @graph = Koala::Facebook::API.new(token)
-        update_attribute(:picture, @graph.get_picture(uid, type: "large"))
-      rescue Exception => e
-      end
+    return picture if picture.present?
+    begin
+      @graph = Koala::Facebook::API.new(token)
+      update_attribute(:picture, @graph.get_picture(uid, type: "large"))
+    rescue Exception => e
     end
   end
-  
+
   def populate_user(user)
     self.uid = user.id
     self.name = user.name

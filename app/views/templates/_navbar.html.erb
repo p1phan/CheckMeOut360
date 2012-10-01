@@ -1,0 +1,39 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">CheckMeOut-360 <%= image_tag "globe.png", :size => "60x30", id: "main_globe_icon" %></a>
+      <div class="nav-collapse">
+        <ul id="nav_options" class="nav">
+          <li id="profile_tab">
+            <% if current_user %>
+              <%= link_to "Profile", user_path(current_user) %>
+            <% end %>
+          </li>
+          <li id="about_tab"><%= link_to "About", about_home_index_path %></li>
+          <li id="contact_tab"><%= link_to "Ground Zero", who_home_index_path %></li>
+          <li id="statistics_tab">
+            <%= link_to "Statistics", statistics_path %>
+          </li>
+        </ul>
+        <p class="login_logout_link navbar_login_out pull-right">
+          <% if current_user %>
+            <%= link_to "Logout of #{current_user.name}", destroy_user_session_path, :method => :delete, class: "btn btn-info btn-mini" %>
+          <% else %>
+            <%= link_to "Login Using Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-info btn-mini login_with_facebook" %>
+          <% end%>
+          &nbsp;
+          <% if current_user %>
+            <%= image_tag display_profile_picture(current_user.picture), :id => "facebook_pic", :size => "30x30" %>
+          <% else %>
+            <%= link_to (image_tag "fb_login_icon.png", :id => "facebook_icon", class: "login_with_facebook", :size => "20x20"), user_omniauth_authorize_path(:facebook) %>
+          <% end %>
+          </p>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

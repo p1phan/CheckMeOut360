@@ -1,15 +1,63 @@
+<div class='users-profile'>
+<input type='hidden' value='<%= @user.id %>' id='user_id'/>
 <div class='row-fluid'>
+  <div class='span3'>
+    <%= image_tag @user.picture, size: "260x260", class: "avatar left" %>
+  </div>
+  <div class='span3'>
+    <h3><%= @user.name %></h3>
+    <label class='inline-label'>Contact: </label><span class='data-important'><%= @user.email %> </span>
+    <label class='inline-label'>Location: </label><span class='data-important'><%= @user.location %> </span>
+  </div>
   <div class='span6'>
-    <%= render partial: 'shared/profile_layout' %>
+    <div class="holder">
+      <div class="map fold">
+      	<span class="pin" style="left: 75px; top: 90px;" alt="San Diego"></span>
+      </div>
+    </div>
   </div>
 </div>
 <div class='row-fluid'>
-  <div class='span5 offset1'>
-    <%= render partial: 'shared/checkins_summary'%>
+  <div class='span3'>
+    <ul class='nav nav-tabs nav-stacked'>
+      <% @user.user_extras.each do |extra| %>
+        <% if extra.link? %>
+          <li><a href='<%= extra.extra %>'><%= extra.name %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <a href='#' id='new_link' data-url='<%= new_user_extra_path%>' class='btn btn-primary'>
+      <i class='icon-plus icon-white'></i>
+      New Link
+    </a>
+    <br/>
+
   </div>
-  <div class='span5'>
-    <%= render partial: 'shared/privacy' %>
+  <div class='span9 '>
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a href="#myself">Myself</a></li>
+      <li><a href="#places">My Places</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#new_extra">Extras</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="myself">
+        <%= render :partial => "home/#{@user.first_name}_myself", inline: true %>
+      </div>
+      <div class="tab-pane" id="places">
+        <%= render partial: 'shared/checkins_summary'%>
+      </div>
+      <div class="tab-pane" id="settings">
+        <%= render partial: 'shared/privacy' %>
+      </div>
+      <div class="tab-pane" id="new_extra">
+        <div id='user_extra_form'>
+          <%= render partial: 'user_extras/form', :locals => {:redirect_path => user_path(:id => @user.id), :user_id => @user.id}%>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </div>
 
-<%= render partial: 'shared/ajax_loader', locals: {div_id: "profile"}%>
