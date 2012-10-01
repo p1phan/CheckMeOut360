@@ -8,6 +8,11 @@ body {
   margin-top: -5px;
 }
 
+.inline-label {
+  display: inline;
+  font-weight: bold;
+}
+
 *.unselectable {
    -moz-user-select: -moz-none;
    -khtml-user-select: none;

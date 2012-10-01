@@ -9,13 +9,14 @@ class UsersController < ApplicationController
     @places = @user.places.order('created_at desc')
     @checkins = @user.checkins.order('created_at desc')
     @latest_checkin = @checkins.first
+    @user_extra = UserExtra.new(:user_id => @user.id)
     if current_user
       @user.get_profile_pic(current_user.token)
     else
       @user.get_profile_pic(User.me.token)
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     @user.privacy = (params[:user][:privacy])
