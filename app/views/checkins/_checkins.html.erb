@@ -6,7 +6,7 @@
   <div class='span3 list-widget'>
     <% checkin.users.each do |user| %>
       <%= link_to user_path(user.id), class: "list-view", "rel" => "tooltip", "data-original-title" => "#{user.name}", "data-placement" => "top" do %>
-        <%= image_tag(user.get_profile_pic(User.me.token), class: "img_thumb") %>
+        <%= image_tag(user.get_profile_pic(@user.token), class: "img_thumb") %>
       <% end %>
     <% end %>
   </div>

@@ -4,12 +4,12 @@
   <div class='span3'>
     <%= image_tag @user.picture, size: "260x260", class: "avatar left" %>
   </div>
-  <div class='span3'>
+  <div class='span2'>
     <h3><%= @user.name %></h3>
     <label class='inline-label'>Contact: </label><span class='data-important'><%= @user.email %> </span>
     <label class='inline-label'>Location: </label><span class='data-important'><%= @user.location %> </span>
   </div>
-  <div class='span6'>
+  <div class='span5 offset1'>
     <div class="holder">
       <div class="map fold">
       	<span class="pin" style="left: 75px; top: 90px;" alt="San Diego"></span>
@@ -22,7 +22,7 @@
     <ul class='nav nav-tabs nav-stacked'>
       <% @user.user_extras.each do |extra| %>
         <% if extra.link? %>
-          <li><a href='<%= extra.extra %>'><%= extra.name %></a></li>
+          <li><a href='<%= extra.extra %>' target="_blank"><%= extra.name %></a></li>
         <% end %>
       <% end %>
     </ul>
